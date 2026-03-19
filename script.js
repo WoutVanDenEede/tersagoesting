@@ -201,4 +201,41 @@ document.addEventListener('DOMContentLoaded', function () {
         }, interval);
     });
 
+    // === Recensie carrousel (10 seconden) ===
+    const recensieSlides = document.querySelectorAll('.recensie-slide');
+    const dotsContainer = document.querySelector('.recensie-dots');
+    if (recensieSlides.length > 0 && dotsContainer) {
+        let currentRecensie = 0;
+
+        // Dots aanmaken
+        recensieSlides.forEach(function(_, i) {
+            const dot = document.createElement('button');
+            dot.classList.add('recensie-dot');
+            dot.setAttribute('aria-label', 'Recensie ' + (i + 1));
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', function() {
+                goToRecensie(i);
+                clearInterval(recensieInterval);
+                recensieInterval = setInterval(nextRecensie, 10000);
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.recensie-dot');
+
+        function goToRecensie(index) {
+            recensieSlides[currentRecensie].classList.remove('active');
+            dots[currentRecensie].classList.remove('active');
+            currentRecensie = index;
+            recensieSlides[currentRecensie].classList.add('active');
+            dots[currentRecensie].classList.add('active');
+        }
+
+        function nextRecensie() {
+            goToRecensie((currentRecensie + 1) % recensieSlides.length);
+        }
+
+        var recensieInterval = setInterval(nextRecensie, 10000);
+    }
+
 });

@@ -611,78 +611,95 @@ a.card {
     font-weight: 600;
 }
 
-/* Recensies op homepage */
+/* Recensies carrousel op homepage */
 .recensies-home {
     background-color: var(--cream);
     text-align: center;
 }
 
-.recensies-slider {
-    display: flex;
-    gap: 25px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding: 10px 0 20px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--amber) transparent;
+.recensie-carousel {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
 }
 
-.recensies-slider::-webkit-scrollbar {
-    height: 6px;
-}
-.recensies-slider::-webkit-scrollbar-track {
-    background: transparent;
-}
-.recensies-slider::-webkit-scrollbar-thumb {
-    background: var(--amber);
-    border-radius: 3px;
+.recensie-carousel-track {
+    position: relative;
+    min-height: 200px;
 }
 
-.recensie-home-card {
-    min-width: 300px;
-    max-width: 350px;
-    flex-shrink: 0;
-    scroll-snap-align: start;
+.recensie-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
     background: #fff;
     border-radius: var(--radius);
-    padding: 30px 25px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-    text-align: left;
-    position: relative;
-    border-bottom: 4px solid var(--amber);
-    transition: var(--transition);
+    padding: 40px 35px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    border-left: 5px solid var(--amber);
 }
-.recensie-home-card:nth-child(2) { border-bottom-color: var(--olive); }
-.recensie-home-card:nth-child(3) { border-bottom-color: var(--pink); }
-.recensie-home-card:nth-child(4) { border-bottom-color: var(--terracotta); }
-.recensie-home-card:nth-child(5) { border-bottom-color: var(--amber); }
+.recensie-slide:nth-child(2) { border-left-color: var(--olive); }
+.recensie-slide:nth-child(3) { border-left-color: var(--pink); }
+.recensie-slide:nth-child(4) { border-left-color: var(--terracotta); }
+.recensie-slide:nth-child(5) { border-left-color: var(--amber); }
 
-.recensie-home-card:hover {
-    box-shadow: 0 6px 25px rgba(0,0,0,0.1);
-    transform: translateY(-3px);
+.recensie-slide.active {
+    position: relative;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .recensie-home-tekst {
     font-family: 'Source Sans 3', sans-serif;
     font-style: italic;
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 1.1rem;
+    line-height: 1.8;
     color: var(--text);
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+    text-align: left;
 }
 
 .recensie-home-naam {
     font-family: 'Cheboyga', serif;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--terracotta);
+    text-align: right;
+}
+
+.recensie-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.recensie-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    padding: 0;
+}
+.recensie-dot.active {
+    background: var(--terracotta);
+    transform: scale(1.2);
 }
 
 @media (max-width: 768px) {
-    .recensie-home-card {
-        min-width: 260px;
-        max-width: 280px;
-        padding: 22px 18px;
+    .recensie-slide {
+        padding: 25px 20px;
+    }
+    .recensie-home-tekst {
+        font-size: 1rem;
     }
 }
 

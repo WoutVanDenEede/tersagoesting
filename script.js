@@ -145,6 +145,49 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 15000);
     }
 
+    // === Occasion tags: prefill contact form ===
+    document.querySelectorAll('.occasion-tag[data-message]').forEach(function (tag) {
+        tag.addEventListener('click', function (e) {
+            e.preventDefault();
+            var message = this.dataset.message;
+            var berichtField = document.getElementById('bericht');
+            if (berichtField) {
+                berichtField.value = message;
+                berichtField.style.height = 'auto';
+                berichtField.style.height = berichtField.scrollHeight + 'px';
+            }
+            var contactSection = document.getElementById('contact');
+            if (contactSection) {
+                var headerHeight = document.querySelector('.header').offsetHeight;
+                var targetPos = contactSection.getBoundingClientRect().top + window.scrollY - headerHeight;
+                window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                // Focus on naam field after scroll
+                setTimeout(function () {
+                    var naamField = document.getElementById('naam');
+                    if (naamField) naamField.focus();
+                }, 800);
+            }
+        });
+    });
+
+    // === FAQ Toggle (global function) ===
+    window.toggleFaq = function (btn) {
+        var answer = btn.nextElementSibling;
+        var isOpen = btn.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.faq-question').forEach(function (q) {
+            q.classList.remove('open');
+            q.nextElementSibling.classList.remove('open');
+        });
+
+        // Open clicked (if it was closed)
+        if (!isOpen) {
+            btn.classList.add('open');
+            answer.classList.add('open');
+        }
+    };
+
     // === Card Carousels ===
     document.querySelectorAll('.card-carousel').forEach(function (carousel) {
         var slides = carousel.querySelectorAll('.carousel-slide');

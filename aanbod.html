@@ -7,6 +7,27 @@
     <meta name="description" content="Ontdek het volledige aanbod van Tersagoesting: hapjes, buffetten, pasta- en burgerformules, Cook@Home en seizoensmenu's.">
     <meta name="keywords" content="catering menu, hapjes, buffet, pasta, burger, cook at home, tersagoesting, Puurs-Sint-Amands">
     <meta name="author" content="Tersagoesting">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tersagoesting.be/aanbod.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ons Aanbod | Tersagoesting - Catering met smaak">
+    <meta property="og:description" content="Ontdek het volledige aanbod van Tersagoesting: hapjes, buffetten, pasta- en burgerformules, Cook@Home en seizoensmenu's.">
+    <meta property="og:url" content="https://tersagoesting.be/aanbod.html">
+    <meta property="og:image" content="https://tersagoesting.be/images/logo-tersagoesting.png">
+    <meta property="og:locale" content="nl_BE">
+    <meta property="og:site_name" content="Tersagoesting">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ons Aanbod | Tersagoesting - Catering met smaak">
+    <meta name="twitter:description" content="Ontdek het volledige aanbod van Tersagoesting: hapjes, buffetten, pasta- en burgerformules, Cook@Home en seizoensmenu's.">
+    <meta name="twitter:image" content="https://tersagoesting.be/images/logo-tersagoesting.png">
+
+    <!-- Font preload -->
+    <link rel="preload" href="fonts/Cheboyga.ttf" as="font" type="font/ttf" crossorigin>
+
     <!-- Fonts worden lokaal geladen via CSS @font-face -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -24,11 +45,9 @@
             </a>
             <nav class="nav" id="nav">
                 <a href="aanbod.html" class="nav-link active">Ons Aanbod</a>
-                <a href="index.html#portfolio" class="nav-link">Voorbeelden</a>
-                <a href="index.html#hoe-bestellen" class="nav-link">Hoe Bestellen</a>
-                <a href="over-ons.html" class="nav-link">Over Ons</a>
+                <a href="index.html#hoe-bestellen" class="nav-link">Hoe bestel ik?</a>
                 <a href="index.html#contact" class="nav-link">Contact</a>
-                <a href="index.html#bestellen" class="nav-link nav-cta">Bestellen</a>
+                <a href="index.html#contact" class="nav-link nav-cta">Ik wil bestellen</a>
             </nav>
             <button class="menu-toggle" id="menuToggle" aria-label="Menu openen">
                 <span></span>
@@ -38,10 +57,11 @@
         </div>
     </header>
 
+    <main>
     <!-- Formules Section -->
     <section class="section" id="formules" style="padding-top: 40px;">
         <div class="container">
-            <h2 class="section-title">Onze Formules</h2>
+            <h1 class="section-title">Onze Formules</h1>
             <p class="section-subtitle">Kies de formule die past bij jouw feest</p>
 
             <div class="menu-grid">
@@ -85,17 +105,6 @@
                             <h4>De BBQ-formule</h4>
                             <p>Luxueuze groentjes, pastasalades en gegrilde lekkernijen met topvlees op de BBQ. Staat u liever zelf achter de grill? Dan komt u gewoon de groentjes afhalen!</p>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Cook@Home -->
-                <div class="menu-card">
-                    <div class="menu-card-header menu-card-header--olive">
-                        <h3>Cook@Home</h3>
-                    </div>
-                    <div class="menu-card-body">
-                        <p class="menu-card-intro">Verwen je gasten culinair zonder moeite. Vanaf 8 personen schakelen wij in om thuis een menu klaar te maken.</p>
-                        <p class="menu-card-highlight">Onze Cook@Home-formule garandeert het culinaire genot van een restaurantbezoek in een herkenbare, gezellige setting.</p>
                     </div>
                 </div>
 
@@ -146,10 +155,34 @@
         </div>
     </section>
 
+    <!-- Cook@Home Featured Section -->
+    <section class="section cookhome-feature">
+        <div class="container">
+            <div class="cookhome-card">
+                <div class="cookhome-card-image">
+                    <img src="images/foto-cookhome.jpg" alt="Cook@Home catering aan huis Puurs" loading="lazy">
+                </div>
+                <div class="cookhome-card-content">
+                    <span class="cookhome-label">Onze specialiteit</span>
+                    <h2>Cook@Home</h2>
+                    <p class="cookhome-intro">Een compleet <strong>driegangenmenu met hapjes</strong>, bij jou thuis klaargemaakt.</p>
+                    <ul class="cookhome-points">
+                        <li>Hapjes + drie gangen bij jou thuis bereid</li>
+                        <li>Vanaf 8 personen</li>
+                        <li>Bediening en afwas inbegrepen</li>
+                        <li>Menu volledig op maat samengesteld</li>
+                        <li>Het gemak van een restaurant, de gezelligheid van thuis</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary">Ik wil dat je mij een menu voorstelt</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Hapjes Detail Section -->
     <section class="section section-alt" id="hapjes">
         <div class="container">
-            <h2 class="section-title">Onze Hapjes</h2>
+            <h2 class="section-title">Onze Hapjes & Dessertjes</h2>
             <p class="section-subtitle">Wij serveren onze hapjes in een koekje, glazen bokaaltje, lepel of in een klein bordje. De hapjes kan je op levering bestellen of wij komen je bedienen!</p>
 
             <div class="hapjes-grid">
@@ -240,36 +273,30 @@
                         <p>Met spinazie, feta en pijnboompitten. Kan ook met vlees.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Desserts Section -->
-    <section class="section" id="desserts">
-        <div class="container">
-            <h2 class="section-title">Onze Dessertjes</h2>
-            <p class="section-subtitle">Wij serveren onze dessertjes in bokaaltjes of kommetjes</p>
-
-            <div class="desserts-grid">
-                <div class="dessert-item">
-                    <h4>Tiramisu</h4>
-                    <p>De klassieker in klein formaat: perfect als afsluiter van de avond.</p>
-                </div>
-                <div class="dessert-item">
-                    <h4>Panna cotta met vruchtencoulis</h4>
-                    <p>Fris, fruitig en delicaat.</p>
-                </div>
-                <div class="dessert-item">
-                    <h4>Crumble met appel</h4>
-                    <p>Leuk contrast tussen het korrelig zoet deeg en de even zoete maar zijdezachte stukjes appel.</p>
-                </div>
-                <div class="dessert-item">
-                    <h4>Chocolademousse</h4>
-                    <p>Romig, vol van smaak en gemaakt van donkere chocolade.</p>
-                </div>
-                <div class="dessert-item">
-                    <h4>Rijstpap</h4>
-                    <p>Gemaakt met saffraan.</p>
+                <!-- Dessertjes -->
+                <div class="hapjes-category">
+                    <h3 class="hapjes-category-title">Dessertjes</h3>
+                    <p class="hapjes-category-note">Geserveerd in bokaaltjes of kommetjes</p>
+                    <div class="hapje">
+                        <h4>Tiramisu</h4>
+                        <p>De klassieker in klein formaat: perfect als afsluiter van de avond.</p>
+                    </div>
+                    <div class="hapje">
+                        <h4>Panna cotta met vruchtencoulis</h4>
+                        <p>Fris, fruitig en delicaat.</p>
+                    </div>
+                    <div class="hapje">
+                        <h4>Crumble met appel</h4>
+                        <p>Leuk contrast tussen het korrelig zoet deeg en de even zoete maar zijdezachte stukjes appel.</p>
+                    </div>
+                    <div class="hapje">
+                        <h4>Chocolademousse</h4>
+                        <p>Romig, vol van smaak en gemaakt van donkere chocolade.</p>
+                    </div>
+                    <div class="hapje">
+                        <h4>Rijstpap</h4>
+                        <p>Gemaakt met saffraan.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -323,6 +350,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-inner">
@@ -332,8 +361,7 @@
             <div class="footer-links">
                 <h4>Navigatie</h4>
                 <a href="aanbod.html">Ons Aanbod</a>
-                <a href="index.html#portfolio">Voorbeelden</a>
-                <a href="index.html#hoe-bestellen">Hoe Bestellen</a>
+                <a href="index.html#hoe-bestellen">Hoe bestel ik?</a>
                 <a href="index.html#contact">Contact</a>
             </div>
             <div class="footer-contact">

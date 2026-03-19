@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tersagoesting | Catering met smaak</title>
-    <meta name="description" content="Tersagoesting - Catering voor elk evenement. Ontdek ons aanbod, bekijk voorbeelden van voorgaande opdrachten en bestel eenvoudig online.">
-    <meta name="keywords" content="catering, tersagoesting, traiteur, feest, evenement, bestellen, hapjes, buffet">
+    <title>Tersagoesting | Catering in en rond Puurs-Sint-Amands</title>
+    <meta name="description" content="Tersagoesting: catering in en rond Puurs-Sint-Amands. Hapjes, buffetten, Cook@Home en meer. Vers bereid voor jouw feest, babyborrel of bedrijfsevent. Vraag een vrijblijvende offerte!">
+    <meta name="keywords" content="catering Puurs, catering Puurs-Sint-Amands, traiteur Puurs, hapjes bestellen, buffet catering, cook at home, tersagoesting, feest catering, babyborrel catering, bedrijfsevent catering">
     <meta name="author" content="Tersagoesting">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts worden lokaal geladen via CSS @font-face -->
     <link rel="stylesheet" href="style.css">
 
     <!-- SEO: Structured Data for Google -->
@@ -18,14 +16,17 @@
         "@context": "https://schema.org",
         "@type": "FoodService",
         "name": "Tersagoesting",
-        "description": "Catering voor elk evenement - van intieme feesten tot grote events.",
-        "url": "",
-        "telephone": "",
-        "email": "",
+        "description": "Catering in en rond Puurs-Sint-Amands. Hapjes, buffetten, Cook@Home en meer voor jouw feest of event.",
+        "areaServed": "Puurs-Sint-Amands",
+        "url": "https://tersagoesting.be",
+        "telephone": "+32476624011",
+        "email": "tersagoesting@gmail.be",
         "address": {
             "@type": "PostalAddress",
-            "addressLocality": "",
-            "addressRegion": "",
+            "streetAddress": "Vijverstraat 67",
+            "addressLocality": "Puurs-Sint-Amands",
+            "postalCode": "2870",
+            "addressRegion": "Antwerpen",
             "addressCountry": "BE"
         },
         "servesCuisine": "Catering",
@@ -36,7 +37,7 @@
 <body>
     <!-- Top banner -->
     <div class="top-bar">
-        <p>Catering met passie &mdash; <a href="#bestellen">Bestel nu</a></p>
+        <p>Catering op bestelling of bij jou thuis &mdash; <a href="#bestellen">Bestel nu!</a></p>
     </div>
 
     <!-- Navigation -->
@@ -47,7 +48,7 @@
                 <img src="images/logo-tersagoesting.png" alt="Tersagoesting - Catering met smaak" class="logo-img">
             </a>
             <nav class="nav" id="nav">
-                <a href="#aanbod" class="nav-link">Ons Aanbod</a>
+                <a href="aanbod.html" class="nav-link">Ons Aanbod</a>
                 <a href="#portfolio" class="nav-link">Voorbeelden</a>
                 <a href="#hoe-bestellen" class="nav-link">Hoe Bestellen</a>
                 <a href="over-ons.html" class="nav-link">Over Ons</a>
@@ -64,28 +65,24 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Decorative bowls -->
+        <div class="deco-bowl deco-bowl-hero-right">
+            <img src="images/Tersagoesting_sublogo_oranje.png" alt="" aria-hidden="true">
+        </div>
         <div class="container hero-inner">
             <div class="hero-text">
                 <h1 class="hero-title">
-                    <span class="hero-accent">Geniet</span>
-                    van catering op maat,<br>bij jou geleverd
+                    <span class="hero-accent">Culinair genieten...</span>
+                    op jouw manier!
                 </h1>
-                <p class="hero-subtitle">
-                    Bij Tersagoesting draait alles om smaak, versheid en zorg voor elk detail.
-                    Onze gerechten worden met liefde bereid voor jouw feest, event of familiebijeenkomst.
+                <p class="hero-subtitle" style="font-family: var(--font-body);">
+                    Geef je een feestje maar heb je geen goesting om zelf in de keuken te staan? Dan zit je bij Tersagoesting aan het juiste adres. Wij maken lekker eten in alle maten en vormen. Soms Vlaams met een twist, soms verfijnd Italiaans of herkenbaar aziatisch maar altijd met verse ingredi&euml;nten!
                 </p>
-                <p class="hero-description">
-                    Laat je verrassen door onze seizoensgebonden menu's, verse ingrediënten
-                    en een culinaire ervaring die je gasten nog lang zullen onthouden.
-                </p>
+                <p class="hero-location">Catering in en rond Puurs!</p>
                 <a href="#bestellen" class="btn btn-primary">Bestel hier!</a>
             </div>
             <div class="hero-image">
-                <!-- VERVANG: Plaats hier je eigen hero-afbeelding -->
-                <div class="image-placeholder hero-placeholder">
-                    <span class="placeholder-icon">📸</span>
-                    <span class="placeholder-text">Hero afbeelding<br><small>(aanbevolen: 800x600px)</small></span>
-                </div>
+                <img src="images/foto-hero.jpg" alt="Leni van Tersagoesting bereidt verse hapjes - catering in en rond Puurs-Sint-Amands">
             </div>
         </div>
     </section>
@@ -93,136 +90,115 @@
     <!-- Aanbod Section -->
     <section class="section aanbod" id="aanbod">
         <div class="container">
-            <h2 class="section-title">Ons Aanbod</h2>
-            <p class="section-subtitle">Van hapjes tot volledige buffetten &mdash; wij verzorgen het allemaal</p>
+            <h2 class="section-title">Ons aanbod</h2>
+            <p class="section-subtitle">Van kleine hapjes tot buffetten: maak hier je keuze!</p>
             <div class="cards-grid">
-                <div class="card">
+                <a href="aanbod.html" class="card">
                     <div class="card-image">
-                        <!-- VERVANG: afbeelding hapjes -->
-                        <div class="image-placeholder">
-                            <span class="placeholder-icon">📸</span>
-                            <span class="placeholder-text">Hapjes foto<br><small>(400x300px)</small></span>
-                        </div>
+                        <img src="images/foto-hapjes.jpg" alt="Hapjes en fingerfood van Tersagoesting catering Puurs">
                     </div>
                     <div class="card-body">
                         <h3>Hapjes & Fingerfood</h3>
-                        <p>Verfijnde hapjes voor recepties, feesten en zakelijke events. Koud of warm, altijd vers bereid.</p>
+                        <p>Verfijnde hapjes voor recepties, feesten, babyborrels en zakelijke events. Koud of warm, altijd vers bereid.</p>
                     </div>
-                </div>
-                <div class="card">
+                </a>
+                <a href="aanbod.html" class="card">
                     <div class="card-image">
-                        <!-- VERVANG: afbeelding buffet -->
-                        <div class="image-placeholder">
-                            <span class="placeholder-icon">📸</span>
-                            <span class="placeholder-text">Buffet foto<br><small>(400x300px)</small></span>
-                        </div>
+                        <img src="images/foto-buffet.jpg" alt="Warm en koud buffet catering Puurs-Sint-Amands">
                     </div>
                     <div class="card-body">
                         <h3>Buffetten</h3>
-                        <p>Uitgebreide warme en koude buffetten, perfect voor grotere groepen. Volledig op maat samengesteld.</p>
+                        <p>Uitgebreide warme en koude buffetten, perfect voor grotere groepen.</p>
                     </div>
-                </div>
-                <div class="card">
+                </a>
+                <a href="aanbod.html" class="card">
                     <div class="card-image">
-                        <!-- VERVANG: afbeelding menu -->
-                        <div class="image-placeholder">
-                            <span class="placeholder-icon">📸</span>
-                            <span class="placeholder-text">Menu foto<br><small>(400x300px)</small></span>
-                        </div>
+                        <img src="images/foto-cookhome.jpg" alt="Cook at home menu catering aan huis Puurs">
                     </div>
                     <div class="card-body">
-                        <h3>Menu op maat</h3>
-                        <p>Een volledig menu uitgewerkt rond jouw wensen. Ideaal voor huwelijken, jubilea en speciale gelegenheden.</p>
+                        <h3>Cook@home</h3>
+                        <p>Een driegangenmenu met hapjes bij jou thuis klaargemaakt. De bediening en afwas nemen we ook voor onze rekening.</p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio / Voorbeelden Section -->
+    <!-- Instagram Feed Section -->
     <section class="section portfolio" id="portfolio">
         <div class="container">
-            <h2 class="section-title">Voorbeelden van onze opdrachten</h2>
-            <p class="section-subtitle">Een greep uit onze voorgaande events en catering-opdrachten</p>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="image-placeholder portfolio-placeholder">
-                        <span class="placeholder-icon">📸</span>
-                        <span class="placeholder-text">Voorbeeld 1<br><small>(400x400px)</small></span>
-                    </div>
-                    <div class="portfolio-overlay">
-                        <span>Huwelijksfeest</span>
-                    </div>
+            <h2 class="section-title">Volg ons op Instagram</h2>
+            <p class="section-subtitle">Bekijk onze laatste creaties en blijf op de hoogte van ons aanbod</p>
+            <div class="instagram-embed-grid">
+                <!--
+                    HOE POSTS TOEVOEGEN:
+                    1. Ga naar een Instagram post op instagram.com
+                    2. Klik op de 3 puntjes (...) rechtsboven de post
+                    3. Klik op "Insluiten" / "Embed"
+                    4. Kopieer de <blockquote> code
+                    5. Plak die hieronder in een <div class="insta-embed-item">
+
+                    Hieronder staan 6 embed-slots klaar. Vervang de placeholder blockquotes
+                    door echte embed-codes van je Instagram posts.
+                -->
+                <div class="insta-embed-item">
+                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/tersagoesting/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 0; max-width:100%; min-width:280px; padding:0; width:100%;">
+                        <div style="padding:16px; text-align:center;">
+                            <a href="https://www.instagram.com/tersagoesting/" style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px;" target="_blank" rel="noopener">Post laden...</a>
+                        </div>
+                    </blockquote>
                 </div>
-                <div class="portfolio-item">
-                    <div class="image-placeholder portfolio-placeholder">
-                        <span class="placeholder-icon">📸</span>
-                        <span class="placeholder-text">Voorbeeld 2<br><small>(400x400px)</small></span>
-                    </div>
-                    <div class="portfolio-overlay">
-                        <span>Bedrijfsevent</span>
-                    </div>
+                <div class="insta-embed-item">
+                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/tersagoesting/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 0; max-width:100%; min-width:280px; padding:0; width:100%;">
+                        <div style="padding:16px; text-align:center;">
+                            <a href="https://www.instagram.com/tersagoesting/" style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px;" target="_blank" rel="noopener">Post laden...</a>
+                        </div>
+                    </blockquote>
                 </div>
-                <div class="portfolio-item">
-                    <div class="image-placeholder portfolio-placeholder">
-                        <span class="placeholder-icon">📸</span>
-                        <span class="placeholder-text">Voorbeeld 3<br><small>(400x400px)</small></span>
-                    </div>
-                    <div class="portfolio-overlay">
-                        <span>Verjaardagsfeest</span>
-                    </div>
+                <div class="insta-embed-item">
+                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/tersagoesting/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 0; max-width:100%; min-width:280px; padding:0; width:100%;">
+                        <div style="padding:16px; text-align:center;">
+                            <a href="https://www.instagram.com/tersagoesting/" style="color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px;" target="_blank" rel="noopener">Post laden...</a>
+                        </div>
+                    </blockquote>
                 </div>
-                <div class="portfolio-item">
-                    <div class="image-placeholder portfolio-placeholder">
-                        <span class="placeholder-icon">📸</span>
-                        <span class="placeholder-text">Voorbeeld 4<br><small>(400x400px)</small></span>
-                    </div>
-                    <div class="portfolio-overlay">
-                        <span>Communiefeest</span>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image-placeholder portfolio-placeholder">
-                        <span class="placeholder-icon">📸</span>
-                        <span class="placeholder-text">Voorbeeld 5<br><small>(400x400px)</small></span>
-                    </div>
-                    <div class="portfolio-overlay">
-                        <span>Babyborrel</span>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="image-placeholder portfolio-placeholder">
-                        <span class="placeholder-icon">📸</span>
-                        <span class="placeholder-text">Voorbeeld 6<br><small>(400x400px)</small></span>
-                    </div>
-                    <div class="portfolio-overlay">
-                        <span>Seizoensmenu</span>
-                    </div>
-                </div>
+            </div>
+            <div style="text-align:center; margin-top:32px;">
+                <a href="https://www.instagram.com/tersagoesting/" target="_blank" rel="noopener" class="btn btn-outline">
+                    Bekijk alles op Instagram &rarr;
+                </a>
             </div>
         </div>
     </section>
+    <!-- Instagram embed script -->
+    <script async src="//www.instagram.com/embed.js"></script>
 
     <!-- Hoe Bestellen Section -->
-    <section class="section how-to-order" id="hoe-bestellen">
+    <section class="section how-to-order" id="hoe-bestellen" style="position:relative; overflow:hidden;">
+        <div class="deco-bowl deco-bowl-steps-left">
+            <img src="images/Tersagoesting_sublogo_groen.png" alt="" aria-hidden="true">
+        </div>
+        <div class="deco-bowl deco-bowl-steps-right">
+            <img src="images/Tersagoesting_sublogo_roos.png" alt="" aria-hidden="true">
+        </div>
         <div class="container">
-            <h2 class="section-title">Hoe bestellen?</h2>
-            <p class="section-subtitle">In 3 eenvoudige stappen van aanvraag tot aan tafel</p>
+            <h2 class="section-title">Hoe bestel ik?</h2>
+            <p class="section-subtitle">Vlot je bestelling plaatsen in 3 stappen</p>
             <div class="steps-grid">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Neem contact op</h3>
-                    <p>Stuur ons een bericht via het contactformulier of bel ons. Vertel ons over je event, het aantal gasten en je wensen.</p>
+                    <h3>Neem contact op!</h3>
+                    <p>Stuur ons een bericht via het contactformulier of bel ons. Vertel ons over je event, het aantal gasten en je extra wensen.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
                     <h3>Ontvang een voorstel</h3>
-                    <p>Wij stellen een menu op maat samen en bezorgen je een vrijblijvende offerte. Samen verfijnen we tot het perfect is.</p>
+                    <p>Wij maken geheel vrijblijvend een offerte op. Die kan je rustig bekijken. Nog vragen of opmerkingen? Geef ze via e-mail of telefoon door.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Geniet!</h3>
-                    <p>Wij leveren alles vers op de afgesproken datum. Jij hoeft alleen maar te genieten samen met je gasten.</p>
+                    <h3>Genieten maar!</h3>
+                    <p>Afhankelijk van onze afspraak kom je je bestelling afhalen, wordt die geleverd of komen we ter plaatse!</p>
                 </div>
             </div>
         </div>
@@ -231,11 +207,11 @@
     <!-- Bestel / CTA Section -->
     <section class="section cta-section" id="bestellen">
         <div class="container cta-inner">
-            <h2>Klaar om te bestellen?</h2>
-            <p>Neem vandaag nog contact op en laat ons jouw event onvergetelijk maken.</p>
+            <h2>Graag een vrijblijvende offerte?</h2>
+            <p>Voor je bestelt heb je recht op een vrijblijvende offerte. Die vraag je aan via ons contactformulier!</p>
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary btn-large">Contacteer ons</a>
-                <a href="tel:+32000000000" class="btn btn-outline btn-large">Bel ons</a>
+                <a href="tel:+32476624011" class="btn btn-outline btn-large">Bel ons</a>
             </div>
         </div>
     </section>
@@ -244,31 +220,28 @@
     <section class="section contact" id="contact">
         <div class="container">
             <h2 class="section-title">Contact</h2>
-            <p class="section-subtitle">Heb je vragen of wil je een bestelling plaatsen? Neem gerust contact op!</p>
+            <p class="section-subtitle">Tussen <a href="aanbod.html" style="color: var(--color-primary); font-weight: 600;">ons aanbod</a> vind je sowieso iets lekkers. Vragen of een speciaal verzoek? Altijd welkom!</p>
             <div class="contact-grid">
                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">&#9742;</div>
                         <div>
                             <h4>Telefoon</h4>
-                            <p><a href="tel:+32000000000">+32 (0)00 00 00 00</a></p>
-                            <!-- VERVANG: vul je telefoonnummer in -->
+                            <p><a href="tel:+32476624011">0476 62 40 11</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">&#9993;</div>
                         <div>
                             <h4>E-mail</h4>
-                            <p><a href="mailto:info@tersagoesting.be">info@tersagoesting.be</a></p>
-                            <!-- VERVANG: vul je e-mailadres in -->
+                            <p><a href="mailto:tersagoesting@gmail.be">tersagoesting@gmail.be</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">&#9873;</div>
                         <div>
                             <h4>Adres</h4>
-                            <p>Straatnaam 00<br>0000 Gemeente</p>
-                            <!-- VERVANG: vul je adres in -->
+                            <p>Vijverstraat 67<br>2870 Puurs-Sint-Amands</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -276,9 +249,8 @@
                         <div>
                             <h4>Volg ons</h4>
                             <div class="social-links">
-                                <a href="#" target="_blank" rel="noopener" class="social-link">Instagram</a>
-                                <a href="#" target="_blank" rel="noopener" class="social-link">Facebook</a>
-                                <!-- VERVANG: vul je social media links in -->
+                                <a href="https://www.instagram.com/tersagoesting/" target="_blank" rel="noopener" class="social-link">Instagram</a>
+                                <a href="https://www.facebook.com/profile.php?id=61558171506722" target="_blank" rel="noopener" class="social-link">Facebook</a>
                             </div>
                         </div>
                     </div>
@@ -330,21 +302,20 @@
     <footer class="footer">
         <div class="container footer-inner">
             <div class="footer-brand">
-                <img src="images/logo-tersagoesting.png" alt="Tersagoesting" class="logo-img logo-img-small">
-                <p>Catering met passie en smaak.</p>
+                <p>Goesting gekregen?</p>
             </div>
             <div class="footer-links">
                 <h4>Navigatie</h4>
-                <a href="#aanbod">Ons Aanbod</a>
+                <a href="aanbod.html">Ons Aanbod</a>
                 <a href="#portfolio">Voorbeelden</a>
                 <a href="#hoe-bestellen">Hoe Bestellen</a>
                 <a href="#contact">Contact</a>
             </div>
             <div class="footer-contact">
                 <h4>Contact</h4>
-                <p>info@tersagoesting.be</p>
-                <p>+32 (0)00 00 00 00</p>
-                <!-- VERVANG: vul je gegevens in -->
+                <p>tersagoesting@gmail.be</p>
+                <p>0476 62 40 11</p>
+                <p>Vijverstraat 67, 2870 Puurs-Sint-Amands</p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -353,6 +324,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating CTA button -->
+    <a href="#contact" class="floating-cta" id="floatingCta">Bestel hier!</a>
 
     <script src="script.js"></script>
 </body>

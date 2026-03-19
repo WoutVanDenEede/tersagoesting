@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copywriting Editor | Tersagoesting</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .editor-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+        .editor-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 3px solid var(--color-cream);
+        }
+        .editor-header h1 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+        .editor-header p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+        .editor-section {
+            margin-bottom: 40px;
+            background: var(--color-bg-white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .editor-section-header {
+            padding: 20px 28px;
+            background: var(--color-bg);
+            border-bottom: 2px solid var(--color-cream);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .editor-section-header:hover {
+            background: var(--color-cream-light);
+        }
+        .editor-section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            margin: 0;
+        }
+        .editor-section-header .toggle-icon {
+            font-size: 1.5rem;
+            color: var(--color-text-light);
+            transition: transform 0.3s;
+        }
+        .editor-section-header.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+        .editor-section-body {
+            padding: 28px;
+            display: none;
+        }
+        .editor-section-body.open {
+            display: block;
+        }
+        .editor-field {
+            margin-bottom: 24px;
+        }
+        .editor-field:last-child {
+            margin-bottom: 0;
+        }
+        .editor-field label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .editor-field .field-location {
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: 0;
+            margin-left: 8px;
+        }
+        .editor-field input[type="text"],
+        .editor-field textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d4d0cb;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            background-color: var(--color-bg-white);
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+        .editor-field textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        .editor-field input:focus,
+        .editor-field textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(200, 90, 40, 0.15);
+        }
+        .editor-field .char-count {
+            text-align: right;
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+            margin-top: 4px;
+        }
+        .editor-actions {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-bg-white);
+            padding: 16px 24px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            z-index: 1000;
+        }
+        .editor-actions .btn {
+            min-width: 200px;
+            text-align: center;
+        }
+        .btn-secondary {
+            background-color: var(--color-olive);
+            color: white;
+            border-color: var(--color-olive);
+        }
+        .btn-secondary:hover {
+            background-color: var(--color-olive-light);
+            border-color: var(--color-olive-light);
+            color: white;
+        }
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 24px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 1001;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        .status-bar.visible {
+            transform: translateY(0);
+        }
+        .status-bar.success {
+            background: var(--color-olive);
+            color: white;
+        }
+        .status-bar.error {
+            background: var(--color-primary);
+            color: white;
+        }
+        .editor-divider {
+            border: none;
+            border-top: 1px dashed var(--color-cream);
+            margin: 20px 0;
+        }
+        .editor-subheading {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--color-orange);
+            margin: 24px 0 16px;
+        }
+        .editor-subheading:first-child {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar" id="statusBar"></div>
+
+    <div class="editor-wrapper">
+        <div class="editor-header">
+            <img src="images/logo-tersagoesting.png" alt="Tersagoesting" class="logo-img" style="margin: 0 auto 16px;">
+            <h1>Copywriting Editor</h1>
+            <p>Bewerk hieronder alle teksten van je website. Klik op "Exporteer wijzigingen" om een bestand te downloaden met je aanpassingen.</p>
+        </div>
+
+        <!-- ======= HOMEPAGE ======= -->
+
+        <!-- Top Bar -->
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Top Balk</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Banner tekst <span class="field-location">index.html &mdash; bovenste balk</span></label>
+                    <input type="text" data-page="index" data-key="topbar-text" value="Catering met passie">
+                </div>
+                <div class="editor-field">
+                    <label>Banner link tekst</label>
+                    <input type="text" data-page="index" data-key="topbar-link" value="Bestel nu">
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero -->
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Hero Sectie (Hoofdpagina)</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Accent woord <span class="field-location">Het grote sierlijke woord</span></label>
+                    <input type="text" data-page="index" data-key="hero-accent" value="Geniet">
+                </div>
+                <div class="editor-field">
+                    <label>Titel</label>
+                    <input type="text" data-page="index" data-key="hero-title" value="van catering op maat, bij jou geleverd">
+                </div>
+                <div class="editor-field">
+                    <label>Ondertitel</label>
+                    <textarea data-page="index" data-key="hero-subtitle">Bij Tersagoesting draait alles om smaak, versheid en zorg voor elk detail. Onze gerechten worden met liefde bereid voor jouw feest, event of familiebijeenkomst.</textarea>
+                </div>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="index" data-key="hero-description">Laat je verrassen door onze seizoensgebonden menu's, verse ingrediënten en een culinaire ervaring die je gasten nog lang zullen onthouden.</textarea>
+                </div>
+                <div class="editor-field">
+                    <label>Knop tekst</label>
+                    <input type="text" data-page="index" data-key="hero-cta" value="Bestel hier!">
+                </div>
+            </div>
+        </div>
+
+        <!-- Aanbod preview cards -->
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Ons Aanbod Sectie (Hoofdpagina)</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Sectie titel</label>
+                    <input type="text" data-page="index" data-key="aanbod-title" value="Ons Aanbod">
+                </div>
+                <div class="editor-field">
+                    <label>Sectie ondertitel</label>
+                    <input type="text" data-page="index" data-key="aanbod-subtitle" value="Van hapjes tot volledige buffetten — wij verzorgen het allemaal">
+                </div>
+                <hr class="editor-divider">
+                <h3 class="editor-subheading">Kaart 1</h3>
+                <div class="editor-field">
+                    <label>Titel</label>
+                    <input type="text" data-page="index" data-key="card1-title" value="Hapjes & Fingerfood">
+                </div>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="index" data-key="card1-desc">Verfijnde hapjes voor recepties, feesten en zakelijke events. Koud of warm, altijd vers bereid.</textarea>
+                </div>
+                <hr class="editor-divider">
+                <h3 class="editor-subheading">Kaart 2</h3>
+                <div class="editor-field">
+                    <label>Titel</label>
+                    <input type="text" data-page="index" data-key="card2-title" value="Buffetten">
+                </div>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="index" data-key="card2-desc">Uitgebreide warme en koude buffetten, perfect voor grotere groepen. Volledig op maat samengesteld.</textarea>
+                </div>
+                <hr class="editor-divider">
+                <h3 class="editor-subheading">Kaart 3</h3>
+                <div class="editor-field">
+                    <label>Titel</label>
+                    <input type="text" data-page="index" data-key="card3-title" value="Menu op maat">
+                </div>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="index" data-key="card3-desc">Een volledig menu uitgewerkt rond jouw wensen. Ideaal voor huwelijken, jubilea en speciale gelegenheden.</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Voorbeelden -->
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Voorbeelden / Portfolio (Hoofdpagina)</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Sectie titel</label>
+                    <input type="text" data-page="index" data-key="portfolio-title" value="Voorbeelden van onze opdrachten">
+                </div>
+                <div class="editor-field">
+                    <label>Sectie ondertitel</label>
+                    <input type="text" data-page="index" data-key="portfolio-subtitle" value="Een greep uit onze voorgaande events en catering-opdrachten">
+                </div>
+                <hr class="editor-divider">
+                <div class="editor-field">
+                    <label>Label voorbeeld 1</label>
+                    <input type="text" data-page="index" data-key="portfolio1" value="Huwelijksfeest">
+                </div>
+                <div class="editor-field">
+                    <label>Label voorbeeld 2</label>
+                    <input type="text" data-page="index" data-key="portfolio2" value="Bedrijfsevent">
+                </div>
+                <div class="editor-field">
+                    <label>Label voorbeeld 3</label>
+                    <input type="text" data-page="index" data-key="portfolio3" value="Verjaardagsfeest">
+                </div>
+                <div class="editor-field">
+                    <label>Label voorbeeld 4</label>
+                    <input type="text" data-page="index" data-key="portfolio4" value="Communiefeest">
+                </div>
+                <div class="editor-field">
+                    <label>Label voorbeeld 5</label>
+                    <input type="text" data-page="index" data-key="portfolio5" value="Babyborrel">
+                </div>
+                <div class="editor-field">
+                    <label>Label voorbeeld 6</label>
+                    <input type="text" data-page="index" data-key="portfolio6" value="Seizoensmenu">
+                </div>
+            </div>
+        </div>
+
+        <!-- Hoe bestellen -->
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Hoe Bestellen (Hoofdpagina)</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Sectie titel</label>
+                    <input type="text" data-page="index" data-key="howto-title" value="Hoe bestellen?">
+                </div>
+                <div class="editor-field">
+                    <label>Sectie ondertitel</label>
+                    <input type="text" data-page="index" data-key="howto-subtitle" value="In 3 eenvoudige stappen van aanvraag tot aan tafel">
+                </div>
+                <hr class="editor-divider">
+                <h3 class="editor-subheading">Stap 1</h3>
+                <div class="editor-field">
+                    <label>Titel</label>
+                    <input type="text" data-page="index" data-key="step1-title" value="Neem contact op">
+                </div>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="index" data-key="step1-desc">Stuur ons een bericht via het contactformulier of bel ons. Vertel ons over je event, het aantal gasten en je wensen.</textarea>
+                </div>
+                <hr class="editor-divider">
+                <h3 class="editor-subheading">Stap 2</h3>
+                <div class="editor-field">
+                    <label>Titel</label>
+                    <input type="text" data-page="index" data-key="step2-title" value="Ontvang een voorstel">
+                </div>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="index" data-key="step2-desc">Wij stellen een menu op maat samen en bezorgen je een vrijblijvende offerte. Samen verfijnen we tot het perfect is.</textarea>
+                </div>
+                <hr class="editor-divider">
+                <h3 class="editor-subheading">Stap 3</h3>
+                <div class="editor-field">
+                    <label>Titel</label>
+                    <input type="text" data-page="index" data-key="step3-title" value="Geniet!">
+                </div>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="index" data-key="step3-desc">Wij leveren alles vers op de afgesproken datum. Jij hoeft alleen maar te genieten samen met je gasten.</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Bestel-banner (Hoofdpagina)</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Titel</label>
+                    <input type="text" data-page="index" data-key="cta-title" value="Klaar om te bestellen?">
+                </div>
+                <div class="editor-field">
+                    <label>Ondertitel</label>
+                    <textarea data-page="index" data-key="cta-subtitle">Neem vandaag nog contact op en laat ons jouw event onvergetelijk maken.</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Contact Sectie (Hoofdpagina)</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Intro tekst boven contactformulier</label>
+                    <textarea data-page="index" data-key="contact-intro">Neem een kijkje bij ons aanbod en kies je favoriete formule. Vragen of een speciaal verzoek? Altijd welkom — wij maken er graag iets moois van!</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nieuwsbrief -->
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Nieuwsbrief Popup</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Titel</label>
+                    <input type="text" data-page="index" data-key="newsletter-title" value="Blijf op de hoogte">
+                </div>
+                <div class="editor-field">
+                    <label>Ondertitel</label>
+                    <input type="text" data-page="index" data-key="newsletter-subtitle" value="Nieuwsbrief Tersagoesting">
+                </div>
+            </div>
+        </div>
+
+        <!-- ======= AANBOD PAGINA ======= -->
+
+        <!-- Formules -->
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Aanbod Pagina &mdash; Intro</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Pagina titel</label>
+                    <input type="text" data-page="aanbod" data-key="page-title" value="Ons Aanbod">
+                </div>
+                <div class="editor-field">
+                    <label>Pagina ondertitel</label>
+                    <textarea data-page="aanbod" data-key="page-subtitle">Van hapjes bij de borrel tot een compleet seizoensmenu — ontdek wat wij voor jouw event kunnen betekenen.</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Aanbod &mdash; Hapjes bij de borrel</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Intro</label>
+                    <textarea data-page="aanbod" data-key="borrel-intro">Trek je (baby)borrel op gang met onze hapjes! Ideaal voor grote groepen of voor een snelle hap tussendoor.</textarea>
+                </div>
+                <hr class="editor-divider">
+                <h3 class="editor-subheading">Selectie van hapjes</h3>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="aanbod" data-key="borrel-hapjes">3, 4 of 5 verrassende hapjes. Denk aan scampi-mango, avocadocrème en tomaat of een artisanaal kaasballetje.</textarea>
+                </div>
+                <h3 class="editor-subheading">Selectie van dessertjes</h3>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="aanbod" data-key="borrel-desserts">Wat als je niet hoefde te kiezen tussen tiramisu, chocomousse of panna cotta? Dat kan bij ons!</textarea>
+                </div>
+                <h3 class="editor-subheading">Borrelplank</h3>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="aanbod" data-key="borrel-plank">Olijfjes, charcuterie, kaas en zoveel meer om je feestje mee op gang te trekken.</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Aanbod &mdash; Aanschuifformules</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <h3 class="editor-subheading">Pasta-formule</h3>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="aanbod" data-key="pasta-desc">Pasta op drie wijzen door ons geserveerd op jouw feestje. Simpel met aandacht voor details! Werk je pastabeker af met geraspte kaas, een slaatje en pikante olie.</textarea>
+                </div>
+                <h3 class="editor-subheading">Burger-formule</h3>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="aanbod" data-key="burger-desc">Gourmet-burgers door ons geserveerd op jouw feestje. Zelfgemaakte toppings, heerlijke broodjes en burgers à la minute op de BBQ of grill.</textarea>
+                </div>
+                <h3 class="editor-subheading">BBQ-formule</h3>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="aanbod" data-key="bbq-desc">Luxueuze groentjes, pastasalades en gegrilde lekkernijen met topvlees op de BBQ. Staat u liever zelf achter de grill? Dan komt u gewoon de groentjes afhalen!</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Aanbod &mdash; Cook@Home</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Intro</label>
+                    <textarea data-page="aanbod" data-key="cook-intro">Verwen je gasten culinair zonder moeite. Vanaf 8 personen schakelen wij in om thuis een menu klaar te maken.</textarea>
+                </div>
+                <div class="editor-field">
+                    <label>Highlight tekst</label>
+                    <textarea data-page="aanbod" data-key="cook-highlight">Onze Cook@Home-formule garandeert het culinaire genot van een restaurantbezoek in een herkenbare, gezellige setting.</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Aanbod &mdash; Buffetten</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <h3 class="editor-subheading">Koud Buffet</h3>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="aanbod" data-key="koud-buffet">Groentjes met een stukje zalm, hesp, een gehaktbal of weer iets anders. Op bomma's wijze of liever iets moderner? Say no more!</textarea>
+                </div>
+                <h3 class="editor-subheading">Warm Buffet</h3>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="aanbod" data-key="warm-buffet">Warme pasta's, patatjes, groenten en stukjes vlees of vis. Ideaal voor een kieskeurig publiek.</textarea>
+                </div>
+                <div class="editor-field">
+                    <label>Noot / combinatie-tip</label>
+                    <textarea data-page="aanbod" data-key="buffet-note">Het warm en koud buffet zijn combineerbaar. Koude groentjes en een kippenboutje of gerookte zalm met gebakken patatjes: u kiest!</textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Aanbod &mdash; Comfort Food</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <h3 class="editor-subheading">Soepen</h3>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="aanbod" data-key="soepen">Broccoli, asperge, pompoen, tomaat. Noem een groente en wij maken er soep van!</textarea>
+                </div>
+                <h3 class="editor-subheading">Stoofpotjes</h3>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <textarea data-page="aanbod" data-key="stoofpotjes">Vol-au-vent, stoofvlees, varkenswangetjes. Low en slow is the way to go!</textarea>
+                </div>
+                <h3 class="editor-subheading">Sauzen</h3>
+                <div class="editor-field">
+                    <label>Beschrijving</label>
+                    <input type="text" data-page="aanbod" data-key="sauzen" value="Kaassaus, bolognaise, veggie.">
+                </div>
+            </div>
+        </div>
+
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Aanbod &mdash; CTA onderaan</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Titel</label>
+                    <input type="text" data-page="aanbod" data-key="aanbod-cta-title" value="Goesting gekregen?">
+                </div>
+                <div class="editor-field">
+                    <label>Ondertitel</label>
+                    <textarea data-page="aanbod" data-key="aanbod-cta-subtitle">Stuur ons een e-mail met de gewenste formule, aantal gasten en datum en wij bezorgen je een offerte.</textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zwevende knop tekst -->
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Zwevende Bestelknop</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Knop tekst</label>
+                    <input type="text" data-page="global" data-key="floating-cta" value="Bestel hier!">
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="editor-section">
+            <div class="editor-section-header" onclick="toggleSection(this)">
+                <h2>Footer</h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="editor-section-body">
+                <div class="editor-field">
+                    <label>Tagline</label>
+                    <input type="text" data-page="global" data-key="footer-tagline" value="Catering met passie en smaak.">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom action bar -->
+    <div class="editor-actions">
+        <button class="btn btn-secondary" onclick="exportChanges()">Exporteer wijzigingen</button>
+        <button class="btn btn-primary" onclick="copyToClipboard()">Kopieer naar klembord</button>
+    </div>
+
+    <script>
+        function toggleSection(header) {
+            header.classList.toggle('open');
+            var body = header.nextElementSibling;
+            body.classList.toggle('open');
+        }
+
+        function showStatus(message, type) {
+            var bar = document.getElementById('statusBar');
+            bar.textContent = message;
+            bar.className = 'status-bar visible ' + type;
+            setTimeout(function() {
+                bar.classList.remove('visible');
+            }, 3000);
+        }
+
+        function gatherChanges() {
+            var changes = {};
+            document.querySelectorAll('[data-key]').forEach(function(field) {
+                var page = field.dataset.page;
+                var key = field.dataset.key;
+                var value = field.value;
+                if (!changes[page]) changes[page] = {};
+                changes[page][key] = value;
+            });
+            return changes;
+        }
+
+        function formatChanges(changes) {
+            var lines = [];
+            lines.push('========================================');
+            lines.push('TERSAGOESTING - COPYWRITING WIJZIGINGEN');
+            lines.push('Datum: ' + new Date().toLocaleDateString('nl-BE'));
+            lines.push('========================================');
+            lines.push('');
+
+            for (var page in changes) {
+                lines.push('--- ' + page.toUpperCase() + ' ---');
+                lines.push('');
+                for (var key in changes[page]) {
+                    lines.push('[' + key + ']');
+                    lines.push(changes[page][key]);
+                    lines.push('');
+                }
+                lines.push('');
+            }
+            return lines.join('\n');
+        }
+
+        function exportChanges() {
+            var changes = gatherChanges();
+            var text = formatChanges(changes);
+            var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'tersagoesting-copywriting-' + new Date().toISOString().slice(0,10) + '.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showStatus('Wijzigingen gedownload!', 'success');
+        }
+
+        function copyToClipboard() {
+            var changes = gatherChanges();
+            var text = formatChanges(changes);
+            navigator.clipboard.writeText(text).then(function() {
+                showStatus('Gekopieerd naar klembord! Plak dit in een bericht naar je developer.', 'success');
+            }).catch(function() {
+                // Fallback
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showStatus('Gekopieerd naar klembord!', 'success');
+            });
+        }
+
+        // Auto-resize textareas
+        document.querySelectorAll('textarea').forEach(function(ta) {
+            ta.style.height = 'auto';
+            ta.style.height = ta.scrollHeight + 'px';
+            ta.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+        });
+    </script>
+</body>
+</html>

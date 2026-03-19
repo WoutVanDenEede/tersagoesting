@@ -611,6 +611,81 @@ a.card {
     font-weight: 600;
 }
 
+/* Recensies op homepage */
+.recensies-home {
+    background-color: var(--cream);
+    text-align: center;
+}
+
+.recensies-slider {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 0 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--amber) transparent;
+}
+
+.recensies-slider::-webkit-scrollbar {
+    height: 6px;
+}
+.recensies-slider::-webkit-scrollbar-track {
+    background: transparent;
+}
+.recensies-slider::-webkit-scrollbar-thumb {
+    background: var(--amber);
+    border-radius: 3px;
+}
+
+.recensie-home-card {
+    min-width: 300px;
+    max-width: 350px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 30px 25px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+    text-align: left;
+    position: relative;
+    border-bottom: 4px solid var(--amber);
+    transition: var(--transition);
+}
+.recensie-home-card:nth-child(2) { border-bottom-color: var(--olive); }
+.recensie-home-card:nth-child(3) { border-bottom-color: var(--pink); }
+.recensie-home-card:nth-child(4) { border-bottom-color: var(--terracotta); }
+.recensie-home-card:nth-child(5) { border-bottom-color: var(--amber); }
+
+.recensie-home-card:hover {
+    box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+}
+
+.recensie-home-tekst {
+    font-family: 'Source Sans 3', sans-serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 15px;
+}
+
+.recensie-home-naam {
+    font-family: 'Cheboyga', serif;
+    font-size: 1.1rem;
+    color: var(--terracotta);
+}
+
+@media (max-width: 768px) {
+    .recensie-home-card {
+        min-width: 260px;
+        max-width: 280px;
+        padding: 22px 18px;
+    }
+}
+
 /* Instagram CTA Block */
 .instagram-section {
     background-color: var(--color-bg-light);

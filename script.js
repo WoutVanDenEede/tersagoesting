@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     'Aantal gasten: ' + (document.getElementById('gasten').value || 'Niet opgegeven') + '\n\n' +
                     'Bericht:\n' + bericht
                 );
-                window.location.href = 'mailto:info@tersagoesting.be?subject=' + subject + '&body=' + body;
+                window.location.href = 'mailto:tersagoesting@gmail.com?subject=' + subject + '&body=' + body;
 
                 alert('Bedankt voor je aanvraag, ' + naam + '! We nemen zo snel mogelijk contact met je op.');
                 contactForm.reset();

@@ -129,9 +129,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }, observerOptions);
 
     // Observe all sections, cards, steps, and portfolio items
-    document.querySelectorAll('.card, .step, .portfolio-item, .section-title, .hero-text, .hero-image').forEach(function (el) {
+    document.querySelectorAll('.card, .step, .section-title, .hero-text, .hero-image').forEach(function (el) {
         el.classList.add('fade-in');
         observer.observe(el);
+    });
+
+    // === Hero Slideshow (15 seconds) ===
+    var heroSlides = document.querySelectorAll('.hero-slide');
+    if (heroSlides.length > 1) {
+        var heroIndex = 0;
+        setInterval(function () {
+            heroSlides[heroIndex].classList.remove('active');
+            heroIndex = (heroIndex + 1) % heroSlides.length;
+            heroSlides[heroIndex].classList.add('active');
+        }, 15000);
+    }
+
+    // === Card Carousels ===
+    document.querySelectorAll('.card-carousel').forEach(function (carousel) {
+        var slides = carousel.querySelectorAll('.carousel-slide');
+        if (slides.length <= 1) return;
+        var index = 0;
+        var interval = parseInt(carousel.dataset.interval) || 4000;
+        setInterval(function () {
+            slides[index].classList.remove('active');
+            index = (index + 1) % slides.length;
+            slides[index].classList.add('active');
+        }, interval);
     });
 
 });

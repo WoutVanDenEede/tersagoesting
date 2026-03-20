@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var formuleSelect = document.getElementById('formule');
     var berichtField = document.getElementById('bericht');
     var hapjesKeuze = document.getElementById('hapjes-keuze');
+    var bbqKeuze = document.getElementById('bbq-keuze');
 
     var formuleTeksten = {
         'Hapjes & Dessertjes': 'Wij laten Tersagoesting een voorstel maken met een selectie hapjes naar keuze.',
@@ -106,6 +107,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (hapjesKeuze) {
                 hapjesKeuze.style.display = (val === 'Hapjes & Dessertjes') ? 'block' : 'none';
             }
+            // Toon/verberg BBQ radiobuttons
+            if (bbqKeuze) {
+                bbqKeuze.style.display = (val === 'BBQ') ? 'block' : 'none';
+            }
             // Vul tekst in
             if (formuleTeksten[val] !== undefined) {
                 berichtField.value = formuleTeksten[val];
@@ -123,6 +128,21 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else {
                         berichtField.value = 'Wij kiezen zelf onze hapjes uit het aanbod. Stuur ons de volledige hapjeskaart!';
                     }
+                });
+            });
+        }
+
+        // BBQ radiobuttons logica
+        if (bbqKeuze) {
+            bbqKeuze.querySelectorAll('input[name="bbq_keuze"]').forEach(function (radio) {
+                radio.addEventListener('change', function () {
+                    if (this.value === 'groentjes') {
+                        berichtField.value = 'Wij willen graag enkel barbecuegroentjes bestellen (10 bijgerechten). Maak ons een voorstel!';
+                    } else {
+                        berichtField.value = 'Wij willen graag een volledige barbecue ter plaatse. Maak ons een voorstel, Tersagoesting!';
+                    }
+                    berichtField.style.height = 'auto';
+                    berichtField.style.height = berichtField.scrollHeight + 'px';
                 });
             });
         }
@@ -180,6 +200,19 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             var formule = document.getElementById('formule');
             if (formule) formule.value = 'Ik wil graag een voorstel op maat';
+            scrollToContact();
+        });
+    });
+
+    // === BBQ CTA: scroll naar contact, selecteer "BBQ" en toon keuze ===
+    document.querySelectorAll('.bbq-cta').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            var formule = document.getElementById('formule');
+            if (formule) {
+                formule.value = 'BBQ';
+                formule.dispatchEvent(new Event('change'));
+            }
             scrollToContact();
         });
     });

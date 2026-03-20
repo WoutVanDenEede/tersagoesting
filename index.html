@@ -579,30 +579,35 @@ Alvast bedankt!">Feestjes</a>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" action="https://formsubmit.co/tersagoesting@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Nieuwe aanvraag via tersagoesting.be">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://tersagoesting.be/bedankt.html">
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="_template" value="table">
                     <div class="form-group">
                         <label for="naam">Naam *</label>
-                        <input type="text" id="naam" name="naam" required>
+                        <input type="text" id="naam" name="Naam" required>
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail *</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="E-mail" required>
                     </div>
                     <div class="form-group">
                         <label for="telefoon">Telefoon</label>
-                        <input type="tel" id="telefoon" name="telefoon">
+                        <input type="tel" id="telefoon" name="Telefoon">
                     </div>
                     <div class="form-group">
                         <label for="datum">Datum van je event</label>
-                        <input type="date" id="datum" name="datum">
+                        <input type="date" id="datum" name="Datum event">
                     </div>
                     <div class="form-group">
                         <label for="gasten">Aantal gasten</label>
-                        <input type="number" id="gasten" name="gasten" min="1">
+                        <input type="number" id="gasten" name="Aantal gasten" min="1">
                     </div>
                     <div class="form-group full-width">
                         <label for="bericht">Bericht *</label>
-                        <textarea id="bericht" name="bericht" rows="5" required placeholder="Vertel ons over je event en wensen..."></textarea>
+                        <textarea id="bericht" name="Bericht" rows="5" required placeholder="Vertel ons over je event en wensen..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-large">Verstuur aanvraag</button>
                 </form>

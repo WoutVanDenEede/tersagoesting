@@ -84,34 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // === Contact form submit ===
-    var contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            var naam = document.getElementById('naam').value;
-            var email = document.getElementById('email').value;
-            var bericht = document.getElementById('bericht').value;
-
-            if (naam && email && bericht) {
-                // Build mailto link as fallback
-                var subject = encodeURIComponent('Aanvraag via website - ' + naam);
-                var body = encodeURIComponent(
-                    'Naam: ' + naam + '\n' +
-                    'Email: ' + email + '\n' +
-                    'Telefoon: ' + (document.getElementById('telefoon').value || 'Niet opgegeven') + '\n' +
-                    'Datum event: ' + (document.getElementById('datum').value || 'Niet opgegeven') + '\n' +
-                    'Aantal gasten: ' + (document.getElementById('gasten').value || 'Niet opgegeven') + '\n\n' +
-                    'Bericht:\n' + bericht
-                );
-                window.location.href = 'mailto:tersagoesting@gmail.com?subject=' + subject + '&body=' + body;
-
-                alert('Bedankt voor je aanvraag, ' + naam + '! We nemen zo snel mogelijk contact met je op.');
-                contactForm.reset();
-            }
-        });
-    }
+    // === Contact form: FormSubmit.co handelt alles af, geen JS nodig ===
 
     // === Scroll animations (fade in on scroll) ===
     var observerOptions = {

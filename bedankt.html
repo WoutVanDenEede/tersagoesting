@@ -4,54 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bedankt! | Tersagoesting</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preload" href="fonts/Cheboyga.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/logo-tersagoesting.png" type="image/png">
-    <style>
-        .bedankt-page {
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-        }
-        .bedankt-content {
-            max-width: 600px;
-        }
-        .bedankt-content h1 {
-            font-family: 'Cheboyga', serif;
-            color: var(--terracotta);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .bedankt-content p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-        .bedankt-content .btn {
-            margin-top: 1rem;
-        }
-    </style>
 </head>
 <body>
-    <header class="header">
+    <!-- Top banner -->
+    <div class="top-bar">
+        <p>Catering en traiteur in en rond Puurs-Sint-Amands <a href="index.html#contact">Vraag een offerte!</a></p>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
         <div class="container header-inner">
             <a href="index.html" class="logo">
-                <img src="images/logo-tersagoesting.png" alt="Tersagoesting logo">
+                <img src="images/logo-tersagoesting.png" alt="Tersagoesting - Catering en traiteur in Puurs" class="logo-img">
             </a>
+            <nav class="nav" id="nav">
+                <div class="nav-dropdown">
+                    <a href="aanbod.html" class="nav-link">Ons aanbod &#9662;</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="aanbod.html#hapjes">Hapjes &amp; Dessertjes</a>
+                        <a href="aanbod.html#formules">Buffetten</a>
+                        <a href="aanbod.html#cookhome">Cook@Home</a>
+                        <a href="aanbod.html#bbq-aanbod">BBQ</a>
+                        <a href="aanbod.html#formules">Pasta &amp; Burger</a>
+                    </div>
+                </div>
+                <a href="index.html#hoe-bestellen" class="nav-link">Hoe bestel ik?</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="index.html#contact" class="nav-link nav-cta">Vraag een offerte</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu openen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
     <main>
-        <section class="bedankt-page">
-            <div class="bedankt-content">
+        <section class="section" style="min-height: 50vh; display: flex; align-items: center;">
+            <div class="container" style="text-align: center;">
                 <img src="images/Tersagoesting_sublogo_oranje.png" alt="" style="width: 120px; margin-bottom: 1.5rem;">
-                <h1>Bedankt voor je aanvraag!</h1>
-                <p>We hebben je bericht goed ontvangen en nemen zo snel mogelijk contact met je op. Je ontvangt eerst een vrijblijvende offerte op maat.</p>
-                <a href="index.html" class="btn btn-primary">Terug naar de website</a>
+                <h1 class="section-title">Bedankt voor je aanvraag!</h1>
+                <p class="section-subtitle" style="max-width: 600px; margin: 0 auto 32px;">We hebben je bericht goed ontvangen en nemen zo snel mogelijk contact met je op. Je ontvangt eerst een vrijblijvende offerte op maat.</p>
+                <a href="index.html" class="btn btn-primary btn-large">Terug naar de homepage</a>
             </div>
         </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <p>Goesting gekregen?</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigatie</h4>
+                <a href="aanbod.html">Ons aanbod</a>
+                <a href="index.html#hoe-bestellen">Hoe bestel ik?</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>tersagoesting@gmail.com</p>
+                <p>0476 62 40 11</p>
+                <p>Vijverstraat 67, 2870 Puurs-Sint-Amands</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/tersagoesting/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61558171506722" target="_blank" rel="noopener">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Tersagoesting. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

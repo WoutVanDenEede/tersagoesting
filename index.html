@@ -29,7 +29,7 @@
     <link rel="preload" href="fonts/Cheboyga.ttf" as="font" type="font/ttf" crossorigin>
 
     <!-- Fonts worden lokaal geladen via CSS @font-face -->
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
 
     <!-- SEO: Structured Data for Google - FoodService -->
     <script type="application/ld+json">
@@ -154,7 +154,7 @@
 <body>
     <!-- Top banner -->
     <div class="top-bar">
-        <p>Catering en traiteur in en rond Puurs-Sint-Amands <a href="#contact">Bestel nu!</a></p>
+        <p>Catering en traiteur in en rond Puurs-Sint-Amands <a href="#contact">Vraag een offerte!</a></p>
     </div>
 
     <!-- Navigation -->
@@ -164,10 +164,19 @@
                 <img src="images/logo-tersagoesting.png" alt="Tersagoesting - Catering en traiteur in Puurs" class="logo-img">
             </a>
             <nav class="nav" id="nav">
-                <a href="aanbod.html" class="nav-link">Ons aanbod</a>
+                <div class="nav-dropdown">
+                    <a href="aanbod.html" class="nav-link">Ons aanbod ▾</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="aanbod.html#hapjes">Hapjes &amp; Dessertjes</a>
+                        <a href="aanbod.html#formules">Buffetten</a>
+                        <a href="aanbod.html#cookhome">Cook@Home</a>
+                        <a href="aanbod.html#bbq-aanbod">BBQ</a>
+                        <a href="aanbod.html#formules">Pasta &amp; Burger</a>
+                    </div>
+                </div>
                 <a href="#hoe-bestellen" class="nav-link">Hoe bestel ik?</a>
                 <a href="#contact" class="nav-link">Contact</a>
-                <a href="#contact" class="nav-link nav-cta">Ik wil bestellen</a>
+                <a href="#contact" class="nav-link nav-cta">Vraag een offerte</a>
             </nav>
             <button class="menu-toggle" id="menuToggle" aria-label="Menu openen">
                 <span></span>
@@ -187,123 +196,22 @@
                     op jouw manier!
                 </h1>
                 <p class="hero-subtitle" style="font-family: var(--font-body);">
-                    Geef je een feestje maar heb je geen goesting om zelf in de keuken te staan? Dan zit je bij Tersagoesting aan het juiste adres. Wij maken lekker eten in alle maten en vormen. Soms Vlaams met een twist, soms verfijnd Italiaans of herkenbaar Aziatisch maar altijd met verse ingredi&euml;nten!
+                    Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest. Altijd vers, altijd met smaak.
                 </p>
                 <p class="hero-location">Catering en traiteur in en rond Puurs-Sint-Amands!</p>
                 <div class="hero-occasions">
-                    <a href="#contact" class="occasion-tag" data-occasion="communiefeest" data-message="Dag Tersagoesting!
-
-Ik organiseer een communiefeest en zou graag jullie hulp inschakelen.
-
-Datum: [vul in]
-Aantal gasten: [vul in]
-Locatie: [vul in]
-
-Ik had graag een voorstel ontvangen voor:
-[hapjes / buffet / ander, vul aan]
-
-Alvast bedankt!">Communiefeesten</a>
-                    <a href="#contact" class="occasion-tag" data-occasion="huwelijk" data-message="Dag Tersagoesting!
-
-Wij plannen ons huwelijksfeest en zijn op zoek naar catering.
-
-Datum: [vul in]
-Aantal gasten: [vul in]
-Locatie: [vul in]
-
-Wij denken aan:
-[hapjes bij de receptie / buffet / driegangenmenu / ander, vul aan]
-
-Alvast bedankt!">Huwelijken</a>
-                    <a href="#contact" class="occasion-tag" data-occasion="barbecue" data-message="Dag Tersagoesting!
-
-Ik zou graag een barbecue organiseren met jullie hulp.
-
-Datum: [vul in]
-Aantal gasten: [vul in]
-Locatie: [vul in]
-
-Staan jullie zelf achter de BBQ of leveren jullie alles kant-en-klaar?
-
-Alvast bedankt!">Barbecues</a>
-                    <a href="#contact" class="occasion-tag" data-occasion="bedrijfsevenement" data-message="Dag Tersagoesting!
-
-Ons bedrijf organiseert een evenement en we zoeken catering.
-
-Datum: [vul in]
-Aantal personen: [vul in]
-Type event: [receptie / teambuilding / vergadering / ander]
-Locatie: [vul in]
-
-Graag een voorstel!">Bedrijfsevenementen</a>
-                    <a href="#contact" class="occasion-tag" data-occasion="babyborrel" data-message="Dag Tersagoesting!
-
-Wij vieren de komst van onze baby en willen graag hapjes voorzien.
-
-Datum: [vul in]
-Aantal gasten: [vul in]
-Locatie: [vul in]
-
-Ik dacht aan een selectie van hapjes en eventueel dessertjes. Kunnen jullie een voorstel doen?
-
-Alvast bedankt!">Babyborrels</a>
-                    <a href="#contact" class="occasion-tag" data-occasion="verjaardag" data-message="Dag Tersagoesting!
-
-Ik vier mijn verjaardag en wil er een feestje van maken!
-
-Datum: [vul in]
-Aantal gasten: [vul in]
-Locatie: [vul in]
-
-Ik had graag een voorstel voor:
-[hapjes / buffet / ander, vul aan]
-
-Alvast bedankt!">Verjaardagen</a>
-                    <a href="#contact" class="occasion-tag" data-occasion="etentje aan huis" data-message="Dag Tersagoesting!
-
-Ik zou graag een gezellig etentje aan huis organiseren en ben ge&iuml;nteresseerd in jullie Cook@Home formule.
-
-Datum: [vul in]
-Aantal gasten: [vul in]
-
-Hebben jullie nog suggesties voor het menu?
-
-Alvast bedankt!">Etentjes aan huis</a>
-                    <a href="#contact" class="occasion-tag" data-occasion="jubileum" data-message="Dag Tersagoesting!
-
-Wij vieren een jubileum en zoeken catering voor het feest.
-
-Datum: [vul in]
-Aantal gasten: [vul in]
-Locatie: [vul in]
-
-Graag een voorstel op maat!
-
-Alvast bedankt!">Jubilea</a>
-                    <a href="#contact" class="occasion-tag" data-occasion="grote groep" data-message="Dag Tersagoesting!
-
-Wij zoeken catering voor een grote groep.
-
-Datum: [vul in]
-Aantal gasten: [vul in]
-Locatie: [vul in]
-
-Graag een voorstel op maat!
-
-Alvast bedankt!">Grote groepen</a>
-                    <a href="#contact" class="occasion-tag" data-occasion="feestje" data-message="Dag Tersagoesting!
-
-Wij geven een feestje en zoeken catering.
-
-Datum: [vul in]
-Aantal gasten: [vul in]
-Locatie: [vul in]
-
-Graag een voorstel op maat!
-
-Alvast bedankt!">Feestjes</a>
+                    <a href="#contact" class="occasion-tag" data-occasion="communiefeest">Communiefeesten</a>
+                    <a href="#contact" class="occasion-tag" data-occasion="huwelijk">Huwelijken</a>
+                    <a href="#contact" class="occasion-tag" data-occasion="barbecue">Barbecues</a>
+                    <a href="#contact" class="occasion-tag" data-occasion="bedrijfsevenement">Bedrijfsevenementen</a>
+                    <a href="#contact" class="occasion-tag" data-occasion="babyborrel">Babyborrels</a>
+                    <a href="#contact" class="occasion-tag" data-occasion="verjaardag">Verjaardagen</a>
+                    <a href="#contact" class="occasion-tag" data-occasion="etentje aan huis">Etentjes aan huis</a>
+                    <a href="#contact" class="occasion-tag" data-occasion="jubileum">Jubilea</a>
+                    <a href="#contact" class="occasion-tag" data-occasion="grote groep">Grote groepen</a>
+                    <a href="#contact" class="occasion-tag" data-occasion="feestje">Feestjes</a>
                 </div>
-                <a href="#contact" class="btn btn-primary bestel-cta">Bestel hier!</a>
+                <a href="#contact" class="btn btn-primary bestel-cta">Vraag een offerte!</a>
             </div>
             <div class="hero-image hero-slideshow">
                 <img src="images/foto-hero2.jpg" alt="Tersagoesting catering aan het werk" class="hero-slide active">
@@ -321,7 +229,7 @@ Alvast bedankt!">Feestjes</a>
             <h2 class="section-title">Ons aanbod</h2>
             <p class="section-subtitle">Van kleine hapjes tot buffetten: maak hier je keuze!</p>
             <div class="cards-grid">
-                <a href="aanbod.html" class="card">
+                <a href="aanbod.html#hapjes" class="card">
                     <div class="card-image card-carousel" data-interval="4000">
                         <img src="images/hapjes/hapje-1.jpg" alt="Hapjes Tersagoesting" class="carousel-slide active" loading="lazy">
                         <img src="images/hapjes/hapje-2.jpg" alt="Hapjes Tersagoesting" class="carousel-slide" loading="lazy">
@@ -346,9 +254,10 @@ Alvast bedankt!">Feestjes</a>
                     <div class="card-body">
                         <h3>Hapjes &amp; Dessertjes</h3>
                         <p>Verfijnde hapjes voor recepties, feesten, babyborrels en zakelijke events. Koud of warm, altijd vers bereid.</p>
+                        <p class="card-price">Prijs op maat</p>
                     </div>
                 </a>
-                <a href="aanbod.html" class="card">
+                <a href="aanbod.html#formules" class="card">
                     <div class="card-image card-carousel" data-interval="5000">
                         <img src="images/buffetten/buffet-1.jpg" alt="Buffet Tersagoesting" class="carousel-slide active" loading="lazy">
                         <img src="images/buffetten/buffet-2.jpg" alt="Buffet Tersagoesting" class="carousel-slide" loading="lazy">
@@ -362,9 +271,10 @@ Alvast bedankt!">Feestjes</a>
                     <div class="card-body">
                         <h3>Buffetten</h3>
                         <p>Uitgebreide warme en koude buffetten, perfect voor grotere groepen.</p>
+                        <p class="card-price">Prijs op maat</p>
                     </div>
                 </a>
-                <a href="aanbod.html" class="card">
+                <a href="aanbod.html#cookhome" class="card">
                     <div class="card-image card-carousel" data-interval="4500">
                         <img src="images/cookhome/cookhome-1.jpg" alt="Cook@home Tersagoesting" class="carousel-slide active" loading="lazy">
                         <img src="images/cookhome/cookhome-2.jpg" alt="Cook@home Tersagoesting" class="carousel-slide" loading="lazy">
@@ -374,6 +284,7 @@ Alvast bedankt!">Feestjes</a>
                     <div class="card-body">
                         <h3>Cook@home</h3>
                         <p>Een driegangenmenu met hapjes bij jou thuis klaargemaakt. De bediening en afwas nemen we ook voor onze rekening.</p>
+                        <p class="card-price">Vanaf &euro;50 p.p.</p>
                     </div>
                 </a>
             </div>
@@ -393,6 +304,7 @@ Alvast bedankt!">Feestjes</a>
         <div class="container bbq-content">
             <h2 class="section-title">Barbecue</h2>
             <p>Daar is de zon, daar zijn de barbecues! Wil je je gasten graag iets meer bieden dan een rauwe wortel en wat sla? Bestel dan onze barbecuegroentjes! Ook geen goesting om zelf vlees te bakken? Dan komt Tersagoesting dat ter plaatse voor jou doen!</p>
+            <p class="bbq-price">Barbecuegroentjes vanaf &euro;12 p.p.</p>
             <div class="bbq-buttons">
                 <a href="#contact" class="btn btn-primary bbq-cta" data-formule="BBQ">Ik wil een voorstel!</a>
                 <a href="aanbod.html#bbq-aanbod" class="btn btn-outline">Bekijk ons BBQ-aanbod →</a>
@@ -565,18 +477,6 @@ Alvast bedankt!">Feestjes</a>
         </div>
     </section>
 
-    <!-- Bestel / CTA Section -->
-    <section class="section cta-section" id="bestellen">
-        <div class="container cta-inner">
-            <h2>Vrijblijvend een offerte aanvragen?</h2>
-            <p>Contact opnemen betekent niet meteen bestellen. Je ontvangt altijd eerst een vrijblijvende offerte op maat!</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary btn-large">Vraag een offerte aan</a>
-                <a href="tel:+32476624011" class="btn btn-outline btn-large">Bel ons</a>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container">
@@ -715,6 +615,10 @@ Alvast bedankt!">Feestjes</a>
                 <p>tersagoesting@gmail.com</p>
                 <p>0476 62 40 11</p>
                 <p>Vijverstraat 67, 2870 Puurs-Sint-Amands</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/tersagoesting/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61558171506722" target="_blank" rel="noopener">Facebook</a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
@@ -725,8 +629,8 @@ Alvast bedankt!">Feestjes</a>
     </footer>
 
     <!-- Floating CTA button -->
-    <a href="#contact" class="floating-cta bestel-cta" id="floatingCta">Bestel hier!</a>
+    <a href="#contact" class="floating-cta bestel-cta" id="floatingCta">Vraag een offerte!</a>
 
-    <script src="script.js?v=8"></script>
+    <script src="script.js?v=9"></script>
 </body>
 </html>

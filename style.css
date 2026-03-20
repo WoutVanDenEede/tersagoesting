@@ -213,6 +213,43 @@ img {
     color: var(--color-cream-light);
 }
 
+/* Nav Dropdown */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    min-width: 200px;
+    padding: 8px 0;
+    z-index: 1000;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu {
+    display: block;
+}
+
+.nav-dropdown-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+}
+
+.nav-dropdown-menu a:hover {
+    background-color: var(--color-cream-light);
+    color: var(--color-primary);
+}
+
 .nav-cta {
     background-color: var(--color-accent);
     color: white !important;
@@ -553,6 +590,29 @@ a.card {
     color: var(--color-text-light);
     font-size: 1rem;
     line-height: 1.6;
+}
+
+.card-price {
+    font-family: var(--font-heading);
+    color: var(--color-primary) !important;
+    font-size: 0.95rem !important;
+    margin-top: 8px;
+}
+
+.bbq-price {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    margin-top: 8px;
+}
+
+.bbq-price-tag,
+.cookhome-price {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 16px 0 8px;
 }
 
 /* ===== INSTAGRAM FEED ===== */
@@ -1319,6 +1379,23 @@ a.card {
     margin-bottom: 4px;
 }
 
+.footer-social {
+    margin-top: 12px;
+    display: flex;
+    gap: 16px;
+}
+
+.footer-social a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--color-primary-dark);
+}
+
 .footer-bottom {
     background-color: rgba(0, 0, 0, 0.05);
     padding: 16px 0;
@@ -1479,6 +1556,21 @@ a.card {
     font-size: 0.95rem;
     color: var(--color-olive);
     line-height: 1.5;
+}
+
+.menu-card-cta {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.menu-card-cta:hover {
+    color: var(--color-primary-dark);
 }
 
 .menu-item {
@@ -2118,6 +2210,21 @@ a.card {
         min-height: 44px;
         display: flex;
         align-items: center;
+    }
+
+    .nav-dropdown-menu {
+        display: block;
+        position: static;
+        background: transparent;
+        box-shadow: none;
+        padding: 0 0 0 16px;
+        min-width: auto;
+    }
+
+    .nav-dropdown-menu a {
+        color: var(--color-text);
+        padding: 8px 8px;
+        font-size: 0.9rem;
     }
 
     .menu-toggle {

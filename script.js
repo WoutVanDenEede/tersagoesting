@@ -224,7 +224,8 @@ document.addEventListener('DOMContentLoaded', function () {
             var occasion = this.dataset.occasion;
             var berichtField = document.getElementById('bericht');
             if (berichtField) {
-                berichtField.value = 'Wij plannen een ' + occasion + ' en zoeken catering.';
+                var message = this.dataset.message || ('Wij plannen een ' + occasion + ' en zoeken catering.');
+                berichtField.value = message;
                 berichtField.style.height = 'auto';
                 berichtField.style.height = berichtField.scrollHeight + 'px';
             }

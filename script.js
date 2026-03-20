@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (this.value === 'voorstel') {
                         berichtField.value = 'Wij laten Tersagoesting een voorstel maken met een selectie hapjes naar keuze.';
                     } else {
-                        berichtField.value = 'Wij kiezen zelf onze hapjes uit het aanbod. Stuur ons de volledige hapjeskaart!';
+                        berichtField.value = 'Wij kiezen zelf onze hapjes. Onze selectie volgt via e-mail.';
                     }
                 });
             });

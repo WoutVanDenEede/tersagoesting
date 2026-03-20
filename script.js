@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
             bbqKeuze.querySelectorAll('input[name="bbq_keuze"]').forEach(function (radio) {
                 radio.addEventListener('change', function () {
                     if (this.value === 'groentjes') {
-                        berichtField.value = 'Wij willen graag enkel barbecuegroentjes bestellen (10 bijgerechten). Maak ons een voorstel!';
+                        berichtField.value = 'Wij willen graag enkel barbecuegroentjes bestellen (12 bijgerechten uit ons aanbod). Maak ons een voorstel!';
                     } else {
                         berichtField.value = 'Wij willen graag een volledige barbecue ter plaatse. Maak ons een voorstel, Tersagoesting!';
                     }
@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (bbqRadio) {
                 bbqRadio.checked = true;
                 if (paramBbq === 'groentjes') {
-                    berichtField.value = 'Wij willen graag enkel barbecuegroentjes bestellen (10 bijgerechten). Maak ons een voorstel!';
+                    berichtField.value = 'Wij willen graag enkel barbecuegroentjes bestellen (12 bijgerechten uit ons aanbod). Maak ons een voorstel!';
                 } else {
                     berichtField.value = 'Wij willen graag een volledige barbecue ter plaatse. Maak ons een voorstel, Tersagoesting!';
                 }

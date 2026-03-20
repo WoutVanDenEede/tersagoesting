@@ -84,7 +84,49 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // === Contact form: FormSubmit.co handelt alles af, geen JS nodig ===
+    // === Formule dropdown: vul automatisch tekst in ===
+    var formuleSelect = document.getElementById('formule');
+    var berichtField = document.getElementById('bericht');
+    var hapjesKeuze = document.getElementById('hapjes-keuze');
+
+    var formuleTeksten = {
+        'Hapjes & Dessertjes': 'Wij laten Tersagoesting een voorstel maken met een selectie hapjes naar keuze.',
+        'Buffet (warm of koud)': 'Tersagoesting stelt zelf een buffet samen. Geef gerust je lichte voorkeuren door: liever een klassiek koud of warm buffet, meer pasta, meer vis, \u2026 Wij houden er rekening mee!',
+        'Cook@Home (driegangenmenu met hapjes)': 'Tersagoesting stelt een driegangenmenu met hapjes voor. Heb je bepaalde voorkeuren of allergie\u00ebn? Laat het ons weten!',
+        'BBQ': 'Tersagoesting maakt een BBQ-voorstel op maat. Geef gerust je lichte voorkeuren door: aantal stukken vlees, soort vlees of vis, \u2026 Wij houden er rekening mee!',
+        'Pasta-formule': 'Tersagoesting stuurt een voorstel met drie verschillende sauzen. Moet daar ook een veggie-saus bij?',
+        'Burger-formule': 'Tersagoesting stuurt een voorstel met twee soorten burgers. Moet daar een veggie-burger bij, en zo ja, voor hoeveel personen?',
+        'Ik wil graag een voorstel op maat': ''
+    };
+
+    if (formuleSelect && berichtField) {
+        formuleSelect.addEventListener('change', function () {
+            var val = this.value;
+            // Toon/verberg hapjes radiobuttons
+            if (hapjesKeuze) {
+                hapjesKeuze.style.display = (val === 'Hapjes & Dessertjes') ? 'block' : 'none';
+            }
+            // Vul tekst in
+            if (formuleTeksten[val] !== undefined) {
+                berichtField.value = formuleTeksten[val];
+                berichtField.style.height = 'auto';
+                berichtField.style.height = berichtField.scrollHeight + 'px';
+            }
+        });
+
+        // Hapjes radiobuttons logica
+        if (hapjesKeuze) {
+            hapjesKeuze.querySelectorAll('input[name="hapjes_keuze"]').forEach(function (radio) {
+                radio.addEventListener('change', function () {
+                    if (this.value === 'voorstel') {
+                        berichtField.value = 'Wij laten Tersagoesting een voorstel maken met een selectie hapjes naar keuze.';
+                    } else {
+                        berichtField.value = 'Wij kiezen zelf onze hapjes uit het aanbod. Stuur ons de volledige hapjeskaart!';
+                    }
+                });
+            });
+        }
+    }
 
     // === Scroll animations (fade in on scroll) ===
     var observerOptions = {

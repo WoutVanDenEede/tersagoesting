@@ -618,9 +618,22 @@ Alvast bedankt!">Feestjes</a>
                             <option value="Ik wil graag een voorstel op maat">Ik wil graag een voorstel op maat</option>
                         </select>
                     </div>
+                    <div id="hapjes-keuze" class="form-group full-width" style="display:none;">
+                        <label>Hoe wil je je hapjes samenstellen?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="hapjes_keuze" value="voorstel" checked>
+                                <span>Laat Tersagoesting een voorstel maken (bv. 5 hapjes naar keuze)</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="hapjes_keuze" value="zelf">
+                                <span>Ik kies zelf uit het aanbod</span>
+                            </label>
+                        </div>
+                    </div>
                     <div class="form-group full-width">
                         <label for="bericht">Extra wensen of opmerkingen</label>
-                        <textarea id="bericht" name="Bericht" rows="3" placeholder="Bv. allergieën, speciale wensen, locatie..."></textarea>
+                        <textarea id="bericht" name="Bericht" rows="3"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-large">Verstuur aanvraag</button>
                 </form>
@@ -661,6 +674,6 @@ Alvast bedankt!">Feestjes</a>
     <!-- Floating CTA button -->
     <a href="#contact" class="floating-cta bestel-cta" id="floatingCta">Bestel hier!</a>
 
-    <script src="script.js?v=4"></script>
+    <script src="script.js?v=5"></script>
 </body>
 </html>

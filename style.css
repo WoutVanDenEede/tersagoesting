@@ -763,6 +763,77 @@ a.card {
     }
 }
 
+.bbq-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* BBQ Aanbod (aanbod.html) */
+.bbq-aanbod-section {
+    background: var(--color-bg-white);
+}
+
+.bbq-aanbod-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+.bbq-aanbod-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.bbq-aanbod-photos img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius);
+}
+
+.bbq-aanbod-content h3 {
+    font-family: var(--font-heading);
+    color: var(--terracotta);
+    font-size: 1.3rem;
+    margin: 1.5rem 0 1rem;
+}
+
+.bbq-lijst {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.bbq-lijst li {
+    padding: 0.3rem 0;
+    line-height: 1.5;
+}
+
+.bbq-extra {
+    font-style: italic;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.bbq-aanbod-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .bbq-aanbod-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Instagram CTA Block */
 .instagram-section {
     background-color: var(--color-bg-light);

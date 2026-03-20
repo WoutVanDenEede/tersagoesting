@@ -300,4 +300,25 @@ document.addEventListener('DOMContentLoaded', function () {
         var recensieInterval = setInterval(nextRecensie, 10000);
     }
 
+    // === URL parameter pre-fill (vanuit aanbod.html) ===
+    var params = new URLSearchParams(window.location.search);
+    var paramFormule = params.get('formule');
+    var paramBbq = params.get('bbq');
+    if (paramFormule && formuleSelect) {
+        formuleSelect.value = paramFormule;
+        formuleSelect.dispatchEvent(new Event('change'));
+        // Pre-select BBQ keuze en tekst invullen
+        if (paramBbq && bbqKeuze && berichtField) {
+            var bbqRadio = bbqKeuze.querySelector('input[value="' + paramBbq + '"]');
+            if (bbqRadio) {
+                bbqRadio.checked = true;
+                if (paramBbq === 'groentjes') {
+                    berichtField.value = 'Wij willen graag enkel barbecuegroentjes bestellen (10 bijgerechten). Maak ons een voorstel!';
+                } else {
+                    berichtField.value = 'Wij willen graag een volledige barbecue ter plaatse. Maak ons een voorstel, Tersagoesting!';
+                }
+            }
+        }
+    }
+
 });

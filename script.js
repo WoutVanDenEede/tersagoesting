@@ -145,6 +145,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 15000);
     }
 
+    // === Bestel hier: vraag aantal personen en prefill contact form ===
+    document.querySelectorAll('.bestel-cta').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            var aantal = prompt('Voor hoeveel personen wil je bestellen?');
+            if (aantal === null || aantal.trim() === '') return;
+            var berichtField = document.getElementById('bericht');
+            if (berichtField) {
+                berichtField.value = 'Dag Tersagoesting!\n\nKunnen jullie mij een driegangenmenu met hapjes voorstellen voor ' + aantal.trim() + ' personen?\n\nDatum: [vul in]\nLocatie: [vul in]\n\nAlvast bedankt!';
+                berichtField.style.height = 'auto';
+                berichtField.style.height = berichtField.scrollHeight + 'px';
+            }
+            var gastenField = document.getElementById('gasten');
+            if (gastenField) gastenField.value = aantal.trim();
+            var contactSection = document.getElementById('contact');
+            if (contactSection) {
+                var headerHeight = document.querySelector('.header').offsetHeight;
+                var targetPos = contactSection.getBoundingClientRect().top + window.scrollY - headerHeight;
+                window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                setTimeout(function () {
+                    var naamField = document.getElementById('naam');
+                    if (naamField) naamField.focus();
+                }, 800);
+            }
+        });
+    });
+
     // === Occasion tags: prefill contact form ===
     document.querySelectorAll('.occasion-tag[data-message]').forEach(function (tag) {
         tag.addEventListener('click', function (e) {

@@ -587,15 +587,15 @@ Alvast bedankt!">Feestjes</a>
                     <input type="hidden" name="_template" value="table">
                     <div class="form-group">
                         <label for="naam">Naam *</label>
-                        <input type="text" id="naam" name="Naam" required>
+                        <input type="text" id="naam" name="Naam" required placeholder="Je naam">
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail *</label>
-                        <input type="email" id="email" name="E-mail" required>
+                        <input type="email" id="email" name="E-mail" required placeholder="Je e-mailadres">
                     </div>
                     <div class="form-group">
                         <label for="telefoon">Telefoon</label>
-                        <input type="tel" id="telefoon" name="Telefoon">
+                        <input type="tel" id="telefoon" name="Telefoon" placeholder="Bv. 0476 12 34 56">
                     </div>
                     <div class="form-group">
                         <label for="datum">Datum van je event</label>
@@ -603,11 +603,24 @@ Alvast bedankt!">Feestjes</a>
                     </div>
                     <div class="form-group">
                         <label for="gasten">Aantal gasten</label>
-                        <input type="number" id="gasten" name="Aantal gasten" min="1">
+                        <input type="number" id="gasten" name="Aantal gasten" min="1" placeholder="Bv. 25">
+                    </div>
+                    <div class="form-group">
+                        <label for="formule">Welke formule?</label>
+                        <select id="formule" name="Formule">
+                            <option value="">Kies een formule (optioneel)</option>
+                            <option value="Hapjes & Dessertjes">Hapjes & Dessertjes</option>
+                            <option value="Buffet (warm of koud)">Buffet (warm of koud)</option>
+                            <option value="Cook@Home (driegangenmenu met hapjes)">Cook@Home (driegangenmenu met hapjes)</option>
+                            <option value="BBQ">BBQ</option>
+                            <option value="Pasta-formule">Pasta-formule</option>
+                            <option value="Burger-formule">Burger-formule</option>
+                            <option value="Ik wil graag een voorstel op maat">Ik wil graag een voorstel op maat</option>
+                        </select>
                     </div>
                     <div class="form-group full-width">
-                        <label for="bericht">Bericht *</label>
-                        <textarea id="bericht" name="Bericht" rows="5" required placeholder="Vertel ons over je event en wensen..."></textarea>
+                        <label for="bericht">Extra wensen of opmerkingen</label>
+                        <textarea id="bericht" name="Bericht" rows="3" placeholder="Bv. allergieën, speciale wensen, locatie..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-large">Verstuur aanvraag</button>
                 </form>
@@ -648,6 +661,6 @@ Alvast bedankt!">Feestjes</a>
     <!-- Floating CTA button -->
     <a href="#contact" class="floating-cta bestel-cta" id="floatingCta">Bestel hier!</a>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>

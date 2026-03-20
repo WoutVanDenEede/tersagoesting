@@ -369,6 +369,7 @@ img {
 /* Hero Slideshow */
 .hero-slideshow {
     position: relative;
+    overflow: hidden;
 }
 
 .hero-slide {
@@ -382,14 +383,18 @@ img {
     transition: opacity 1.5s ease;
 }
 
+.hero-slide:first-child {
+    position: relative;
+}
+
 .hero-slide.active {
     opacity: 1;
-    position: relative;
 }
 
 /* Card Carousel */
 .card-carousel {
     position: relative;
+    overflow: hidden;
 }
 
 .carousel-slide {
@@ -403,9 +408,12 @@ img {
     transition: opacity 1s ease;
 }
 
+.carousel-slide:first-child {
+    position: relative;
+}
+
 .carousel-slide.active {
     opacity: 1;
-    position: relative;
 }
 
 .hero-image img {
@@ -423,7 +431,8 @@ img {
     border-radius: 25px;
     font-family: var(--font-heading);
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 400;
+    letter-spacing: 0.02em;
     text-decoration: none;
     cursor: pointer;
     border: 2px solid transparent;
@@ -1003,6 +1012,20 @@ a.card {
 .radio-label span {
     font-size: 1rem;
     line-height: 1.4;
+}
+
+.radio-link {
+    text-decoration: none;
+    color: var(--color-accent);
+    font-weight: 600;
+    justify-content: center;
+    border-style: dashed;
+}
+
+.radio-link:hover {
+    background: var(--color-accent);
+    color: #fff;
+    border-color: var(--color-accent);
 }
 
 .form-group input:focus,

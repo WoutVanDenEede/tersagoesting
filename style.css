@@ -601,10 +601,9 @@ a.card {
 
 .bbq-price {
     font-family: var(--font-heading);
-    color: #ffb87a;
-    font-size: 1.2rem;
+    color: var(--color-primary);
+    font-size: 1.1rem;
     margin-top: 8px;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
 
 .bbq-price-tag,
@@ -775,93 +774,57 @@ a.card {
 
 /* BBQ Banner */
 .bbq-banner {
-    position: relative;
     padding: 0;
-    min-height: 500px;
+    background: var(--color-bg-white);
+}
+
+.bbq-photo-strip {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    gap: 6px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
 }
 
-.bbq-bg-carousel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
+.bbq-photo-strip::-webkit-scrollbar {
+    display: none;
 }
 
-.bbq-bg-carousel img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.bbq-photo-strip img {
+    height: 300px;
+    width: auto;
+    flex-shrink: 0;
     object-fit: cover;
-    opacity: 0;
-    transition: opacity 1.5s ease;
-}
-
-.bbq-bg-carousel img.active {
-    opacity: 1;
-}
-
-.bbq-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.6));
-    z-index: 1;
+    scroll-snap-align: start;
+    border-radius: 4px;
 }
 
 .bbq-content {
-    position: relative;
-    z-index: 2;
     text-align: center;
-    padding: 4rem 1.5rem;
+    padding: 3rem 1.5rem;
 }
 
 .bbq-content .section-title {
-    color: #fff;
     margin-bottom: 1rem;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .bbq-content p {
     max-width: 700px;
     margin: 0 auto 1.5rem;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     line-height: 1.7;
-    color: rgba(255,255,255,0.95);
-    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-}
-
-.bbq-content .btn-outline {
-    color: #fff;
-    border-color: rgba(255,255,255,0.7);
-}
-
-.bbq-content .btn-outline:hover {
-    background: rgba(255,255,255,0.15);
-    border-color: #fff;
 }
 
 @media (max-width: 768px) {
-    .bbq-banner {
-        min-height: 400px;
+    .bbq-photo-strip img {
+        height: 220px;
     }
 }
 
 @media (max-width: 480px) {
-    .bbq-banner {
-        min-height: 350px;
-    }
-    .bbq-content {
-        padding: 3rem 1rem;
+    .bbq-photo-strip img {
+        height: 180px;
     }
 }
 

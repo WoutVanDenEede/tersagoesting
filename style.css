@@ -78,6 +78,11 @@ html {
     overflow-x: hidden;
 }
 
+/* Offset for fixed header when scrolling to anchors */
+[id] {
+    scroll-margin-top: 140px;
+}
+
 body {
     font-family: var(--font-body);
     color: var(--color-text);
@@ -2350,6 +2355,11 @@ a.card {
     .contact-grid {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+
+    /* On mobile: show form first, contact info below */
+    .contact-form {
+        order: -1;
     }
 
     .footer-inner {

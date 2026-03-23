@@ -23,43 +23,38 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // === Scroll to hash target with header offset ===
-    function scrollToHash(hash, smooth) {
-        if (!hash || hash === '#') return;
-        var target = document.querySelector(hash);
-        if (target) {
-            var headerHeight = document.querySelector('.header').offsetHeight;
-            var targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
-            window.scrollTo({ top: targetPosition, behavior: smooth ? 'smooth' : 'auto' });
-            // Focus first input if scrolling to contact
-            if (hash === '#contact') {
-                var naamField = document.getElementById('naam');
-                if (naamField) {
-                    setTimeout(function() { naamField.focus(); }, smooth ? 600 : 100);
-                }
-            }
+    // === Auto-focus naam field when navigating to #contact ===
+    function focusContactForm() {
+        var naamField = document.getElementById('naam');
+        if (naamField) {
+            naamField.focus({ preventScroll: true });
         }
     }
 
-    // === Smooth scroll for same-page anchor links ===
-    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-        anchor.addEventListener('click', function (e) {
-            var targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            if (document.querySelector(targetId)) {
-                e.preventDefault();
-                scrollToHash(targetId, true);
-            }
+    // === Focus on click to #contact links ===
+    document.querySelectorAll('a[href="#contact"], a[href="index.html#contact"]').forEach(function (link) {
+        link.addEventListener('click', function () {
+            setTimeout(focusContactForm, 800);
         });
     });
 
-    // === On page load: scroll to hash (from cross-page links like aanbod.html -> index.html#contact) ===
+    // === On page load with hash (cross-page navigation): instant scroll ===
     if (window.location.hash) {
-        // Override browser default scroll, wait for page to render
-        window.scrollTo(0, 0);
-        setTimeout(function() {
-            scrollToHash(window.location.hash, false);
-        }, 150);
+        // Disable smooth scroll temporarily so cross-page hash lands instantly
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.addEventListener('load', function() {
+            var target = document.querySelector(window.location.hash);
+            if (target) {
+                target.scrollIntoView();
+            }
+            if (window.location.hash === '#contact') {
+                setTimeout(focusContactForm, 100);
+            }
+            // Re-enable smooth scroll for in-page navigation
+            setTimeout(function() {
+                document.documentElement.style.scrollBehavior = '';
+            }, 200);
+        });
     }
 
     // === Header shadow on scroll ===

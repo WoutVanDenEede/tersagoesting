@@ -779,17 +779,25 @@ a.card {
 }
 
 .bbq-photo-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
+    position: relative;
     width: 100%;
+    height: 350px;
+    overflow: hidden;
 }
 
 .bbq-photo-grid img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 280px;
+    height: 100%;
     object-fit: cover;
-    display: block;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.bbq-photo-grid img.active {
+    opacity: 1;
 }
 
 .bbq-content {
@@ -810,16 +818,13 @@ a.card {
 
 @media (max-width: 768px) {
     .bbq-photo-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .bbq-photo-grid img {
-        height: 180px;
+        height: 250px;
     }
 }
 
 @media (max-width: 480px) {
-    .bbq-photo-grid img {
-        height: 140px;
+    .bbq-photo-grid {
+        height: 200px;
     }
 }
 
@@ -844,18 +849,27 @@ a.card {
 }
 
 .bbq-aanbod-photos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    position: relative;
+    width: 100%;
+    height: 300px;
     border-radius: var(--radius);
     overflow: hidden;
 }
 
 .bbq-aanbod-photos img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
     border-radius: var(--radius);
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.bbq-aanbod-photos img.active {
+    opacity: 1;
 }
 
 .bbq-aanbod-content h3 {

@@ -29,7 +29,7 @@
     <link rel="preload" href="fonts/Cheboyga.ttf" as="font" type="font/ttf" crossorigin>
 
     <!-- Fonts worden lokaal geladen via CSS @font-face -->
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=6">
 
     <!-- SEO: Structured Data for Google - FoodService -->
     <script type="application/ld+json">
@@ -584,6 +584,65 @@
                             </label>
                         </div>
                     </div>
+                    <div id="buffet-keuze" class="form-group full-width" style="display:none;">
+                        <label>Welk type buffet heeft je voorkeur?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="buffet_voorkeur" value="geen" checked>
+                                <span>Geen voorkeur, verras mij</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="buffet_voorkeur" value="warm">
+                                <span>Liever een warm buffet</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="buffet_voorkeur" value="koud">
+                                <span>Liever een koud buffet</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="buffet_voorkeur" value="gemengd">
+                                <span>Een mix van warm en koud</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div id="cookhome-keuze" class="form-group full-width" style="display:none;">
+                        <label>Extra info voor je Cook@Home</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="cookhomeAllergie">
+                                <span>Er zijn gasten met allergie&#235;n of dieetwensen</span>
+                            </label>
+                            <div class="checkbox-sub" id="cookhomeAllergieDetail" style="display:none;">
+                                <input type="text" id="cookhomeAllergieInfo" placeholder="Bv. glutenvrij, lactosevrij, vegetarisch...">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pasta-keuze" class="form-group full-width" style="display:none;">
+                        <label>Extra opties</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="pastaVeggie">
+                                <span>Ik wil ook een vegetarische saus</span>
+                            </label>
+                            <div class="checkbox-sub" id="pastaVeggieDetail" style="display:none;">
+                                <label for="pastaVeggiePersonen">Voor hoeveel personen?</label>
+                                <input type="number" id="pastaVeggiePersonen" min="1" placeholder="Aantal">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="burger-keuze" class="form-group full-width" style="display:none;">
+                        <label>Extra opties</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="burgerVeggie">
+                                <span>Ik wil ook een veggie-burger</span>
+                            </label>
+                            <div class="checkbox-sub" id="burgerVeggieDetail" style="display:none;">
+                                <label for="burgerVeggiePersonen">Voor hoeveel personen?</label>
+                                <input type="number" id="burgerVeggiePersonen" min="1" placeholder="Aantal">
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group full-width">
                         <label for="bericht">Extra wensen of opmerkingen</label>
                         <textarea id="bericht" name="Bericht" rows="3"></textarea>
@@ -631,6 +690,6 @@
     <!-- Floating CTA button -->
     <a href="#contact" class="floating-cta bestel-cta" id="floatingCta">Vraag een offerte!</a>
 
-    <script src="script.js?v=9"></script>
+    <script src="script.js?v=10"></script>
 </body>
 </html>

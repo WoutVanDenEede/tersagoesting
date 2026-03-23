@@ -89,62 +89,195 @@ document.addEventListener('DOMContentLoaded', function () {
     var berichtField = document.getElementById('bericht');
     var hapjesKeuze = document.getElementById('hapjes-keuze');
     var bbqKeuze = document.getElementById('bbq-keuze');
+    var buffetKeuze = document.getElementById('buffet-keuze');
+    var cookhomeKeuze = document.getElementById('cookhome-keuze');
+    var pastaKeuze = document.getElementById('pasta-keuze');
+    var burgerKeuze = document.getElementById('burger-keuze');
 
+    // Alle teksten vanuit het oogpunt van de klant
     var formuleTeksten = {
-        'Hapjes & Dessertjes': 'Wij laten Tersagoesting een voorstel maken met een selectie hapjes naar keuze.',
-        'Buffet (warm of koud)': 'Tersagoesting stelt zelf een buffet samen. Geef gerust je lichte voorkeuren door: liever een klassiek koud of warm buffet, meer pasta, meer vis, \u2026 Wij houden er rekening mee!',
-        'Cook@Home (driegangenmenu met hapjes)': 'Tersagoesting stelt een driegangenmenu met hapjes voor. Heb je bepaalde voorkeuren of allergie\u00ebn? Laat het ons weten!',
-        'BBQ': 'Tersagoesting maakt een BBQ-voorstel op maat. Geef gerust je lichte voorkeuren door: aantal stukken vlees, soort vlees of vis, \u2026 Wij houden er rekening mee!',
-        'Pasta-formule': 'Tersagoesting stuurt een voorstel met drie verschillende sauzen. Moet daar ook een veggie-saus bij?',
-        'Burger-formule': 'Tersagoesting stuurt een voorstel met twee soorten burgers. Moet daar een veggie-burger bij, en zo ja, voor hoeveel personen?',
+        'Hapjes & Dessertjes': 'Ik ontvang graag een voorstel met een selectie hapjes.',
+        'Buffet (warm of koud)': 'Ik ontvang graag een voorstel voor een buffet.',
+        'Cook@Home (driegangenmenu met hapjes)': 'Ik ontvang graag een voorstel voor een Cook@Home driegangenmenu met hapjes.',
+        'BBQ': 'Ik ontvang graag een BBQ-voorstel op maat.',
+        'Pasta-formule': 'Ik ontvang graag een voorstel voor de pasta-formule met drie sauzen.',
+        'Burger-formule': 'Ik ontvang graag een voorstel voor de burger-formule.',
         'Ik wil graag een voorstel op maat': ''
     };
+
+    // Bouw het berichtveld op vanuit alle actieve opties
+    function buildBericht() {
+        if (!formuleSelect || !berichtField) return;
+        var formule = formuleSelect.value;
+        var parts = [];
+
+        // Basistekst per formule
+        if (formule === 'Hapjes & Dessertjes') {
+            var hapjesRadio = document.querySelector('input[name="hapjes_keuze"]:checked');
+            if (hapjesRadio && hapjesRadio.value === 'zelf_kiezen') {
+                parts.push('Ik kies zelf mijn hapjes en bezorg mijn selectie via e-mail.');
+            } else {
+                parts.push(formuleTeksten[formule]);
+            }
+        } else if (formule === 'BBQ') {
+            var bbqRadio = document.querySelector('input[name="bbq_keuze"]:checked');
+            if (bbqRadio && bbqRadio.value === 'groentjes') {
+                parts.push('Ik wil graag barbecuegroentjes bestellen (12 bijgerechten uit het aanbod).');
+            } else if (bbqRadio) {
+                parts.push('Ik wil graag een volledige barbecue ter plaatse.');
+            }
+        } else if (formule === 'Buffet (warm of koud)') {
+            var buffetRadio = document.querySelector('input[name="buffet_voorkeur"]:checked');
+            if (buffetRadio && buffetRadio.value !== 'geen') {
+                var labels = { warm: 'een warm buffet', koud: 'een koud buffet', gemengd: 'een gemengd buffet (warm en koud)' };
+                parts.push('Ik ontvang graag een voorstel voor ' + labels[buffetRadio.value] + '.');
+            } else {
+                parts.push(formuleTeksten[formule]);
+            }
+        } else if (formule === 'Pasta-formule') {
+            parts.push(formuleTeksten[formule]);
+            var pastaVeggie = document.getElementById('pastaVeggie');
+            if (pastaVeggie && pastaVeggie.checked) {
+                var aantal = document.getElementById('pastaVeggiePersonen').value;
+                if (aantal) {
+                    parts.push('Ik wil ook een vegetarische saus voor ' + aantal + ' personen.');
+                } else {
+                    parts.push('Ik wil ook een vegetarische saus.');
+                }
+            }
+        } else if (formule === 'Burger-formule') {
+            parts.push(formuleTeksten[formule]);
+            var burgerVeggie = document.getElementById('burgerVeggie');
+            if (burgerVeggie && burgerVeggie.checked) {
+                var aantal = document.getElementById('burgerVeggiePersonen').value;
+                if (aantal) {
+                    parts.push('Ik wil ook een veggie-burger voor ' + aantal + ' personen.');
+                } else {
+                    parts.push('Ik wil ook een veggie-burger.');
+                }
+            }
+        } else if (formule === 'Cook@Home (driegangenmenu met hapjes)') {
+            parts.push(formuleTeksten[formule]);
+            var allergie = document.getElementById('cookhomeAllergie');
+            if (allergie && allergie.checked) {
+                var info = document.getElementById('cookhomeAllergieInfo').value;
+                if (info) {
+                    parts.push('Er zijn gasten met allergieen of dieetwensen: ' + info + '.');
+                } else {
+                    parts.push('Er zijn gasten met allergieen of dieetwensen (details volgen).');
+                }
+            }
+        } else if (formuleTeksten[formule] !== undefined) {
+            parts.push(formuleTeksten[formule]);
+        }
+
+        berichtField.value = parts.join('\n');
+        berichtField.style.height = 'auto';
+        berichtField.style.height = berichtField.scrollHeight + 'px';
+    }
+
+    // Toon/verberg secties + checkboxes resetten bij formule-wissel
+    function resetFormuleOpties() {
+        // Verberg alle keuze-secties
+        var sections = [hapjesKeuze, bbqKeuze, buffetKeuze, cookhomeKeuze, pastaKeuze, burgerKeuze];
+        sections.forEach(function (s) { if (s) s.style.display = 'none'; });
+
+        // Reset checkboxes
+        ['pastaVeggie', 'burgerVeggie', 'cookhomeAllergie'].forEach(function (id) {
+            var cb = document.getElementById(id);
+            if (cb) cb.checked = false;
+        });
+
+        // Verberg sub-opties
+        ['pastaVeggieDetail', 'burgerVeggieDetail', 'cookhomeAllergieDetail'].forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) el.style.display = 'none';
+        });
+
+        // Reset sub-inputs
+        ['pastaVeggiePersonen', 'burgerVeggiePersonen', 'cookhomeAllergieInfo'].forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) el.value = '';
+        });
+    }
 
     if (formuleSelect && berichtField) {
         formuleSelect.addEventListener('change', function () {
             var val = this.value;
-            // Toon/verberg hapjes radiobuttons
-            if (hapjesKeuze) {
-                hapjesKeuze.style.display = (val === 'Hapjes & Dessertjes') ? 'block' : 'none';
-            }
-            // Toon/verberg BBQ radiobuttons
-            if (bbqKeuze) {
-                bbqKeuze.style.display = (val === 'BBQ') ? 'block' : 'none';
-            }
-            // Vul tekst in
-            if (formuleTeksten[val] !== undefined) {
-                berichtField.value = formuleTeksten[val];
-                berichtField.style.height = 'auto';
-                berichtField.style.height = berichtField.scrollHeight + 'px';
-            }
+            resetFormuleOpties();
+
+            // Toon relevante keuze-sectie
+            if (val === 'Hapjes & Dessertjes' && hapjesKeuze) hapjesKeuze.style.display = 'block';
+            if (val === 'BBQ' && bbqKeuze) bbqKeuze.style.display = 'block';
+            if (val === 'Buffet (warm of koud)' && buffetKeuze) buffetKeuze.style.display = 'block';
+            if (val === 'Cook@Home (driegangenmenu met hapjes)' && cookhomeKeuze) cookhomeKeuze.style.display = 'block';
+            if (val === 'Pasta-formule' && pastaKeuze) pastaKeuze.style.display = 'block';
+            if (val === 'Burger-formule' && burgerKeuze) burgerKeuze.style.display = 'block';
+
+            buildBericht();
         });
 
-        // Hapjes radiobuttons logica
+        // Hapjes radiobuttons
         if (hapjesKeuze) {
             hapjesKeuze.querySelectorAll('input[name="hapjes_keuze"]').forEach(function (radio) {
-                radio.addEventListener('change', function () {
-                    if (this.value === 'voorstel') {
-                        berichtField.value = 'Wij laten Tersagoesting een voorstel maken met een selectie hapjes naar keuze.';
-                    } else {
-                        berichtField.value = 'Wij kiezen zelf onze hapjes. Onze selectie volgt via e-mail.';
-                    }
-                });
+                radio.addEventListener('change', buildBericht);
             });
         }
 
-        // BBQ radiobuttons logica
+        // BBQ radiobuttons
         if (bbqKeuze) {
             bbqKeuze.querySelectorAll('input[name="bbq_keuze"]').forEach(function (radio) {
-                radio.addEventListener('change', function () {
-                    if (this.value === 'groentjes') {
-                        berichtField.value = 'Wij willen graag enkel barbecuegroentjes bestellen (12 bijgerechten uit ons aanbod). Maak ons een voorstel!';
-                    } else {
-                        berichtField.value = 'Wij willen graag een volledige barbecue ter plaatse. Maak ons een voorstel, Tersagoesting!';
-                    }
-                    berichtField.style.height = 'auto';
-                    berichtField.style.height = berichtField.scrollHeight + 'px';
-                });
+                radio.addEventListener('change', buildBericht);
             });
+        }
+
+        // Buffet radiobuttons
+        if (buffetKeuze) {
+            buffetKeuze.querySelectorAll('input[name="buffet_voorkeur"]').forEach(function (radio) {
+                radio.addEventListener('change', buildBericht);
+            });
+        }
+
+        // Cook@Home allergie checkbox
+        var cookhomeAllergie = document.getElementById('cookhomeAllergie');
+        var cookhomeAllergieDetail = document.getElementById('cookhomeAllergieDetail');
+        if (cookhomeAllergie) {
+            cookhomeAllergie.addEventListener('change', function () {
+                if (cookhomeAllergieDetail) cookhomeAllergieDetail.style.display = this.checked ? 'block' : 'none';
+                buildBericht();
+            });
+            var cookhomeAllergieInfo = document.getElementById('cookhomeAllergieInfo');
+            if (cookhomeAllergieInfo) {
+                cookhomeAllergieInfo.addEventListener('input', buildBericht);
+            }
+        }
+
+        // Pasta veggie checkbox
+        var pastaVeggie = document.getElementById('pastaVeggie');
+        var pastaVeggieDetail = document.getElementById('pastaVeggieDetail');
+        if (pastaVeggie) {
+            pastaVeggie.addEventListener('change', function () {
+                if (pastaVeggieDetail) pastaVeggieDetail.style.display = this.checked ? 'block' : 'none';
+                buildBericht();
+            });
+            var pastaVeggiePersonen = document.getElementById('pastaVeggiePersonen');
+            if (pastaVeggiePersonen) {
+                pastaVeggiePersonen.addEventListener('input', buildBericht);
+            }
+        }
+
+        // Burger veggie checkbox
+        var burgerVeggie = document.getElementById('burgerVeggie');
+        var burgerVeggieDetail = document.getElementById('burgerVeggieDetail');
+        if (burgerVeggie) {
+            burgerVeggie.addEventListener('change', function () {
+                if (burgerVeggieDetail) burgerVeggieDetail.style.display = this.checked ? 'block' : 'none';
+                buildBericht();
+            });
+            var burgerVeggiePersonen = document.getElementById('burgerVeggiePersonen');
+            if (burgerVeggiePersonen) {
+                burgerVeggiePersonen.addEventListener('input', buildBericht);
+            }
         }
     }
 
@@ -309,15 +442,11 @@ document.addEventListener('DOMContentLoaded', function () {
         formuleSelect.value = paramFormule;
         formuleSelect.dispatchEvent(new Event('change'));
         // Pre-select BBQ keuze en tekst invullen
-        if (paramBbq && bbqKeuze && berichtField) {
+        if (paramBbq && bbqKeuze) {
             var bbqRadio = bbqKeuze.querySelector('input[value="' + paramBbq + '"]');
             if (bbqRadio) {
                 bbqRadio.checked = true;
-                if (paramBbq === 'groentjes') {
-                    berichtField.value = 'Wij willen graag enkel barbecuegroentjes bestellen (12 bijgerechten uit ons aanbod). Maak ons een voorstel!';
-                } else {
-                    berichtField.value = 'Wij willen graag een volledige barbecue ter plaatse. Maak ons een voorstel, Tersagoesting!';
-                }
+                buildBericht();
             }
         }
     }

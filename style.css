@@ -601,9 +601,10 @@ a.card {
 
 .bbq-price {
     font-family: var(--font-heading);
-    color: var(--color-primary);
-    font-size: 1.1rem;
+    color: #ffb87a;
+    font-size: 1.2rem;
     margin-top: 8px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
 
 .bbq-price-tag,
@@ -774,18 +775,25 @@ a.card {
 
 /* BBQ Banner */
 .bbq-banner {
-    padding: 0;
-    background: var(--color-bg-white);
-}
-
-.bbq-photo-grid {
     position: relative;
-    width: 100%;
-    height: 350px;
+    padding: 0;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
 }
 
-.bbq-photo-grid img {
+.bbq-bg-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.bbq-bg-carousel img {
     position: absolute;
     top: 0;
     left: 0;
@@ -793,38 +801,67 @@ a.card {
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 1s ease;
+    transition: opacity 1.5s ease;
 }
 
-.bbq-photo-grid img.active {
+.bbq-bg-carousel img.active {
     opacity: 1;
 }
 
+.bbq-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.6));
+    z-index: 1;
+}
+
 .bbq-content {
+    position: relative;
+    z-index: 2;
     text-align: center;
-    padding: 3rem 1.5rem;
+    padding: 4rem 1.5rem;
 }
 
 .bbq-content .section-title {
+    color: #fff;
     margin-bottom: 1rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .bbq-content p {
     max-width: 700px;
-    margin: 0 auto 2rem;
-    font-size: 1.05rem;
+    margin: 0 auto 1.5rem;
+    font-size: 1.1rem;
     line-height: 1.7;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.bbq-content .btn-outline {
+    color: #fff;
+    border-color: rgba(255,255,255,0.7);
+}
+
+.bbq-content .btn-outline:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: #fff;
 }
 
 @media (max-width: 768px) {
-    .bbq-photo-grid {
-        height: 250px;
+    .bbq-banner {
+        min-height: 400px;
     }
 }
 
 @media (max-width: 480px) {
-    .bbq-photo-grid {
-        height: 200px;
+    .bbq-banner {
+        min-height: 350px;
+    }
+    .bbq-content {
+        padding: 3rem 1rem;
     }
 }
 

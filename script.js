@@ -407,9 +407,12 @@ document.addEventListener('DOMContentLoaded', function () {
         var recensieInterval = setInterval(nextRecensie, 10000);
     }
 
-    // === Video Reels: autoplay bij scroll, chaining, mute toggle ===
+    // === Video Reels: autoplay bij scroll, chaining, navigatie, mute ===
     var reelsVideo = document.getElementById('reelsVideo');
     var reelsMuteBtn = document.getElementById('reelsMuteBtn');
+    var reelsPrev = document.getElementById('reelsPrev');
+    var reelsNext = document.getElementById('reelsNext');
+    var reelsCounter = document.getElementById('reelsCounter');
     var reelsList = [
         'images/reels/reel-1.mp4',
         'images/reels/reel-2.mp4',
@@ -419,13 +422,22 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
     var currentReel = 0;
 
+    function goToReel(index) {
+        currentReel = ((index % reelsList.length) + reelsList.length) % reelsList.length;
+        reelsVideo.src = reelsList[currentReel];
+        reelsVideo.play();
+        if (reelsCounter) reelsCounter.textContent = (currentReel + 1) + ' / ' + reelsList.length;
+    }
+
     if (reelsVideo) {
-        // Speel volgende reel af na einde
+        // Volgende reel na einde
         reelsVideo.addEventListener('ended', function () {
-            currentReel = (currentReel + 1) % reelsList.length;
-            reelsVideo.src = reelsList[currentReel];
-            reelsVideo.play();
+            goToReel(currentReel + 1);
         });
+
+        // Vorige/volgende knoppen
+        if (reelsNext) reelsNext.addEventListener('click', function () { goToReel(currentReel + 1); });
+        if (reelsPrev) reelsPrev.addEventListener('click', function () { goToReel(currentReel - 1); });
 
         // Autoplay wanneer video in beeld scrollt
         var reelsObserver = new IntersectionObserver(function (entries) {

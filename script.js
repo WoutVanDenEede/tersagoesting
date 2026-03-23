@@ -90,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var hapjesKeuze = document.getElementById('hapjes-keuze');
     var bbqKeuze = document.getElementById('bbq-keuze');
     var buffetKeuze = document.getElementById('buffet-keuze');
-    var cookhomeKeuze = document.getElementById('cookhome-keuze');
     var pastaKeuze = document.getElementById('pasta-keuze');
     var burgerKeuze = document.getElementById('burger-keuze');
 
@@ -156,17 +155,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     parts.push('Ik wil ook een veggie-burger.');
                 }
             }
-        } else if (formule === 'Cook@Home (driegangenmenu met hapjes)') {
-            parts.push(formuleTeksten[formule]);
-            var allergie = document.getElementById('cookhomeAllergie');
-            if (allergie && allergie.checked) {
-                var info = document.getElementById('cookhomeAllergieInfo').value;
-                if (info) {
-                    parts.push('Er zijn gasten met allergieen of dieetwensen: ' + info + '.');
-                } else {
-                    parts.push('Er zijn gasten met allergieen of dieetwensen (details volgen).');
-                }
-            }
         } else if (formuleTeksten[formule] !== undefined) {
             parts.push(formuleTeksten[formule]);
         }
@@ -179,23 +167,23 @@ document.addEventListener('DOMContentLoaded', function () {
     // Toon/verberg secties + checkboxes resetten bij formule-wissel
     function resetFormuleOpties() {
         // Verberg alle keuze-secties
-        var sections = [hapjesKeuze, bbqKeuze, buffetKeuze, cookhomeKeuze, pastaKeuze, burgerKeuze];
+        var sections = [hapjesKeuze, bbqKeuze, buffetKeuze, pastaKeuze, burgerKeuze];
         sections.forEach(function (s) { if (s) s.style.display = 'none'; });
 
         // Reset checkboxes
-        ['pastaVeggie', 'burgerVeggie', 'cookhomeAllergie'].forEach(function (id) {
+        ['pastaVeggie', 'burgerVeggie'].forEach(function (id) {
             var cb = document.getElementById(id);
             if (cb) cb.checked = false;
         });
 
         // Verberg sub-opties
-        ['pastaVeggieDetail', 'burgerVeggieDetail', 'cookhomeAllergieDetail'].forEach(function (id) {
+        ['pastaVeggieDetail', 'burgerVeggieDetail'].forEach(function (id) {
             var el = document.getElementById(id);
             if (el) el.style.display = 'none';
         });
 
         // Reset sub-inputs
-        ['pastaVeggiePersonen', 'burgerVeggiePersonen', 'cookhomeAllergieInfo'].forEach(function (id) {
+        ['pastaVeggiePersonen', 'burgerVeggiePersonen'].forEach(function (id) {
             var el = document.getElementById(id);
             if (el) el.value = '';
         });
@@ -210,7 +198,6 @@ document.addEventListener('DOMContentLoaded', function () {
             if (val === 'Hapjes & Dessertjes' && hapjesKeuze) hapjesKeuze.style.display = 'block';
             if (val === 'BBQ' && bbqKeuze) bbqKeuze.style.display = 'block';
             if (val === 'Buffet (warm of koud)' && buffetKeuze) buffetKeuze.style.display = 'block';
-            if (val === 'Cook@Home (driegangenmenu met hapjes)' && cookhomeKeuze) cookhomeKeuze.style.display = 'block';
             if (val === 'Pasta-formule' && pastaKeuze) pastaKeuze.style.display = 'block';
             if (val === 'Burger-formule' && burgerKeuze) burgerKeuze.style.display = 'block';
 
@@ -236,20 +223,6 @@ document.addEventListener('DOMContentLoaded', function () {
             buffetKeuze.querySelectorAll('input[name="buffet_voorkeur"]').forEach(function (radio) {
                 radio.addEventListener('change', buildBericht);
             });
-        }
-
-        // Cook@Home allergie checkbox
-        var cookhomeAllergie = document.getElementById('cookhomeAllergie');
-        var cookhomeAllergieDetail = document.getElementById('cookhomeAllergieDetail');
-        if (cookhomeAllergie) {
-            cookhomeAllergie.addEventListener('change', function () {
-                if (cookhomeAllergieDetail) cookhomeAllergieDetail.style.display = this.checked ? 'block' : 'none';
-                buildBericht();
-            });
-            var cookhomeAllergieInfo = document.getElementById('cookhomeAllergieInfo');
-            if (cookhomeAllergieInfo) {
-                cookhomeAllergieInfo.addEventListener('input', buildBericht);
-            }
         }
 
         // Pasta veggie checkbox

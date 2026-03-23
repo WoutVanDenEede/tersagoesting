@@ -774,16 +774,16 @@ a.card {
 
 /* BBQ Banner */
 .bbq-banner {
-    padding: 0;
+    padding: 2rem 0 0;
     background: var(--color-olive);
 }
 
 .bbq-photo-strip {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
     justify-content: center;
-    padding: 0 1rem;
+    padding: 0 2rem;
     max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;

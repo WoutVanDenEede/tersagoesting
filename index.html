@@ -29,7 +29,7 @@
     <link rel="preload" href="fonts/Cheboyga.ttf" as="font" type="font/ttf" crossorigin>
 
     <!-- Fonts worden lokaal geladen via CSS @font-face -->
-    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="style.css?v=12">
 
     <!-- SEO: Structured Data for Google - FoodService -->
     <script type="application/ld+json">
@@ -379,6 +379,20 @@
         </div>
     </section>
 
+    <!-- Video Reels Section -->
+    <section class="section reels-section" id="reels">
+        <div class="container">
+            <h2 class="section-title">Bekijk ons in actie</h2>
+            <p class="section-subtitle">Een blik achter de schermen</p>
+            <div class="reels-player">
+                <video id="reelsVideo" muted playsinline preload="metadata">
+                    <source src="images/reels/reel-1.mp4" type="video/mp4">
+                </video>
+                <button class="reels-mute-btn" id="reelsMuteBtn" aria-label="Geluid aan/uit">&#128263;</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Instagram Section -->
     <section class="section instagram-section" id="instagram">
         <div class="container">
@@ -713,6 +727,6 @@
     <!-- Floating CTA button -->
     <a href="#contact" class="floating-cta bestel-cta" id="floatingCta">Vraag een offerte!</a>
 
-    <script src="script.js?v=11"></script>
+    <script src="script.js?v=12"></script>
 </body>
 </html>

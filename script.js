@@ -407,6 +407,47 @@ document.addEventListener('DOMContentLoaded', function () {
         var recensieInterval = setInterval(nextRecensie, 10000);
     }
 
+    // === Video Reels: autoplay bij scroll, chaining, mute toggle ===
+    var reelsVideo = document.getElementById('reelsVideo');
+    var reelsMuteBtn = document.getElementById('reelsMuteBtn');
+    var reelsList = [
+        'images/reels/reel-1.mp4',
+        'images/reels/reel-2.mp4',
+        'images/reels/reel-3.mp4',
+        'images/reels/reel-4.mp4',
+        'images/reels/reel-5.mp4'
+    ];
+    var currentReel = 0;
+
+    if (reelsVideo) {
+        // Speel volgende reel af na einde
+        reelsVideo.addEventListener('ended', function () {
+            currentReel = (currentReel + 1) % reelsList.length;
+            reelsVideo.src = reelsList[currentReel];
+            reelsVideo.play();
+        });
+
+        // Autoplay wanneer video in beeld scrollt
+        var reelsObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    reelsVideo.play();
+                } else {
+                    reelsVideo.pause();
+                }
+            });
+        }, { threshold: 0.4 });
+        reelsObserver.observe(reelsVideo);
+
+        // Mute/unmute toggle
+        if (reelsMuteBtn) {
+            reelsMuteBtn.addEventListener('click', function () {
+                reelsVideo.muted = !reelsVideo.muted;
+                reelsMuteBtn.innerHTML = reelsVideo.muted ? '&#128263;' : '&#128266;';
+            });
+        }
+    }
+
     // === URL parameter pre-fill (vanuit aanbod.html) ===
     var params = new URLSearchParams(window.location.search);
     var paramFormule = params.get('formule');

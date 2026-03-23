@@ -786,11 +786,14 @@ a.card {
     padding: 0 1rem;
     max-width: 1200px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .bbq-photo-strip img {
-    height: 240px;
+    height: 200px;
+    max-width: calc(33.333% - 6px);
     width: auto;
+    object-fit: contain;
     border-radius: var(--radius);
 }
 

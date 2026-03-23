@@ -23,20 +23,44 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // === Smooth scroll for anchor links ===
+    // === Scroll to hash target with header offset ===
+    function scrollToHash(hash, smooth) {
+        if (!hash || hash === '#') return;
+        var target = document.querySelector(hash);
+        if (target) {
+            var headerHeight = document.querySelector('.header').offsetHeight;
+            var targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+            window.scrollTo({ top: targetPosition, behavior: smooth ? 'smooth' : 'auto' });
+            // Focus first input if scrolling to contact
+            if (hash === '#contact') {
+                var naamField = document.getElementById('naam');
+                if (naamField) {
+                    setTimeout(function() { naamField.focus(); }, smooth ? 600 : 100);
+                }
+            }
+        }
+    }
+
+    // === Smooth scroll for same-page anchor links ===
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
             var targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            var target = document.querySelector(targetId);
-            if (target) {
+            if (document.querySelector(targetId)) {
                 e.preventDefault();
-                var headerHeight = document.querySelector('.header').offsetHeight;
-                var targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                scrollToHash(targetId, true);
             }
         });
     });
+
+    // === On page load: scroll to hash (from cross-page links like aanbod.html -> index.html#contact) ===
+    if (window.location.hash) {
+        // Override browser default scroll, wait for page to render
+        window.scrollTo(0, 0);
+        setTimeout(function() {
+            scrollToHash(window.location.hash, false);
+        }, 150);
+    }
 
     // === Header shadow on scroll ===
     var header = document.getElementById('header');

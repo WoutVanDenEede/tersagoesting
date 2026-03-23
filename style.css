@@ -918,14 +918,35 @@ a.card {
 }
 
 /* Video Reels Section */
-.reels-section {
-    background: var(--color-bg);
+/* ===== SOCIAL SECTION (Video + Instagram) ===== */
+.social-section {
+    background: var(--color-bg-light);
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.social-video {
+    display: flex;
+    justify-content: center;
+}
+
+.social-instagram {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
 }
 
 .reels-player {
     position: relative;
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 360px;
+    width: 100%;
     border-radius: var(--radius);
     overflow: hidden;
     background: #000;
@@ -961,8 +982,8 @@ a.card {
     background: rgba(0,0,0,0.7);
 }
 
-.reels-prev { left: 12px; }
-.reels-next { right: 12px; }
+.reels-prev { left: 8px; }
+.reels-next { right: 8px; }
 
 .reels-bottom-bar {
     position: absolute;
@@ -1003,71 +1024,47 @@ a.card {
     background: rgba(0,0,0,0.7);
 }
 
-@media (max-width: 480px) {
-    .reels-player {
-        max-width: 100%;
-    }
-}
-
-/* Instagram CTA Block */
-.instagram-section {
-    background-color: var(--color-bg-light);
-}
-
-.instagram-cta-block {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 48px;
-    align-items: center;
-}
-
-.instagram-cta-images {
-    display: flex;
-    justify-content: center;
-}
-
-.insta-single {
-    max-width: 100%;
-    aspect-ratio: auto;
-    border-radius: var(--radius);
+.insta-preview-link {
+    display: block;
+    max-width: 320px;
+    width: 100%;
 }
 
 .insta-preview-img {
     width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     transition: var(--transition);
 }
 
 .insta-preview-img:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     box-shadow: var(--shadow-hover);
-}
-
-.instagram-cta-text {
-    text-align: center;
 }
 
 .insta-handle {
     font-family: var(--font-heading);
     font-size: 2rem;
     color: var(--color-primary);
-    margin-bottom: 12px;
 }
 
-.instagram-cta-text p {
+.insta-desc {
     color: var(--color-text-light);
     font-size: 1.05rem;
     line-height: 1.7;
-    margin-bottom: 24px;
+    max-width: 360px;
 }
 
 @media (max-width: 768px) {
-    .instagram-cta-block {
+    .social-grid {
         grid-template-columns: 1fr;
-        gap: 28px;
+        gap: 40px;
+    }
+    .reels-player {
+        max-width: 100%;
+    }
+    .insta-preview-link {
+        max-width: 100%;
     }
 }
 

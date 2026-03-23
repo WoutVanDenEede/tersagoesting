@@ -601,7 +601,7 @@ a.card {
 
 .bbq-price {
     font-family: var(--font-heading);
-    color: var(--color-primary);
+    color: #fff;
     font-size: 1.1rem;
     margin-top: 8px;
 }
@@ -775,7 +775,7 @@ a.card {
 /* BBQ Banner */
 .bbq-banner {
     padding: 0;
-    background: #f5ebe0;
+    background: var(--color-olive);
 }
 
 .bbq-photo-strip {
@@ -804,6 +804,7 @@ a.card {
 
 .bbq-content .section-title {
     margin-bottom: 1rem;
+    color: #fff;
 }
 
 .bbq-content p {
@@ -811,6 +812,17 @@ a.card {
     margin: 0 auto 1.5rem;
     font-size: 1.05rem;
     line-height: 1.7;
+    color: #fff;
+}
+
+.bbq-content .btn-outline {
+    color: #fff;
+    border-color: rgba(255,255,255,0.6);
+}
+
+.bbq-content .btn-outline:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: #fff;
 }
 
 @media (max-width: 768px) {

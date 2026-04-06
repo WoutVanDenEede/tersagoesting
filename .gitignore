@@ -1,2 +1,10 @@
 # Originele bronbestanden (niet nodig voor de website)
 images/_originals/
+
+# Node.js (alleen nodig voor image conversie)
+node_modules/
+package.json
+package-lock.json
+convert-webp.js
+update-html-images.js
+image-dimensions.json

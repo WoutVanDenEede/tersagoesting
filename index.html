@@ -2,12 +2,17 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B359G3PM00"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B359G3PM00');</script>
+    <!-- Google Analytics (loaded after cookie consent) -->
+    <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    if(localStorage.getItem('cookieConsent')==='accepted'){
+        var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-B359G3PM00';document.head.appendChild(s);
+        gtag('js',new Date());gtag('config','G-B359G3PM00');
+    }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tersagoesting | Catering en traiteur in en rond Puurs-Sint-Amands</title>
-    <meta name="description" content="Tersagoesting: catering en traiteur in en rond Puurs-Sint-Amands. Hapjes, buffetten, Cook@Home en meer. Vers bereid voor jouw feest, babyborrel of bedrijfsevent. Vraag een vrijblijvende offerte!">
+    <title>Tersagoesting | Catering en traiteur in Puurs</title>
+    <meta name="description" content="Tersagoesting: catering en traiteur in Puurs-Sint-Amands. Hapjes, buffetten, Cook@Home en BBQ. Vers bereid voor jouw feest of event.">
     <meta name="keywords" content="catering Puurs, traiteur Puurs, catering Puurs-Sint-Amands, catering Temse, catering Sint-Niklaas, catering Willebroek, catering Bornem, catering Antwerpen, catering Mechelen, catering Duffel, catering Londerzeel, hapjes bestellen, buffet catering, cook at home, tersagoesting, feest catering, babyborrel catering, bedrijfsevent catering, communiefeest catering, huwelijk catering, barbecue catering, traiteur Klein-Brabant">
     <meta name="author" content="Tersagoesting">
     <meta name="robots" content="index, follow">
@@ -15,24 +20,35 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Tersagoesting | Catering en traiteur in en rond Puurs-Sint-Amands">
-    <meta property="og:description" content="Tersagoesting: catering en traiteur in en rond Puurs-Sint-Amands. Hapjes, buffetten, Cook@Home en meer. Vers bereid voor jouw feest, babyborrel of bedrijfsevent.">
+    <meta property="og:title" content="Tersagoesting | Catering en traiteur in Puurs">
+    <meta property="og:description" content="Tersagoesting: catering en traiteur in Puurs-Sint-Amands. Hapjes, buffetten, Cook@Home en BBQ. Vers bereid voor jouw feest of event.">
     <meta property="og:url" content="https://tersagoesting.be/">
     <meta property="og:image" content="https://tersagoesting.be/images/foto-hero2.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="nl_BE">
     <meta property="og:site_name" content="Tersagoesting">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tersagoesting | Catering en traiteur in en rond Puurs-Sint-Amands">
-    <meta name="twitter:description" content="Tersagoesting: catering en traiteur in en rond Puurs-Sint-Amands. Hapjes, buffetten, Cook@Home en meer. Vers bereid voor jouw feest, babyborrel of bedrijfsevent.">
+    <meta name="twitter:title" content="Tersagoesting | Catering en traiteur in Puurs">
+    <meta name="twitter:description" content="Tersagoesting: catering en traiteur in Puurs-Sint-Amands. Hapjes, buffetten, Cook@Home en BBQ. Vers bereid voor jouw feest of event.">
     <meta name="twitter:image" content="https://tersagoesting.be/images/foto-hero2.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo-tersagoesting.png" type="image/png">
+
+    <!-- Preconnect third-party origins -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+
+    <!-- AI discoverability -->
+    <link rel="llms" href="/llms.txt">
 
     <!-- Font preload -->
     <link rel="preload" href="fonts/Cheboyga.ttf" as="font" type="font/ttf" crossorigin>
 
     <!-- Fonts worden lokaal geladen via CSS @font-face -->
-    <link rel="stylesheet" href="style.css?v=19">
+    <link rel="stylesheet" href="style.css?v=20">
 
     <!-- SEO: Structured Data for Google - FoodService -->
     <script type="application/ld+json">
@@ -153,8 +169,27 @@
         ]
     }
     </script>
+
+    <!-- SEO: WebSite Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Tersagoesting",
+        "url": "https://tersagoesting.be",
+        "description": "Catering en traiteur in Puurs-Sint-Amands",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Tersagoesting",
+            "logo": "https://tersagoesting.be/images/logo-tersagoesting.png"
+        }
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip to content -->
+    <a href="#main-content" class="skip-link">Ga naar inhoud</a>
+
     <!-- Top banner -->
     <div class="top-bar">
         <p>Catering en traiteur in en rond Puurs-Sint-Amands <a href="#contact">Vraag een offerte!</a></p>
@@ -189,7 +224,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-inner">
@@ -217,7 +252,7 @@
                 <a href="#contact" class="btn btn-primary bestel-cta">Vraag een offerte!</a>
             </div>
             <div class="hero-image hero-slideshow">
-                <img src="images/foto-hero2.jpg" alt="Tersagoesting catering aan het werk" class="hero-slide active">
+                <img src="images/foto-hero2.jpg" alt="Tersagoesting catering aan het werk" class="hero-slide active" fetchpriority="high">
                 <img src="images/foto-hero3.jpg" alt="Leni van Tersagoesting met een verse schotel" class="hero-slide" loading="lazy">
                 <img src="images/foto-hero4.jpg" alt="Leni serveert desserts op een feest" class="hero-slide" loading="lazy">
                 <img src="images/foto-hero5.jpg" alt="Leni in de keuken van Tersagoesting" class="hero-slide" loading="lazy">
@@ -391,6 +426,7 @@
                     <div class="reels-player">
                         <video id="reelsVideo" muted playsinline preload="metadata">
                             <source src="images/reels/reel-1.mp4" type="video/mp4">
+                            <track kind="captions" src="" label="Nederlands" srclang="nl" default>
                         </video>
                         <button class="reels-nav-btn reels-prev" id="reelsPrev" aria-label="Vorige video">&#10094;</button>
                         <button class="reels-nav-btn reels-next" id="reelsNext" aria-label="Volgende video">&#10095;</button>
@@ -535,28 +571,28 @@
                     <div class="contact-item">
                         <div class="contact-icon">&#9742;</div>
                         <div>
-                            <h4>Telefoon</h4>
+                            <h3>Telefoon</h3>
                             <p><a href="tel:+32476624011">0476 62 40 11</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">&#9993;</div>
                         <div>
-                            <h4>E-mail</h4>
+                            <h3>E-mail</h3>
                             <p><a href="mailto:tersagoesting@gmail.com">tersagoesting@gmail.com</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">&#9873;</div>
                         <div>
-                            <h4>Adres</h4>
+                            <h3>Adres</h3>
                             <p>Vijverstraat 67<br>2870 Puurs-Sint-Amands</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">&#128247;</div>
                         <div>
-                            <h4>Volg ons</h4>
+                            <h3>Volg ons</h3>
                             <div class="social-links">
                                 <a href="https://www.instagram.com/tersagoesting/" target="_blank" rel="noopener" class="social-link">Instagram</a>
                                 <a href="https://www.facebook.com/profile.php?id=61558171506722" target="_blank" rel="noopener" class="social-link">Facebook</a>
@@ -568,7 +604,8 @@
                     <input type="hidden" name="_subject" value="Nieuwe aanvraag via tersagoesting.be">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_next" value="https://tersagoesting.be/bedankt.html">
-                    <input type="text" name="_honey" style="display:none">
+                    <label for="_honey" class="sr-only">Laat dit veld leeg</label>
+                    <input type="text" id="_honey" name="_honey" style="display:none" autocomplete="off" tabindex="-1">
                     <input type="hidden" name="_template" value="table">
                     <div class="form-group">
                         <label for="naam">Naam *</label>
@@ -657,7 +694,7 @@
                         <label>Extra opties</label>
                         <div class="checkbox-group">
                             <label class="checkbox-label">
-                                <input type="checkbox" id="pastaVeggie">
+                                <input type="checkbox" id="pastaVeggie" aria-label="Vegetarische saus toevoegen">
                                 <span>Ik wil ook een vegetarische saus</span>
                             </label>
                             <div class="checkbox-sub" id="pastaVeggieDetail" style="display:none;">
@@ -670,7 +707,7 @@
                         <label>Extra opties</label>
                         <div class="checkbox-group">
                             <label class="checkbox-label">
-                                <input type="checkbox" id="burgerVeggie">
+                                <input type="checkbox" id="burgerVeggie" aria-label="Veggie-burger toevoegen">
                                 <span>Ik wil ook een veggie-burger</span>
                             </label>
                             <div class="checkbox-sub" id="burgerVeggieDetail" style="display:none;">
@@ -718,14 +755,23 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <p>&copy; 2026 Tersagoesting. Alle rechten voorbehouden.</p>
+                <p>&copy; 2026 Tersagoesting. Alle rechten voorbehouden. | <a href="privacybeleid.html">Privacybeleid</a></p>
             </div>
         </div>
     </footer>
 
+    <!-- Cookie consent banner -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie-instellingen">
+        <p>Deze website gebruikt cookies voor analyse (Google Analytics). Door verder te surfen ga je akkoord met ons <a href="privacybeleid.html">privacybeleid</a>.</p>
+        <div class="cookie-buttons">
+            <button class="btn btn-primary cookie-accept" id="cookieAccept">Akkoord</button>
+            <button class="btn btn-outline cookie-decline" id="cookieDecline">Weigeren</button>
+        </div>
+    </div>
+
     <!-- Floating CTA button -->
     <a href="#contact" class="floating-cta bestel-cta" id="floatingCta">Vraag een offerte!</a>
 
-    <script src="script.js?v=19"></script>
+    <script src="script.js?v=20"></script>
 </body>
 </html>

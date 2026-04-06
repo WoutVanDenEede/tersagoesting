@@ -479,6 +479,36 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // === Cookie consent banner ===
+    var cookieBanner = document.getElementById('cookieBanner');
+    var cookieAccept = document.getElementById('cookieAccept');
+    var cookieDecline = document.getElementById('cookieDecline');
+
+    if (cookieBanner && !localStorage.getItem('cookieConsent')) {
+        cookieBanner.classList.add('visible');
+    }
+
+    if (cookieAccept) {
+        cookieAccept.addEventListener('click', function () {
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookieBanner.classList.remove('visible');
+            // Load Google Analytics now
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-B359G3PM00';
+            document.head.appendChild(s);
+            gtag('js', new Date());
+            gtag('config', 'G-B359G3PM00');
+        });
+    }
+
+    if (cookieDecline) {
+        cookieDecline.addEventListener('click', function () {
+            localStorage.setItem('cookieConsent', 'declined');
+            cookieBanner.classList.remove('visible');
+        });
+    }
+
     // === URL parameter pre-fill (vanuit aanbod.html) ===
     var params = new URLSearchParams(window.location.search);
     var paramFormule = params.get('formule');

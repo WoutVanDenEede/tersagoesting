@@ -794,11 +794,16 @@ a.card {
     overflow: hidden;
 }
 
-.bbq-photo-strip img {
+.bbq-photo-strip picture {
     height: 200px;
     max-width: calc(33.333% - 6px);
-    width: auto;
-    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.bbq-photo-strip img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
     border-radius: var(--radius);
 }
 
@@ -831,13 +836,13 @@ a.card {
 }
 
 @media (max-width: 768px) {
-    .bbq-photo-strip img {
+    .bbq-photo-strip picture {
         height: 180px;
     }
 }
 
 @media (max-width: 480px) {
-    .bbq-photo-strip img {
+    .bbq-photo-strip picture {
         height: 140px;
     }
 }

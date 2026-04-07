@@ -425,7 +425,7 @@ img {
     transition: opacity 1.5s ease;
 }
 
-.hero-slide:first-child {
+.hero-slideshow picture:first-child .hero-slide {
     position: relative;
 }
 
@@ -450,7 +450,7 @@ img {
     transition: opacity 1s ease;
 }
 
-.carousel-slide:first-child {
+.card-carousel picture:first-child .carousel-slide {
     position: relative;
 }
 

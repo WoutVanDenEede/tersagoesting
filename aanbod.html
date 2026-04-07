@@ -474,6 +474,31 @@
     <!-- Floating CTA button -->
     <a href="index.html#contact" class="floating-cta" id="floatingCta">Vraag een offerte!</a>
 
+    <!-- Privacy gate overlay -->
+    <div class="privacy-gate" id="privacyGate" role="dialog" aria-label="Privacybeleid">
+        <div class="privacy-gate-content">
+            <h2>Even bevestigen</h2>
+            <p>Om ons aanbod te bekijken, vragen we je akkoord met ons <a href="privacybeleid.html" target="_blank">privacybeleid</a>.</p>
+            <button class="btn btn-primary" id="privacyGateAccept">Ik ga akkoord</button>
+        </div>
+    </div>
+    <script>
+    (function() {
+        var gate = document.getElementById('privacyGate');
+        if (localStorage.getItem('privacyAccepted') === 'true') {
+            gate.style.display = 'none';
+        } else {
+            gate.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        document.getElementById('privacyGateAccept').addEventListener('click', function() {
+            localStorage.setItem('privacyAccepted', 'true');
+            gate.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+    })();
+    </script>
+
     <script src="script.js?v=20"></script>
 </body>
 </html>

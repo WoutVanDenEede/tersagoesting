@@ -2806,3 +2806,56 @@ a.card {
         display: none;
     }
 }
+
+/* ===== PRIVACY GATE & CHECKBOX ===== */
+
+.privacy-check {
+    margin-top: 8px;
+}
+
+.privacy-check a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.privacy-gate {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.privacy-gate-content {
+    background: var(--color-bg-white);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    max-width: 440px;
+    text-align: center;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+.privacy-gate-content h2 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    margin-bottom: 12px;
+    font-size: 1.6rem;
+}
+
+.privacy-gate-content p {
+    margin-bottom: 24px;
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.privacy-gate-content a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.privacy-gate-content .btn {
+    min-width: 200px;
+}

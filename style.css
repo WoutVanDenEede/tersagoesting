@@ -701,7 +701,7 @@ a.card {
 
 .recensie-carousel-track {
     position: relative;
-    min-height: 200px;
+    min-height: 120px;
 }
 
 .recensie-slide {
@@ -746,6 +746,11 @@ a.card {
     font-size: 1.2rem;
     color: var(--terracotta);
     text-align: right;
+}
+
+.recensie-google-btn {
+    margin-top: 28px;
+    display: inline-flex;
 }
 
 .recensie-dots {
@@ -2909,7 +2914,6 @@ a.card {
 /* --- Reviews: stacked shadow + decorative quote --- */
 .recensie-slide {
     box-shadow: 4px 4px 0 var(--color-cream), 0 2px 12px rgba(0,0,0,0.04);
-    position: relative;
 }
 
 .recensie-slide::before {

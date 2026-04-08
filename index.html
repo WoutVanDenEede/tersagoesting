@@ -834,8 +834,8 @@
         // Dynamische maanden
         var nu = new Date();
         var maandNamen = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
-        var m1 = maandNamen[nu.getMonth() + 1] || maandNamen[0];
-        var m2 = maandNamen[nu.getMonth() + 2] || maandNamen[(nu.getMonth() + 2) % 12];
+        var m1 = maandNamen[(nu.getMonth() + 1) % 12];
+        var m2 = maandNamen[(nu.getMonth() + 2) % 12];
         var tekst = 'Onze agenda voor ' + m1 + ' en ' + m2 + ' raakt stilaan vol. Heb je een feestje, barbecue of etentje gepland? Laat het ons snel weten, dan houden we jouw datum vrij.';
         document.getElementById('urgentiePopupTekst').textContent = tekst;
 

@@ -427,34 +427,37 @@
         </div>
     </section>
 
-    <!-- Volg ons: Video + Instagram naast elkaar -->
+    <!-- Instagram Feed (pagina-breed) -->
     <section class="section social-section" id="social">
         <div class="container">
             <h2 class="section-title">Volg ons voor meer foto's en filmpjes</h2>
             <p class="section-subtitle">Zo blijf je op de hoogte van onze acties en krijg je een blik achter de schermen</p>
-            <div class="social-grid">
-                <div class="social-video">
-                    <div class="reels-player">
-                        <video id="reelsVideo" muted playsinline preload="metadata">
-                            <source src="images/reels/reel-1.mp4" type="video/mp4">
-                            <track kind="captions" src="" label="Nederlands" srclang="nl" default>
-                        </video>
-                        <button class="reels-nav-btn reels-prev" id="reelsPrev" aria-label="Vorige video">&#10094;</button>
-                        <button class="reels-nav-btn reels-next" id="reelsNext" aria-label="Volgende video">&#10095;</button>
-                        <div class="reels-bottom-bar">
-                            <span class="reels-counter" id="reelsCounter">1 / 5</span>
-                            <button class="reels-mute-btn" id="reelsMuteBtn" aria-label="Geluid aan/uit">&#128263;</button>
-                        </div>
+            <div class="social-instagram social-instagram--full">
+                <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+                <iframe src="//lightwidget.com/widgets/cc6d5dd5a7335462a5d6e05d1cafe888.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+                <p class="insta-handle">@tersagoesting</p>
+                <a href="https://www.instagram.com/tersagoesting/" target="_blank" rel="noopener" class="btn btn-primary">
+                    Volg ons op Instagram &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Reels -->
+    <section class="section social-section" id="reels">
+        <div class="container" style="text-align:center;">
+            <div class="social-video">
+                <div class="reels-player">
+                    <video id="reelsVideo" muted playsinline preload="metadata">
+                        <source src="images/reels/reel-1.mp4" type="video/mp4">
+                        <track kind="captions" src="" label="Nederlands" srclang="nl" default>
+                    </video>
+                    <button class="reels-nav-btn reels-prev" id="reelsPrev" aria-label="Vorige video">&#10094;</button>
+                    <button class="reels-nav-btn reels-next" id="reelsNext" aria-label="Volgende video">&#10095;</button>
+                    <div class="reels-bottom-bar">
+                        <span class="reels-counter" id="reelsCounter">1 / 5</span>
+                        <button class="reels-mute-btn" id="reelsMuteBtn" aria-label="Geluid aan/uit">&#128263;</button>
                     </div>
-                </div>
-                <div class="social-instagram">
-                    <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-                    <iframe src="//lightwidget.com/widgets/cc6d5dd5a7335462a5d6e05d1cafe888.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
-                    <p class="insta-handle">@tersagoesting</p>
-                    <p class="insta-desc">Volg ons voor inspiratie, seizoensgebonden menu's en een blik achter de schermen!</p>
-                    <a href="https://www.instagram.com/tersagoesting/" target="_blank" rel="noopener" class="btn btn-primary">
-                        Volg ons op Instagram &rarr;
-                    </a>
                 </div>
             </div>
         </div>

@@ -117,7 +117,7 @@ Responsive breakpoints: volgen bestaande patronen in style.css (768px, 600px).
 ## 5. Maandelijkse workflow
 
 1. Gebruiker levert tekst + foto aan
-2. Tekst wordt geanalyseerd met het blog-prompt-template (docs/blog-prompt-template.md): 5 invalshoeken brainstormen, titel kiezen, structuur opzetten, content schrijven
+2. Tekst wordt gereviewd en geanalyseerd op basis van het blog-prompt-template (docs/blog-prompt-template.md): 5 invalshoeken brainstormen, titel kiezen, structuur opzetten, content schrijven. Resultaat wordt voorgelegd aan de gebruiker voor feedback en eventuele aanpassingen. Pas na expliciete 'go' wordt de post gebouwd.
 3. Nieuw HTML-bestand aanmaken in `/blog/` op basis van het post-template
 4. Foto optimaliseren (WebP + JPG fallback) en plaatsen in `images/blog/`
 5. Kaart toevoegen aan `blog.html` (bovenaan het grid)

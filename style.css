@@ -3208,24 +3208,26 @@ a.card {
 .blog-share {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-top: 16px;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 28px;
 }
 
 .blog-share-label {
     font-size: 0.85rem;
-    color: var(--color-text-light);
+    color: var(--color-text);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     font-family: var(--font-body);
+    font-weight: 600;
 }
 
 .blog-share-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     color: white;
     text-decoration: none;
@@ -3242,11 +3244,12 @@ a.card {
 .blog-share-whatsapp { background: #25D366; }
 
 .blog-share-promo {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--color-text-light);
-    margin-top: 12px;
-    margin-bottom: 0;
+    margin-top: 10px;
+    margin-bottom: 32px;
     font-style: italic;
+    text-align: center;
 }
 
 .blog-share-promo strong {

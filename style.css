@@ -3295,6 +3295,20 @@ a.card {
     margin: 24px 0;
 }
 
+.blog-tip-box {
+    background: var(--color-cream-light);
+    border-left: 5px solid var(--color-orange);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 20px 24px;
+    margin: 28px 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.blog-tip-box strong {
+    color: var(--color-primary);
+}
+
 .blog-pullquote {
     border-left: 5px solid var(--color-primary);
     padding: 24px 32px;
@@ -3403,6 +3417,11 @@ a.card {
 
     .blog-post-body h3 {
         font-size: 1.2rem;
+    }
+
+    .blog-tip-box {
+        padding: 16px 20px;
+        font-size: 1rem;
     }
 
     .blog-pullquote {

@@ -14,9 +14,16 @@ description: Schrijfstijl, opmaak- en SEO-voorkeuren voor Tersagoesting blogpost
 ## Visuele opmaak
 
 - Maak de blogpost visueel sterk en scanbaar
-- Werk met kadertjes, opsommingen en vetgedrukte kernwoorden
+- Werk met tip-kadertjes (`<div class="blog-tip-box">`), opsommingen en vetgedrukte kernwoorden
 - Gebruik bullet points en genummerde lijsten waar het de leesbaarheid verhoogt
-- Pull quotes voor kernzinnen die opvallen
+- Pull quotes gecentreerd, zonder kader, met oranje aanhalingstekens (`<blockquote class="blog-pullquote">`)
+
+## Social share & korting
+
+- Elke blogpost bevat share-knoppen (Facebook, X, WhatsApp) onder de titel
+- Onder de knoppen staat altijd deze promo-tekst:
+  *"Kan je aantonen dat je dit artikel hebt gedeeld op sociale media? Dan krijg je **5% korting** (excl. BTW) op je eerste bestelling bij Tersagoesting!"*
+- Dit blok zit in de `blog-post-header` div, na de meta-info
 
 ## Interne links
 

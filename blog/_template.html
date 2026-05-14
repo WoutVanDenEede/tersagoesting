@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google Analytics (loaded after cookie consent) -->
+    <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    if(localStorage.getItem('cookieConsent')==='accepted'){
+        var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-B359G3PM00';document.head.appendChild(s);
+        gtag('js',new Date());gtag('config','G-B359G3PM00');
+    }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITEL}} | Blog | Tersagoesting</title>
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <meta name="keywords" content="{{KEYWORDS}}">
+    <meta name="author" content="Tersagoesting">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tersagoesting.be/blog/{{SLUG}}.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{TITEL}} | Blog | Tersagoesting">
+    <meta property="og:description" content="{{META_DESCRIPTION}}">
+    <meta property="og:url" content="https://tersagoesting.be/blog/{{SLUG}}.html">
+    <meta property="og:image" content="https://tersagoesting.be/images/blog/{{SLUG}}.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="nl_BE">
+    <meta property="og:site_name" content="Tersagoesting">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{TITEL}} | Blog | Tersagoesting">
+    <meta name="twitter:description" content="{{META_DESCRIPTION}}">
+    <meta name="twitter:image" content="https://tersagoesting.be/images/blog/{{SLUG}}.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="../images/favicon-512.png" type="image/png" sizes="512x512">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+
+    <!-- Preconnect third-party origins -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+
+    <!-- Font preload -->
+    <link rel="preload" href="../fonts/Cheboyga.ttf" as="font" type="font/ttf" crossorigin>
+
+    <!-- Fonts worden lokaal geladen via CSS @font-face -->
+    <link rel="stylesheet" href="../style.css?v=23">
+
+    <!-- SEO: Structured Data - BlogPosting -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "{{TITEL}}",
+        "description": "{{META_DESCRIPTION}}",
+        "image": "https://tersagoesting.be/images/blog/{{SLUG}}.jpg",
+        "datePublished": "{{YYYY-MM-DD}}",
+        "dateModified": "{{YYYY-MM-DD}}",
+        "author": {
+            "@type": "Organization",
+            "name": "Tersagoesting",
+            "url": "https://tersagoesting.be"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Tersagoesting",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://tersagoesting.be/images/logo-tersagoesting.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://tersagoesting.be/blog/{{SLUG}}.html"
+        }
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Top banner -->
+    <div class="top-bar">
+        <p>Catering en traiteur in en rond Puurs-Sint-Amands <a href="../index.html#contact">Vraag een offerte!</a></p>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="../index.html" class="logo">
+                <picture><source srcset="../images/logo-tersagoesting.webp" type="image/webp"><img src="../images/logo-tersagoesting.png" alt="Tersagoesting - Catering en traiteur in Puurs" class="logo-img" width="1088" height="710"></picture>
+            </a>
+            <nav class="nav" id="nav">
+                <div class="nav-dropdown">
+                    <a href="../aanbod.html" class="nav-link">Ons aanbod ▾</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="../hapjes-bestellen.html">Hapjes &amp; Dessertjes</a>
+                        <a href="../aanbod.html#formules">Buffetten</a>
+                        <a href="../cook-at-home.html">Cook@Home</a>
+                        <a href="../aanbod.html#bbq-aanbod">BBQ</a>
+                        <a href="../aanbod.html#formules">Pasta &amp; Burger</a>
+                    </div>
+                </div>
+                <a href="../index.html#hoe-bestellen" class="nav-link">Hoe bestel ik?</a>
+                <a href="../blog.html" class="nav-link">Blog</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+                <a href="../index.html#contact" class="nav-link nav-cta">Vraag een offerte</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu openen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+    <!-- Breadcrumb -->
+    <div class="container">
+        <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a><span>›</span>
+            <a href="../blog.html">Blog</a><span>›</span>
+            {{TITEL}}
+        </nav>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="blog-post-hero">
+        <picture>
+            <source srcset="../images/blog/{{SLUG}}.webp" type="image/webp">
+            <img src="../images/blog/{{SLUG}}.jpg" alt="{{TITEL}}" width="1200" height="675">
+        </picture>
+    </div>
+
+    <!-- Article Header -->
+    <div class="blog-post-header">
+        <h1>{{TITEL}}</h1>
+        <p class="blog-post-meta">{{MAAND JAAR}}<span>&middot;</span>{{X}} min leestijd</p>
+    </div>
+
+    <!-- Article Body -->
+    <article class="blog-post-body grain-texture">
+
+        {{ARTIKEL_INHOUD}}
+
+        <!-- Voorbeeld structuur:
+        <p>Introductie paragraaf...</p>
+
+        <h2>Tussenkop</h2>
+        <p>Paragraaf tekst...</p>
+
+        <blockquote class="blog-pullquote">
+            Een opvallende quote of kernzin uit het artikel.
+        </blockquote>
+
+        <h2>Nog een tussenkop</h2>
+        <p>Meer tekst...</p>
+
+        <ul>
+            <li>Lijstitem 1</li>
+            <li>Lijstitem 2</li>
+        </ul>
+        -->
+
+        <!-- CTA blok -->
+        <div class="blog-cta">
+            <h3>Heb je een vraag voor volgende maand?</h3>
+            <p>Laat het ons weten en misschien beantwoorden wij jouw vraag in ons volgende artikel!</p>
+            <a href="../index.html#contact" class="btn">Stel je vraag &rarr;</a>
+        </div>
+
+        <a href="../blog.html" class="blog-back-link">&larr; Terug naar alle artikels</a>
+
+    </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <p>Goesting gekregen?</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigatie</h4>
+                <a href="../aanbod.html">Ons aanbod</a>
+                <a href="../hapjes-bestellen.html">Hapjes &amp; Dessertjes</a>
+                <a href="../cook-at-home.html">Cook@Home</a>
+                <a href="../blog.html">Blog</a>
+                <a href="../index.html#hoe-bestellen">Hoe bestel ik?</a>
+                <a href="../index.html#contact">Contact</a>
+            </div>
+            <div class="footer-links">
+                <h4>Catering in de regio</h4>
+                <a href="../catering-temse.html">Catering Temse</a>
+                <a href="../catering-bornem.html">Catering Bornem</a>
+                <a href="../catering-mechelen.html">Catering Mechelen</a>
+                <a href="../catering-sint-niklaas.html">Catering Sint-Niklaas</a>
+                <a href="../catering-willebroek.html">Catering Willebroek</a>
+                <a href="../catering-duffel.html">Catering Duffel</a>
+                <a href="../catering-londerzeel.html">Catering Londerzeel</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>tersagoesting@gmail.com</p>
+                <p>0476 62 40 11</p>
+                <p>Vijverstraat 67, 2870 Puurs-Sint-Amands</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/tersagoesting/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61558171506722" target="_blank" rel="noopener">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Tersagoesting. Alle rechten voorbehouden. | <a href="../privacybeleid.html">Privacybeleid</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie consent banner -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie-instellingen">
+        <p>Deze website gebruikt cookies voor analyse (Google Analytics). Door verder te surfen ga je akkoord met ons <a href="../privacybeleid.html">privacybeleid</a>.</p>
+        <div class="cookie-buttons">
+            <button class="btn btn-primary cookie-accept" id="cookieAccept">Akkoord</button>
+            <button class="btn btn-outline cookie-decline" id="cookieDecline">Weigeren</button>
+        </div>
+    </div>
+
+    <!-- Floating CTA button -->
+    <a href="../index.html#contact" class="floating-cta bestel-cta" id="floatingCta">Vraag een offerte!</a>
+
+    <script src="../script.js?v=22"></script>
+
+</body>
+</html>

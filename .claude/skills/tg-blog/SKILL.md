@@ -76,13 +76,14 @@ Lees het blog-prompt-template in `docs/blog-prompt-template.md` voor de volledig
 ### Fase 4: Content schrijven
 
 1. **Schrijf de volledige blogpost** in HTML-formaat, klaar om in het template te plaatsen
-2. Gebruik deze HTML-elementen:
-   - `<p>` voor paragrafen
-   - `<h2>` voor tussensecties
-   - `<h3>` voor sub-secties
-   - `<blockquote class="blog-pullquote">` voor pull quotes
-   - `<ul>/<ol>` met `<li>` voor lijsten
-   - `<strong>` voor nadruk
+2. Gebruik deze HTML-elementen voor een typografisch aantrekkelijk artikel:
+   - `<p class="blog-post-intro">` — **ALTIJD** voor de allereerste paragraaf (de inleiding). Deze verschijnt groter en met een scheidingslijn eronder. Vat hierin de kern van het artikel samen in 2-3 zinnen.
+   - `<p>` — voor gewone paragrafen. De eerste gewone `<p>` (na de intro) krijgt automatisch een **drop cap** (grote eerste letter).
+   - `<h2>` — voor tussensecties. Elke H2 krijgt automatisch een oranje streepje eronder.
+   - `<h3>` — voor sub-secties binnen een H2-blok
+   - `<blockquote class="blog-pullquote">` — voor pull quotes (kernzinnen die opvallen). Gebruik minstens 1 per artikel. Verschijnt met groot aanhalingsteken en terracotta accent.
+   - `<ul>/<ol>` met `<li>` — voor lijsten
+   - `<strong>` — voor nadruk
 3. Schrijf in het Nederlands (Belgisch), vlot en toegankelijk
 4. Lengte: 800-1200 woorden
 5. Sluit af met de standaard CTA (zit al in het template)

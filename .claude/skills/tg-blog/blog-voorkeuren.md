@@ -16,7 +16,9 @@ description: Schrijfstijl, opmaak- en SEO-voorkeuren voor Tersagoesting blogpost
 - Maak de blogpost visueel sterk en scanbaar
 - Werk met tip-kadertjes (`<div class="blog-tip-box">`), opsommingen en vetgedrukte kernwoorden
 - Gebruik bullet points en genummerde lijsten waar het de leesbaarheid verhoogt
-- Pull quotes gecentreerd, zonder kader, met oranje aanhalingstekens (`<blockquote class="blog-pullquote">`)
+- Pull quotes gecentreerd, zonder kader/achtergrond, met groot oranje aanhalingsteken erboven (`<blockquote class="blog-pullquote">`)
+- Hero-afbeelding: `object-position: center 20%` zodat gezichten goed in beeld staan
+- Voldoende witruimte tussen secties, niet te druk
 
 ## Social share & korting
 

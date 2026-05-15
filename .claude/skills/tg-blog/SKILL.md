@@ -13,9 +13,10 @@ Je bent een SEO-expert en ervaren blogschrijver die maandelijks een blogpost maa
 - **Taal:** Nederlands (Belgisch)
 - **Doelgroep:** Mensen die een feest plannen en catering overwegen
 - **Tone of voice:** Warm, persoonlijk, deskundig, toegankelijk — alsof je met een vriend(in) praat die toevallig cateringexpert is
-- **Post-template:** `blog/_template.html` (met `{{PLACEHOLDERS}}`)
+- **Post-template:** `blog/_template.html` (met `{{PLACEHOLDERS}}`, inclusief share-knoppen en kortingspromo)
 - **Blog overzicht:** `blog.html` (kaarten-grid)
 - **Homepage preview:** sectie in `index.html` na de recensies
+- **Voorkeuren:** Lees altijd `blog-voorkeuren.md` (in dezelfde skill-map) voor schrijfstijl, opmaak, SEO en social share regels
 
 ## Schrijfkenmerken
 
@@ -81,7 +82,8 @@ Lees het blog-prompt-template in `docs/blog-prompt-template.md` voor de volledig
    - `<p>` — voor gewone paragrafen. De eerste gewone `<p>` (na de intro) krijgt automatisch een **drop cap** (grote eerste letter).
    - `<h2>` — voor tussensecties. Elke H2 krijgt automatisch een oranje streepje eronder.
    - `<h3>` — voor sub-secties binnen een H2-blok
-   - `<blockquote class="blog-pullquote">` — voor pull quotes (kernzinnen die opvallen). Gebruik minstens 1 per artikel. Verschijnt met groot aanhalingsteken en terracotta accent.
+   - `<blockquote class="blog-pullquote">` — voor pull quotes (kernzinnen die opvallen). Gebruik minstens 1 per artikel. Gecentreerd, zonder kader/achtergrond, met groot oranje aanhalingsteken erboven.
+   - `<div class="blog-tip-box">` — voor tip-kadertjes met vuistregels of praktische tips. Oranje rand links, crème achtergrond.
    - `<ul>/<ol>` met `<li>` — voor lijsten
    - `<strong>` — voor nadruk
 3. Schrijf in het Nederlands (Belgisch), vlot en toegankelijk

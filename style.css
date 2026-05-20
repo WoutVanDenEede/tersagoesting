@@ -604,6 +604,12 @@ a.card {
     margin-top: 8px;
 }
 
+.card-price-note {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-top: 2px;
+}
+
 .bbq-price {
     font-family: var(--font-heading);
     color: #fff;

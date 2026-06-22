@@ -3221,6 +3221,16 @@ a.card {
     letter-spacing: -0.02em;
 }
 
+.blog-post-subtitle {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    color: var(--color-text);
+    line-height: 1.4;
+    margin: 0 auto 24px;
+    max-width: 640px;
+    font-weight: 400;
+}
+
 .blog-post-meta {
     color: var(--color-text-light);
     font-size: 0.95rem;

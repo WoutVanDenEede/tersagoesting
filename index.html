@@ -446,6 +446,19 @@
             <p class="section-subtitle">Elke maand beantwoorden wij de meest gestelde catering-vragen</p>
             <div class="blog-preview-grid">
 
+                <a href="blog/bbq-zelf-of-cateraar.html" class="blog-preview-card">
+                    <div class="blog-preview-card-image">
+                        <picture>
+                            <source srcset="images/blog/bbq-zelf-of-cateraar.webp" type="image/webp">
+                            <img src="images/blog/bbq-zelf-of-cateraar.jpg" alt="Zelf de barbecue aansteken of een cateraar bestellen?" width="600" height="338" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="blog-preview-card-body">
+                        <h3>Zelf de barbecue aansteken of een cateraar bestellen?</h3>
+                        <p>De eerlijke rekening in tijd, stress en geld. Plus: wat een BBQ aan huis kost.</p>
+                    </div>
+                </a>
+
                 <a href="blog/gasten-minder-honger.html" class="blog-preview-card">
                     <div class="blog-preview-card-image">
                         <picture>
@@ -893,27 +906,4 @@
         var tekst = 'Onze agenda voor ' + m1 + ' en ' + m2 + ' raakt stilaan vol. Heb je een feestje, barbecue of etentje gepland? Laat het ons snel weten, dan houden we jouw datum vrij.';
         document.getElementById('urgentiePopupTekst').textContent = tekst;
 
-        var popup = document.getElementById('urgentiePopup');
-        var closeBtn = document.getElementById('urgentiePopupClose');
-        var offerteBtn = document.getElementById('urgentieOfferteBtn');
-
-        if (sessionStorage.getItem('urgentieGesloten')) return;
-
-        setTimeout(function(){
-            popup.classList.add('urgentie-popup--visible');
-        }, 15000);
-
-        closeBtn.addEventListener('click', function(){
-            popup.classList.remove('urgentie-popup--visible');
-            sessionStorage.setItem('urgentieGesloten', 'true');
-        });
-        offerteBtn.addEventListener('click', function(){
-            popup.classList.remove('urgentie-popup--visible');
-            sessionStorage.setItem('urgentieGesloten', 'true');
-        });
-    })();
-    </script>
-
-    <script src="script.js?v=20"></script>
-</body>
-</html>
+        var popup = document.getElementById('u

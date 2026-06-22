@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVG Voorstellen v3 - Tersagoesting</title>
+<style>
+@font-face { font-family:'Cheboyga'; src:url('fonts/Cheboyga.ttf') format('truetype'); font-display:swap; }
+@font-face { font-family:'Source Sans 3'; src:url('fonts/SourceSans3-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Source Sans 3'; src:url('fonts/SourceSans3-SemiBold.ttf') format('truetype'); font-weight:600; font-display:swap; }
+
+:root {
+    --primary:#c85a28; --orange:#e0a24a; --cream:#e8ded2;
+    --olive:#b3b062; --pink:#e2aec3; --bg:#faf6f0; --text:#3a3a3a;
+    --fh:'Cheboyga',Georgia,serif; --fb:'Source Sans 3',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);color:var(--text);background:#1a1a1a;}
+
+/* NAV */
+.topnav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,26,26,0.97);backdrop-filter:blur(12px);padding:12px 24px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;border-bottom:2px solid var(--primary);}
+.topnav span{color:var(--orange);font-family:var(--fh);font-size:1.1rem;margin-right:16px;display:flex;align-items:center;}
+.topnav a{color:#fff;text-decoration:none;padding:8px 18px;border-radius:20px;font-weight:600;font-size:0.85rem;transition:all 0.3s;border:1px solid rgba(255,255,255,0.15);}
+.topnav a:hover,.topnav a.act{background:var(--primary);border-color:var(--primary);}
+
+/* CONCEPT WRAPPER */
+.concept{border-bottom:4px solid var(--primary);padding-bottom:40px;margin-bottom:0;}
+.concept-header{text-align:center;padding:80px 24px 24px;background:#222;}
+.concept-header h2{font-family:var(--fh);color:var(--primary);font-size:2.2rem;margin-bottom:8px;}
+.concept-header p{color:#999;max-width:600px;margin:0 auto;font-size:1rem;line-height:1.6;}
+
+/* SHARED SECTION STYLES (mimic real site) */
+.demo{overflow:hidden;max-width:1200px;margin:24px auto;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.3);}
+.s-hero{position:relative;padding:48px 40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;overflow:hidden;}
+.s-hero h1{font-family:var(--fh);font-size:2.8rem;line-height:1.1;margin-bottom:12px;}
+.s-hero h1 em{font-style:italic;color:var(--primary);display:block;font-size:3.2rem;}
+.s-hero p{font-size:1rem;line-height:1.6;margin-bottom:16px;}
+.s-hero .loc{font-family:var(--fh);color:var(--orange);font-size:1.1rem;}
+.s-hero .tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;}
+.s-hero .tags span{font-size:0.8rem;padding:6px 14px;border-radius:16px;font-weight:600;}
+.s-hero .hero-img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;}
+.btn-demo{display:inline-block;padding:12px 28px;background:var(--primary);color:#fff;border-radius:24px;font-weight:600;font-family:var(--fh);font-size:1rem;}
+
+.s-aanbod{position:relative;padding:48px 40px;overflow:hidden;}
+.s-aanbod h2{font-family:var(--fh);font-size:2rem;text-align:center;margin-bottom:8px;}
+.s-aanbod .sub{text-align:center;margin-bottom:24px;color:#777;}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.card-d{border-radius:12px;overflow:hidden;transition:transform 0.3s;}
+.card-d:hover{transform:translateY(-4px);}
+.card-d img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+.card-d .cb{padding:16px;}
+.card-d h3{font-family:var(--fh);font-size:1.1rem;margin-bottom:4px;}
+.card-d p{font-size:0.85rem;line-height:1.5;color:#666;}
+
+/* SVG SHAPES */
+.blob{position:absolute;pointer-events:none;z-index:0;}
+.rel{position:relative;z-index:1;}
+
+/* ===================================
+   CONCEPT 1: SECTION CURTAINS
+   Blob-vormen als golvende sectie-overgangen
+   tussen secties. Volle kleuren, full-width.
+   =================================== */
+#c1 .demo{background:var(--bg);}
+#c1 .s-hero{background:var(--bg);}
+#c1 .s-hero .tags span{background:var(--cream);color:var(--primary);border:1px solid #d4c4b4;}
+#c1 .divider-blob{position:relative;width:100%;height:0;overflow:visible;z-index:5;}
+#c1 .divider-blob svg{display:block;width:100%;height:auto;}
+
+/* Aanbod met roze achtergrond-blob */
+#c1 .s-aanbod{background:#fff;}
+#c1 .s-aanbod h2{color:var(--text);}
+#c1 .card-d{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+
+/* ===================================
+   CONCEPT 2: BLOB-FRAMED CARDS
+   Elke aanbod-kaart zit IN een SVG blob-vorm.
+   De blob is de kaart-achtergrond.
+   =================================== */
+#c2 .demo{background:var(--bg);}
+#c2 .s-hero{background:var(--bg);}
+#c2 .s-hero .tags span{background:#fff;color:var(--primary);border:1px solid var(--cream);}
+#c2 .s-aanbod{background:var(--bg);padding:48px 40px 64px;}
+#c2 .s-aanbod h2{color:var(--text);}
+#c2 .card-wrap{position:relative;display:flex;flex-direction:column;align-items:center;}
+#c2 .card-blob{position:absolute;width:140%;height:140%;top:-20%;left:-20%;z-index:0;pointer-events:none;}
+#c2 .card-d{position:relative;z-index:1;background:rgba(255,255,255,0.95);box-shadow:0 4px 20px rgba(0,0,0,0.1);backdrop-filter:blur(4px);}
+/* Hero met grote olijf-blob achter foto */
+#c2 .hero-blob-wrap{position:relative;}
+#c2 .hero-blob-bg{position:absolute;width:130%;height:130%;top:-15%;left:-15%;z-index:0;}
+#c2 .hero-img{position:relative;z-index:1;}
+
+/* ===================================
+   CONCEPT 3: KLEUR-BANDEN
+   Horizontale stroken in blob-kleuren als
+   achtergrond per sectie. Blob-vormen als
+   overlappende accenten op de randen.
+   =================================== */
+#c3 .demo{background:var(--bg);}
+#c3 .s-hero{background:var(--pink);color:#fff;}
+#c3 .s-hero h1{color:#fff;}
+#c3 .s-hero h1 em{color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,0.1);}
+#c3 .s-hero .loc{color:#fff;opacity:0.9;}
+#c3 .s-hero p{color:rgba(255,255,255,0.9);}
+#c3 .s-hero .tags span{background:rgba(255,255,255,0.25);color:#fff;border:1px solid rgba(255,255,255,0.4);}
+#c3 .btn-demo-c3{background:#fff;color:var(--primary);}
+#c3 .s-aanbod{background:var(--cream);padding:64px 40px;}
+#c3 .s-aanbod h2{color:var(--text);}
+#c3 .card-d{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+#c3 .band-olive{background:var(--olive);padding:32px 40px;text-align:center;}
+#c3 .band-olive h3{font-family:var(--fh);color:#fff;font-size:1.6rem;}
+#c3 .band-olive p{color:rgba(255,255,255,0.85);max-width:600px;margin:8px auto 0;}
+
+/* ===================================
+   CONCEPT 4: SCATTERED CONFETTI
+   Kleine, geroteerde blob-vormen verspreid
+   als confetti over de pagina. Feestelijk.
+   =================================== */
+#c4 .demo{background:var(--bg);position:relative;}
+#c4 .s-hero{background:transparent;}
+#c4 .s-hero .tags span{background:var(--cream);color:var(--primary);border:1px solid #d4c4b4;}
+#c4 .confetti{position:absolute;pointer-events:none;opacity:0.85;}
+#c4 .s-aanbod{background:rgba(255,255,255,0.7);backdrop-filter:blur(2px);}
+#c4 .s-aanbod h2{color:var(--text);}
+#c4 .card-d{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+
+/* ===================================
+   CONCEPT 5: DUOTONE BLOB SECTIONS
+   Elke sectie heeft 1 grote blob als
+   achtergrondvorm die de helft van de sectie
+   vult. Strak, grafisch, bold.
+   =================================== */
+#c5 .demo{background:#fff;}
+#c5 .s-hero{background:#fff;}
+#c5 .s-hero .tags span{background:var(--cream);color:var(--primary);border:1px solid #d4c4b4;}
+#c5 .s-aanbod{background:#fff;padding:64px 40px;}
+#c5 .s-aanbod h2{color:var(--text);}
+#c5 .card-d{background:var(--bg);box-shadow:none;border:1px solid var(--cream);}
+/* Blob vult rechterhelft van hero */
+#c5 .half-blob{position:absolute;right:-5%;top:-20%;width:65%;height:140%;z-index:0;}
+#c5 .s-hero>*{position:relative;z-index:1;}
+/* Blob vult linkerhelft van aanbod */
+#c5 .half-blob-left{position:absolute;left:-10%;top:-30%;width:55%;height:160%;z-index:0;}
+
+@media(max-width:768px){
+    .s-hero{grid-template-columns:1fr;padding:32px 20px;}
+    .s-hero h1 em{font-size:2.2rem;}
+    .s-hero h1{font-size:1.8rem;}
+    .cards{grid-template-columns:1fr;}
+    .s-aanbod{padding:32px 20px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+    <span>Voorstellen</span>
+    <a href="#c1">1. Golvende overgangen</a>
+    <a href="#c2">2. Blob-framed kaarten</a>
+    <a href="#c3">3. Kleurbanden</a>
+    <a href="#c4">4. Confetti</a>
+    <a href="#c5">5. Grafisch duotone</a>
+</nav>
+
+<!-- ======================== CONCEPT 1 ======================== -->
+<div class="concept" id="c1">
+    <div class="concept-header">
+        <h2>1. Golvende sectie-overgangen</h2>
+        <p>De SVG-vormen worden als volle-kleur golvende randen tussen secties gebruikt. Elke overgang is een andere blob-kleur. De vormen vloeien over de volledige breedte.</p>
+    </div>
+    <div class="demo">
+        <div class="s-hero">
+            <div class="rel">
+                <h1><em>Culinair genieten...</em> op jouw manier!</h1>
+                <p>Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest.</p>
+                <p class="loc">Catering en traiteur in en rond Puurs-Sint-Amands!</p>
+                <div class="tags">
+                    <span>Communiefeesten</span><span>Huwelijken</span><span>Barbecues</span><span>Babyborrels</span>
+                </div>
+                <a class="btn-demo">Vraag een offerte!</a>
+            </div>
+            <div>
+                <img src="images/foto-hero2.jpg" alt="" class="hero-img">
+            </div>
+        </div>
+        <!-- PINK WAVE DIVIDER -->
+        <div class="divider-blob">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" style="margin-top:-1px;">
+                <path d="M0,0 C200,100 400,20 600,80 C800,140 1000,30 1200,90 L1200,120 L0,120Z" fill="#e2aec3"/>
+            </svg>
+        </div>
+        <div style="background:#e2aec3;padding:0;margin:0;">
+            <!-- ORANGE WAVE -->
+            <div class="divider-blob">
+                <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+                    <path d="M0,40 C300,0 600,60 900,20 C1000,10 1100,30 1200,15 L1200,60 L0,60Z" fill="#fff"/>
+                </svg>
+            </div>
+        </div>
+        <div class="s-aanbod">
+            <h2>Ons aanbod</h2>
+            <p class="sub">Van kleine hapjes tot buffetten: maak hier je keuze!</p>
+            <div class="cards">
+                <div class="card-d"><img src="images/hapjes/hapje-1.jpg" alt=""><div class="cb"><h3>Hapjes &amp; Dessertjes</h3><p>Verfijnde hapjes en fingerfood voor recepties en feesten.</p></div></div>
+                <div class="card-d"><img src="images/buffetten/buffet-1.jpg" alt=""><div class="cb"><h3>Buffetten</h3><p>Uitgebreide warme en koude buffetten voor grotere groepen.</p></div></div>
+                <div class="card-d"><img src="images/cookhome/cookhome-1.jpg" alt=""><div class="cb"><h3>Cook@home</h3><p>Een driegangenmenu bij jou thuis bereid. Bediening en afwas inclusief.</p></div></div>
+            </div>
+        </div>
+        <!-- OLIVE WAVE BOTTOM -->
+        <div class="divider-blob">
+            <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+                <path d="M0,30 C150,80 350,0 500,50 C650,100 850,10 1000,60 C1100,80 1200,40 1200,40 L1200,80 L0,80Z" fill="#b3b062"/>
+            </svg>
+        </div>
+        <div style="background:var(--olive);padding:24px 40px;text-align:center;">
+            <p style="font-family:var(--fh);color:#fff;font-size:1.3rem;">Goesting gekregen? Neem contact op!</p>
+        </div>
+    </div>
+</div>
+
+<!-- ======================== CONCEPT 2 ======================== -->
+<div class="concept" id="c2">
+    <div class="concept-header">
+        <h2>2. Blob-framed kaarten</h2>
+        <p>Elke aanbod-kaart krijgt een grote SVG-blob als achtergrondvorm. De hero-foto zit in een olijfgroene blob. Elk element heeft z'n eigen kleur-identiteit.</p>
+    </div>
+    <div class="demo">
+        <div class="s-hero" style="background:var(--bg);">
+            <div class="rel">
+                <h1><em>Culinair genieten...</em> op jouw manier!</h1>
+                <p>Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest.</p>
+                <p class="loc">Catering en traiteur in en rond Puurs-Sint-Amands!</p>
+                <div class="tags">
+                    <span>Communiefeesten</span><span>Huwelijken</span><span>Barbecues</span><span>Babyborrels</span>
+                </div>
+                <a class="btn-demo">Vraag een offerte!</a>
+            </div>
+            <div class="hero-blob-wrap">
+                <svg class="hero-blob-bg" viewBox="0 0 458.61 765.64" aria-hidden="true">
+                    <path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/>
+                </svg>
+                <img src="images/foto-hero2.jpg" alt="" class="hero-img" style="border-radius:12px;">
+            </div>
+        </div>
+        <div class="s-aanbod">
+            <h2>Ons aanbod</h2>
+            <p class="sub">Van kleine hapjes tot buffetten: maak hier je keuze!</p>
+            <div class="cards">
+                <div class="card-wrap">
+                    <svg class="card-blob" viewBox="0 0 458.61 765.64" aria-hidden="true">
+                        <path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/>
+                    </svg>
+                    <div class="card-d"><img src="images/hapjes/hapje-1.jpg" alt=""><div class="cb"><h3>Hapjes &amp; Dessertjes</h3><p>Verfijnde hapjes en fingerfood voor recepties.</p></div></div>
+                </div>
+                <div class="card-wrap">
+                    <svg class="card-blob" viewBox="0 0 458.61 765.64" aria-hidden="true">
+                        <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/>
+                    </svg>
+                    <div class="card-d"><img src="images/buffetten/buffet-1.jpg" alt=""><div class="cb"><h3>Buffetten</h3><p>Warme en koude buffetten voor grotere groepen.</p></div></div>
+                </div>
+                <div class="card-wrap">
+                    <svg class="card-blob" viewBox="0 0 458.61 765.64" aria-hidden="true">
+                        <path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/>
+                    </svg>
+                    <div class="card-d"><img src="images/cookhome/cookhome-1.jpg" alt=""><div class="cb"><h3>Cook@home</h3><p>Driegangenmenu bij jou thuis. Bediening inclusief.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======================== CONCEPT 3 ======================== -->
+<div class="concept" id="c3">
+    <div class="concept-header">
+        <h2>3. Kleurbanden per sectie</h2>
+        <p>Elke sectie krijgt een eigen blob-kleur als volledige achtergrond. Hero = roze, Aanbod = ecru, tussenband = olijf. De kleuren wisselen af en geven de pagina ritme en persoonlijkheid.</p>
+    </div>
+    <div class="demo">
+        <div class="s-hero" style="background:var(--pink);">
+            <!-- Blob accent in hoek -->
+            <svg class="blob" style="top:-60px;right:-40px;width:300px;opacity:0.3;" viewBox="0 0 458.61 765.64">
+                <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#fff"/>
+            </svg>
+            <div class="rel">
+                <h1 style="color:#fff;"><em style="color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,0.1);">Culinair genieten...</em> op jouw manier!</h1>
+                <p style="color:rgba(255,255,255,0.9);">Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest.</p>
+                <p class="loc" style="color:#fff;opacity:0.85;">Catering en traiteur in en rond Puurs-Sint-Amands!</p>
+                <div class="tags">
+                    <span style="background:rgba(255,255,255,0.25);color:#fff;border:1px solid rgba(255,255,255,0.4);">Communiefeesten</span>
+                    <span style="background:rgba(255,255,255,0.25);color:#fff;border:1px solid rgba(255,255,255,0.4);">Huwelijken</span>
+                    <span style="background:rgba(255,255,255,0.25);color:#fff;border:1px solid rgba(255,255,255,0.4);">Barbecues</span>
+                </div>
+                <a class="btn-demo" style="background:#fff;color:var(--primary);">Vraag een offerte!</a>
+            </div>
+            <div class="rel">
+                <img src="images/foto-hero2.jpg" alt="" class="hero-img" style="box-shadow:0 8px 32px rgba(0,0,0,0.2);">
+            </div>
+        </div>
+        <div class="s-aanbod" style="background:var(--cream);">
+            <h2>Ons aanbod</h2>
+            <p class="sub">Van kleine hapjes tot buffetten: maak hier je keuze!</p>
+            <div class="cards">
+                <div class="card-d" style="background:#fff;"><img src="images/hapjes/hapje-1.jpg" alt=""><div class="cb"><h3>Hapjes &amp; Dessertjes</h3><p>Verfijnde hapjes en fingerfood voor recepties.</p></div></div>
+                <div class="card-d" style="background:#fff;"><img src="images/buffetten/buffet-1.jpg" alt=""><div class="cb"><h3>Buffetten</h3><p>Warme en koude buffetten voor grotere groepen.</p></div></div>
+                <div class="card-d" style="background:#fff;"><img src="images/cookhome/cookhome-1.jpg" alt=""><div class="cb"><h3>Cook@home</h3><p>Driegangenmenu bij jou thuis. Bediening inclusief.</p></div></div>
+            </div>
+        </div>
+        <div class="band-olive">
+            <h3>Barbecuegroentjes vanaf &euro;12 p.p.</h3>
+            <p>Daar is de zon, daar zijn de barbecues! Bestel onze barbecuegroentjes of laat ons ter plaatse komen.</p>
+        </div>
+        <div style="background:var(--orange);padding:32px 40px;text-align:center;">
+            <p style="font-family:var(--fh);color:#fff;font-size:1.5rem;">Goesting gekregen?</p>
+            <a class="btn-demo" style="background:#fff;color:var(--orange);margin-top:12px;">Neem contact op</a>
+        </div>
+    </div>
+</div>
+
+<!-- ======================== CONCEPT 4 ======================== -->
+<div class="concept" id="c4">
+    <div class="concept-header">
+        <h2>4. Feestelijke confetti</h2>
+        <p>Kleine geroteerde blob-vormen verspreid als confetti over de hele pagina. Speels, feestelijk en vrolijk. Perfect voor een cateringbedrijf dat feesten organiseert.</p>
+    </div>
+    <div class="demo" style="position:relative;">
+        <!-- Confetti blobs scattered across -->
+        <svg class="confetti" style="width:80px;top:20px;left:5%;transform:rotate(25deg);" viewBox="0 0 458.61 765.64"><path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/></svg>
+        <svg class="confetti" style="width:60px;top:80px;right:8%;transform:rotate(-15deg);" viewBox="0 0 458.61 765.64"><path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/></svg>
+        <svg class="confetti" style="width:100px;top:200px;left:2%;transform:rotate(45deg);" viewBox="0 0 458.61 765.64"><path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/></svg>
+        <svg class="confetti" style="width:50px;top:150px;right:3%;transform:rotate(70deg);" viewBox="0 0 458.61 765.64"><path d="M336.34,164.97c25.3-50.27,54.89-98.25,88.44-143.43,4.61-6.21,1.02-15.98-5.13-19.58-7.29-4.26-14.96-1.09-19.58,5.13-33.56,45.18-63.14,93.16-88.44,143.43-8.26,16.41,16.43,30.92,24.72,14.45h0Z" fill="#e8ded2"/></svg>
+        <svg class="confetti" style="width:70px;top:350px;left:8%;transform:rotate(-30deg);" viewBox="0 0 458.61 765.64"><path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/></svg>
+        <svg class="confetti" style="width:90px;top:420px;right:5%;transform:rotate(10deg);" viewBox="0 0 458.61 765.64"><path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/></svg>
+        <svg class="confetti" style="width:55px;top:500px;left:50%;transform:rotate(-55deg);" viewBox="0 0 458.61 765.64"><path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/></svg>
+        <svg class="confetti" style="width:45px;top:300px;left:40%;transform:rotate(85deg);" viewBox="0 0 458.61 765.64"><path d="M336.34,164.97c25.3-50.27,54.89-98.25,88.44-143.43,4.61-6.21,1.02-15.98-5.13-19.58-7.29-4.26-14.96-1.09-19.58,5.13-33.56,45.18-63.14,93.16-88.44,143.43-8.26,16.41,16.43,30.92,24.72,14.45h0Z" fill="#e8ded2"/></svg>
+
+        <div class="s-hero" style="background:var(--bg);">
+            <div class="rel">
+                <h1><em>Culinair genieten...</em> op jouw manier!</h1>
+                <p>Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest.</p>
+                <p class="loc">Catering en traiteur in en rond Puurs-Sint-Amands!</p>
+                <div class="tags">
+                    <span>Communiefeesten</span><span>Huwelijken</span><span>Barbecues</span><span>Babyborrels</span>
+                </div>
+                <a class="btn-demo">Vraag een offerte!</a>
+            </div>
+            <div class="rel">
+                <img src="images/foto-hero2.jpg" alt="" class="hero-img">
+            </div>
+        </div>
+        <div class="s-aanbod" style="background:rgba(255,255,255,0.7);backdrop-filter:blur(2px);">
+            <h2>Ons aanbod</h2>
+            <p class="sub">Van kleine hapjes tot buffetten: maak hier je keuze!</p>
+            <div class="cards">
+                <div class="card-d" style="background:#fff;"><img src="images/hapjes/hapje-1.jpg" alt=""><div class="cb"><h3>Hapjes &amp; Dessertjes</h3><p>Verfijnde hapjes en fingerfood voor recepties.</p></div></div>
+                <div class="card-d" style="background:#fff;"><img src="images/buffetten/buffet-1.jpg" alt=""><div class="cb"><h3>Buffetten</h3><p>Warme en koude buffetten voor grotere groepen.</p></div></div>
+                <div class="card-d" style="background:#fff;"><img src="images/cookhome/cookhome-1.jpg" alt=""><div class="cb"><h3>Cook@home</h3><p>Driegangenmenu bij jou thuis. Bediening inclusief.</p></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======================== CONCEPT 5 ======================== -->
+<div class="concept" id="c5">
+    <div class="concept-header">
+        <h2>5. Grafisch duotone</h2>
+        <p>Elke sectie heeft een grote blob die precies de helft van de achtergrond vult. Strak contrast: wit + blob-kleur. De blob geeft de sectie karakter zonder de content te overstemmen.</p>
+    </div>
+    <div class="demo">
+        <div class="s-hero" style="background:#fff;">
+            <!-- Grote roze blob vult rechterhelft -->
+            <svg class="half-blob" viewBox="0 0 458.61 765.64" preserveAspectRatio="xMaxYMid slice">
+                <path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/>
+            </svg>
+            <div style="position:relative;z-index:1;">
+                <h1><em>Culinair genieten...</em> op jouw manier!</h1>
+                <p>Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest.</p>
+                <p class="loc">Catering en traiteur in en rond Puurs-Sint-Amands!</p>
+                <div class="tags">
+                    <span>Communiefeesten</span><span>Huwelijken</span><span>Barbecues</span><span>Babyborrels</span>
+                </div>
+                <a class="btn-demo">Vraag een offerte!</a>
+            </div>
+            <div style="position:relative;z-index:1;">
+                <img src="images/foto-hero2.jpg" alt="" class="hero-img" style="box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+            </div>
+        </div>
+        <div class="s-aanbod" style="background:#fff;position:relative;">
+            <!-- Olijf blob vult linkerhelft -->
+            <svg class="half-blob-left" viewBox="0 0 458.61 765.64" preserveAspectRatio="xMinYMid slice">
+                <path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/>
+            </svg>
+            <div class="rel">
+                <h2>Ons aanbod</h2>
+                <p class="sub">Van kleine hapjes tot buffetten: maak hier je keuze!</p>
+                <div class="cards">
+                    <div class="card-d"><img src="images/hapjes/hapje-1.jpg" alt=""><div class="cb"><h3>Hapjes &amp; Dessertjes</h3><p>Verfijnde hapjes en fingerfood voor recepties.</p></div></div>
+                    <div class="card-d"><img src="images/buffetten/buffet-1.jpg" alt=""><div class="cb"><h3>Buffetten</h3><p>Warme en koude buffetten voor grotere groepen.</p></div></div>
+                    <div class="card-d"><img src="images/cookhome/cookhome-1.jpg" alt=""><div class="cb"><h3>Cook@home</h3><p>Driegangenmenu bij jou thuis. Bediening inclusief.</p></div></div>
+                </div>
+            </div>
+        </div>
+        <!-- Oranje blob sectie -->
+        <div style="position:relative;overflow:hidden;padding:40px;background:#fff;">
+            <svg class="blob" style="right:-10%;top:-40%;width:60%;height:180%;" viewBox="0 0 458.61 765.64" preserveAspectRatio="xMaxYMid slice">
+                <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/>
+            </svg>
+            <div class="rel" style="text-align:center;">
+                <h2 style="font-family:var(--fh);font-size:1.8rem;margin-bottom:8px;">Wat onze klanten zeggen</h2>
+                <p style="max-width:600px;margin:0 auto;font-style:italic;font-size:1.05rem;line-height:1.7;">"Leni en Wout hebben ons feest een extra dimensie gegeven. Lekker eten, alles op tijd klaar en topbediening."</p>
+                <p style="font-weight:600;margin-top:12px;color:var(--primary);">- De Remise</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="text-align:center;padding:60px 24px;color:#888;">
+    <p style="font-family:var(--fh);color:var(--orange);font-size:1.3rem;">Welk concept spreekt je aan?</p>
+    <p style="margin-top:8px;">Kies een concept (of combinatie) en ik pas het toe op de volledige homepage.</p>
+</div>
+
+</body>
+</html>

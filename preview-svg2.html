@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVG Gewaagde Voorstellen - Tersagoesting</title>
+<style>
+@font-face { font-family:'Cheboyga'; src:url('fonts/Cheboyga.ttf') format('truetype'); font-display:swap; }
+@font-face { font-family:'Source Sans 3'; src:url('fonts/SourceSans3-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Source Sans 3'; src:url('fonts/SourceSans3-SemiBold.ttf') format('truetype'); font-weight:600; font-display:swap; }
+
+:root {
+    --primary:#c85a28; --orange:#e0a24a; --cream:#e8ded2;
+    --olive:#b3b062; --pink:#e2aec3; --bg:#faf6f0; --text:#3a3a3a;
+    --fh:'Cheboyga',Georgia,serif; --fb:'Source Sans 3',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:var(--fb);color:var(--text);background:#111;}
+
+/* NAV */
+.pn{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(17,17,17,0.95);backdrop-filter:blur(10px);padding:14px 24px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-bottom:2px solid var(--primary);}
+.pn span{color:var(--orange);font-family:var(--fh);font-size:1.1rem;display:flex;align-items:center;margin-right:12px;}
+.pn a{color:#fff;text-decoration:none;padding:7px 16px;border-radius:20px;font-weight:600;font-size:0.85rem;transition:all 0.3s;border:1px solid rgba(255,255,255,0.2);}
+.pn a:hover{background:var(--primary);border-color:var(--primary);}
+
+/* BLOCK */
+.cb{min-height:100vh;padding:90px 0 60px;border-bottom:3px solid var(--primary);}
+.cb__l{text-align:center;margin-bottom:32px;}
+.cb__l h2{font-family:var(--fh);color:var(--primary);font-size:2rem;margin-bottom:6px;}
+.cb__l p{color:#888;font-size:0.95rem;max-width:550px;margin:0 auto;}
+.btn-p{display:inline-block;padding:12px 28px;background:var(--primary);color:#fff;border-radius:24px;text-decoration:none;font-weight:600;transition:all 0.3s;margin-top:16px;}
+.btn-p:hover{background:#a84820;transform:translateY(-2px);}
+.btn-o{display:inline-block;padding:12px 28px;border:2px solid var(--primary);color:var(--primary);border-radius:24px;text-decoration:none;font-weight:600;transition:all 0.3s;}
+.btn-o:hover{background:var(--primary);color:#fff;}
+
+/* === SVG path data === */
+/* pink:  M0,532.69c136.04-16.16... */
+/* orange: M51.63,254.13c115.6,61.34... */
+/* olive: M442.35,93.83c4.53-.82... */
+/* ecru line: M336.34,164.97c25.3-50.27... */
+
+
+/* ===========================
+   V1: MEGA HERO BACKDROP
+   Een enkele SVG-vorm XXL achter de hele hero, vol kleur
+   =========================== */
+#v1{background:var(--bg);}
+.v1-hero{position:relative;overflow:hidden;padding:60px 40px 80px;min-height:520px;display:flex;align-items:center;justify-content:center;}
+.v1-hero-blob{position:absolute;width:900px;height:auto;top:50%;left:50%;transform:translate(-50%,-45%);z-index:0;pointer-events:none;}
+.v1-hero-content{position:relative;z-index:2;display:flex;align-items:center;gap:50px;max-width:1000px;width:100%;}
+.v1-hero-text{flex:1;}
+.v1-hero-text h1{font-family:var(--fh);color:#fff;font-size:3.4rem;margin-bottom:14px;text-shadow:0 2px 20px rgba(0,0,0,0.15);}
+.v1-hero-text p{font-size:1.1rem;color:rgba(255,255,255,0.9);line-height:1.7;text-shadow:0 1px 8px rgba(0,0,0,0.1);}
+.v1-hero-text .loc{font-family:var(--fh);color:#fff;font-size:1.15rem;margin-top:10px;}
+.v1-hero-img{width:340px;height:400px;object-fit:cover;border-radius:200px 200px 24px 24px;box-shadow:0 24px 60px rgba(0,0,0,0.2);flex-shrink:0;position:relative;z-index:2;}
+
+.v1-aanbod{padding:60px 40px;text-align:center;position:relative;overflow:hidden;}
+.v1-aanbod h2{font-family:var(--fh);color:var(--primary);font-size:2.4rem;margin-bottom:10px;position:relative;z-index:2;}
+.v1-aanbod p{position:relative;z-index:2;}
+.v1-aanbod-blob{position:absolute;width:500px;height:auto;bottom:-80px;right:-80px;pointer-events:none;}
+
+
+/* ===========================
+   V2: STACKED SECTION BANDS
+   Secties met volle SVG-kleurvlakken als achtergrond
+   =========================== */
+#v2{background:var(--bg);}
+.v2-section{position:relative;overflow:hidden;padding:60px 40px;text-align:center;}
+.v2-section h2{font-family:var(--fh);font-size:2.4rem;margin-bottom:10px;position:relative;z-index:2;}
+.v2-section p{max-width:550px;margin:0 auto;position:relative;z-index:2;line-height:1.7;}
+.v2-bg-blob{position:absolute;pointer-events:none;z-index:0;}
+
+/* Hero band: pink */
+.v2-hero{background:var(--pink);min-height:400px;display:flex;align-items:center;justify-content:center;}
+.v2-hero h2{color:#fff;font-size:3.2rem;}
+.v2-hero p{color:rgba(255,255,255,0.9);font-size:1.15rem;}
+.v2-hero .v2-bg-blob{width:120%;height:auto;top:-20%;left:-10%;opacity:0.3;}
+.v2-hero-inner{position:relative;z-index:2;display:flex;align-items:center;gap:40px;max-width:1000px;}
+.v2-hero-inner img{width:300px;height:360px;object-fit:cover;border-radius:16px;box-shadow:0 16px 50px rgba(0,0,0,0.15);}
+.v2-hero-inner .text{flex:1;}
+
+/* Aanbod band: olive */
+.v2-aanbod{background:var(--olive);color:#fff;}
+.v2-aanbod h2{color:#fff;}
+.v2-aanbod p{color:rgba(255,255,255,0.85);}
+.v2-aanbod .v2-bg-blob{width:80%;height:auto;bottom:-30%;right:-20%;opacity:0.2;}
+
+/* Reviews band: orange */
+.v2-reviews{background:var(--orange);color:#fff;}
+.v2-reviews h2{color:#fff;}
+.v2-reviews p{color:rgba(255,255,255,0.9);}
+.v2-reviews .v2-bg-blob{width:70%;height:auto;top:-20%;left:-15%;opacity:0.25;transform:rotate(20deg);}
+
+/* Contact band: cream */
+.v2-contact{background:var(--cream);}
+.v2-contact h2{color:var(--primary);}
+.v2-contact .v2-bg-blob{width:60%;height:auto;bottom:-25%;right:-10%;opacity:0.15;}
+
+
+/* ===========================
+   V3: SVG ALS SECTION SEPARATOR
+   Volle SVG-vormen als visuele breaks tussen secties
+   =========================== */
+#v3{background:var(--bg);}
+.v3-section{padding:60px 40px;text-align:center;}
+.v3-section h2{font-family:var(--fh);color:var(--primary);font-size:2.4rem;margin-bottom:10px;}
+.v3-section p{max-width:500px;margin:0 auto;line-height:1.7;}
+
+.v3-sep{width:100%;overflow:hidden;line-height:0;display:flex;justify-content:center;}
+.v3-sep svg{width:60%;max-width:500px;height:auto;}
+.v3-sep--full svg{width:100%;max-width:none;}
+.v3-sep--rotate svg{transform:rotate(180deg);}
+
+/* Stacked separators */
+.v3-sep-stack{position:relative;height:200px;overflow:hidden;}
+.v3-sep-stack svg{position:absolute;width:50%;height:auto;}
+.v3-sep-stack svg:nth-child(1){left:5%;top:10px;transform:rotate(-8deg);}
+.v3-sep-stack svg:nth-child(2){right:5%;top:30px;transform:rotate(12deg);}
+.v3-sep-stack svg:nth-child(3){left:35%;top:50px;transform:rotate(-3deg);}
+
+
+/* ===========================
+   V4: BLOB BORDERS & GUTTERS
+   SVG-vormen langs de zijkanten van de pagina
+   =========================== */
+#v4{background:var(--bg);position:relative;}
+.v4-gutter{position:absolute;top:0;width:200px;height:100%;pointer-events:none;z-index:0;overflow:hidden;}
+.v4-gutter--left{left:0;}
+.v4-gutter--right{right:0;}
+.v4-gutter svg{position:absolute;width:250px;height:auto;}
+.v4-gutter--left svg:nth-child(1){top:80px;left:-60px;transform:rotate(-10deg);}
+.v4-gutter--left svg:nth-child(2){top:500px;left:-40px;transform:rotate(15deg);}
+.v4-gutter--left svg:nth-child(3){top:900px;left:-70px;transform:rotate(-20deg);}
+.v4-gutter--right svg:nth-child(1){top:200px;right:-60px;transform:rotate(10deg);}
+.v4-gutter--right svg:nth-child(2){top:650px;right:-50px;transform:rotate(-15deg);}
+.v4-gutter--right svg:nth-child(3){top:1100px;right:-40px;transform:rotate(5deg);}
+
+.v4-content{position:relative;z-index:2;max-width:800px;margin:0 auto;}
+.v4-section{padding:50px 40px;text-align:center;}
+.v4-section h2{font-family:var(--fh);color:var(--primary);font-size:2.4rem;margin-bottom:10px;}
+.v4-section p{max-width:500px;margin:0 auto;line-height:1.7;}
+.v4-section--alt{background:rgba(255,255,255,0.6);border-radius:24px;margin:20px 40px;padding:50px 40px;}
+
+
+/* ===========================
+   V5: LAYERED COLLAGE
+   SVG-vormen als grote kleurvlakken die overlappen met de content
+   =========================== */
+#v5{background:#fff;}
+.v5-hero{position:relative;overflow:hidden;min-height:550px;display:flex;align-items:center;}
+.v5-hero-bg{position:absolute;inset:0;z-index:0;}
+.v5-hero-bg svg{position:absolute;}
+.v5-hero-bg svg:nth-child(1){width:70%;top:-15%;left:-10%;transform:rotate(-5deg);}
+.v5-hero-bg svg:nth-child(2){width:50%;bottom:-20%;right:-5%;transform:rotate(15deg);}
+.v5-hero-bg svg:nth-child(3){width:35%;top:10%;right:5%;transform:rotate(-10deg);opacity:0.6;}
+
+.v5-hero-content{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:60px 40px;display:flex;align-items:center;gap:50px;}
+.v5-hero-content .text{flex:1;}
+.v5-hero-content h1{font-family:var(--fh);color:var(--primary);font-size:3.4rem;margin-bottom:14px;}
+.v5-hero-content p{font-size:1.1rem;line-height:1.7;}
+.v5-hero-content .loc{font-family:var(--fh);color:var(--primary);font-size:1.15rem;margin-top:10px;}
+.v5-hero-content img{width:320px;height:380px;object-fit:cover;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.12);flex-shrink:0;}
+
+.v5-aanbod{position:relative;overflow:hidden;padding:60px 40px;text-align:center;}
+.v5-aanbod h2{font-family:var(--fh);color:var(--primary);font-size:2.4rem;margin-bottom:10px;position:relative;z-index:2;}
+.v5-aanbod p{position:relative;z-index:2;max-width:500px;margin:0 auto;}
+.v5-aanbod-bg{position:absolute;z-index:0;pointer-events:none;}
+.v5-aanbod-bg:nth-of-type(1){width:45%;bottom:-10%;left:-5%;transform:rotate(8deg);}
+.v5-aanbod-bg:nth-of-type(2){width:30%;top:-15%;right:0;transform:rotate(-12deg);opacity:0.5;}
+
+.v5-reviews{position:relative;overflow:hidden;padding:60px 40px;text-align:center;background:var(--bg);}
+.v5-reviews h2{font-family:var(--fh);color:var(--primary);font-size:2.4rem;margin-bottom:10px;position:relative;z-index:2;}
+.v5-reviews p{position:relative;z-index:2;max-width:500px;margin:0 auto;font-size:1.05rem;line-height:1.7;}
+.v5-reviews-bg{position:absolute;z-index:0;pointer-events:none;width:60%;top:50%;left:50%;transform:translate(-50%,-50%) rotate(5deg);opacity:0.15;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .v1-hero-content,.v2-hero-inner,.v5-hero-content{flex-direction:column;text-align:center;}
+    .v1-hero-img,.v2-hero-inner img,.v5-hero-content img{width:260px;height:300px;}
+    .v1-hero-blob{width:500px;}
+    .v4-gutter{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav class="pn">
+    <span>Tersagoesting</span>
+    <a href="#v1">1. Mega Backdrop</a>
+    <a href="#v2">2. Color Bands</a>
+    <a href="#v3">3. Separators</a>
+    <a href="#v4">4. Gutter Art</a>
+    <a href="#v5">5. Layered Collage</a>
+</nav>
+
+
+<!-- ====== V1: MEGA HERO BACKDROP ====== -->
+<section class="cb" id="v1">
+    <div class="cb__l">
+        <h2>Voorstel 1: Mega Backdrop</h2>
+        <p>Een enkele SVG-vorm op volle grootte en volle kleur achter de hero. De vorm IS de achtergrond. Bold en onmiskenbaar Tersagoesting.</p>
+    </div>
+
+    <div class="v1-hero">
+        <svg class="v1-hero-blob" viewBox="0 0 458.61 765.64" aria-hidden="true">
+            <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/>
+            <path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/>
+            <path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/>
+        </svg>
+        <div class="v1-hero-content">
+            <div class="v1-hero-text">
+                <h1>Culinair genieten...<br>op jouw manier!</h1>
+                <p>Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest. Altijd vers, altijd met smaak.</p>
+                <p class="loc">Catering en traiteur in en rond Puurs-Sint-Amands!</p>
+                <a href="#" class="btn-p">Vraag een offerte!</a>
+            </div>
+            <img src="images/foto-hero2.jpg" alt="Leni" class="v1-hero-img">
+        </div>
+    </div>
+
+    <div class="v1-aanbod">
+        <svg class="v1-aanbod-blob" viewBox="0 0 458.61 765.64" aria-hidden="true">
+            <path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/>
+        </svg>
+        <h2>Ons aanbod</h2>
+        <p>Van kleine hapjes tot buffetten: maak hier je keuze!</p>
+        <a href="#" class="btn-p">Bekijk het aanbod</a>
+    </div>
+</section>
+
+
+<!-- ====== V2: STACKED COLOR BANDS ====== -->
+<section class="cb" id="v2">
+    <div class="cb__l">
+        <h2>Voorstel 2: Color Bands</h2>
+        <p>Elke sectie krijgt een volle SVG-kleur als achtergrond. Roze voor de hero, olijf voor het aanbod, oranje voor reviews, ecru voor contact. De SVG-vormen zitten als textuur IN de kleurvlakken.</p>
+    </div>
+
+    <div class="v2-section v2-hero">
+        <svg class="v2-bg-blob" viewBox="0 0 458.61 765.64" aria-hidden="true">
+            <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#fff"/>
+            <path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#fff"/>
+        </svg>
+        <div class="v2-hero-inner">
+            <div class="text">
+                <h2>Culinair genieten...<br>op jouw manier!</h2>
+                <p>Wij maken lekker eten voor jouw feest. Altijd vers, altijd met smaak. Catering en traiteur in en rond Puurs-Sint-Amands!</p>
+                <a href="#" class="btn-p" style="background:#fff;color:var(--pink);">Vraag een offerte!</a>
+            </div>
+            <img src="images/foto-hero2.jpg" alt="Leni">
+        </div>
+    </div>
+
+    <div class="v2-section v2-aanbod">
+        <svg class="v2-bg-blob" viewBox="0 0 458.61 765.64" aria-hidden="true">
+            <path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#fff"/>
+        </svg>
+        <h2>Ons aanbod</h2>
+        <p>Van kleine hapjes tot buffetten: maak hier je keuze!</p>
+        <a href="#" class="btn-p" style="background:#fff;color:var(--olive);">Bekijk het aanbod</a>
+    </div>
+
+    <div class="v2-section v2-reviews">
+        <svg class="v2-bg-blob" viewBox="0 0 458.61 765.64" aria-hidden="true">
+            <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#fff"/>
+        </svg>
+        <h2>Wat onze klanten zeggen</h2>
+        <p>"Leni en Wout hebben ons feest een extra dimensie gegeven. Topbediening!"</p>
+        <a href="#" class="btn-p" style="background:#fff;color:var(--orange);">Lees reviews</a>
+    </div>
+
+    <div class="v2-section v2-contact">
+        <svg class="v2-bg-blob" viewBox="0 0 458.61 765.64" aria-hidden="true">
+            <path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/>
+        </svg>
+        <h2>Neem contact op</h2>
+        <p>Je zit nergens aan vast. Ontvang altijd eerst een vrijblijvende offerte.</p>
+        <a href="#" class="btn-p">Vraag een offerte!</a>
+    </div>
+</section>
+
+
+<!-- ====== V3: SVG SEPARATORS ====== -->
+<section class="cb" id="v3">
+    <div class="cb__l">
+        <h2>Voorstel 3: Full Separators</h2>
+        <p>De losse SVG-vormen op volle kleur en grootte als visuele breekpunten tussen secties. Elke overgang krijgt een andere combinatie.</p>
+    </div>
+
+    <div class="v3-section">
+        <h2>Culinair genieten... op jouw manier!</h2>
+        <p>Wij maken lekker eten voor jouw feest. Altijd vers, altijd met smaak.</p>
+        <a href="#" class="btn-p">Vraag een offerte!</a>
+    </div>
+
+    <!-- Separator: pink blob centered -->
+    <div class="v3-sep" style="padding:10px 0;">
+        <svg viewBox="0 0 458.61 300" aria-hidden="true">
+            <path d="M0,232.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,324.55,10.98,278.6.2,232.72" fill="#e2aec3"/>
+        </svg>
+    </div>
+
+    <div class="v3-section" style="background:#fff;">
+        <h2>Ons aanbod</h2>
+        <p>Van kleine hapjes tot buffetten: maak hier je keuze!</p>
+    </div>
+
+    <!-- Separator: stacked 3 blobs -->
+    <div class="v3-sep-stack">
+        <svg viewBox="0 0 458.61 520" aria-hidden="true"><path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/></svg>
+        <svg viewBox="0 0 458.61 340" aria-hidden="true"><path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/></svg>
+        <svg viewBox="0 0 458.61 300" aria-hidden="true"><path d="M0,232.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,324.55,10.98,278.6.2,232.72" fill="#e2aec3"/></svg>
+    </div>
+
+    <div class="v3-section">
+        <h2>Wat onze klanten zeggen</h2>
+        <p>"Superlekker, meer dan genoeg en een vriendelijke bediening!"</p>
+    </div>
+
+    <!-- Separator: full width olive -->
+    <div class="v3-sep v3-sep--full" style="padding:0;">
+        <svg viewBox="0 0 458.61 340" aria-hidden="true" style="width:100%;">
+            <path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/>
+        </svg>
+    </div>
+
+    <div class="v3-section" style="background:#fff;">
+        <h2>Hoe bestel ik?</h2>
+        <p>Vlot je bestelling plaatsen in 3 stappen.</p>
+        <a href="#" class="btn-p">Neem contact op</a>
+    </div>
+</section>
+
+
+<!-- ====== V4: GUTTER ART ====== -->
+<section class="cb" id="v4">
+    <div class="cb__l">
+        <h2>Voorstel 4: Gutter Art</h2>
+        <p>SVG-vormen op volle kleur langs beide zijkanten van de pagina als doorlopende decoratieve rand. De content blijft clean, de randen leven.</p>
+    </div>
+
+    <!-- Left gutter -->
+    <div class="v4-gutter v4-gutter--left">
+        <svg viewBox="0 0 458.61 765.64"><path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/></svg>
+        <svg viewBox="0 0 458.61 765.64"><path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/></svg>
+        <svg viewBox="0 0 458.61 765.64"><path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/></svg>
+    </div>
+    <!-- Right gutter -->
+    <div class="v4-gutter v4-gutter--right">
+        <svg viewBox="0 0 458.61 765.64"><path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/></svg>
+        <svg viewBox="0 0 458.61 765.64"><path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/></svg>
+        <svg viewBox="0 0 458.61 765.64"><path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/></svg>
+    </div>
+
+    <div class="v4-content">
+        <div class="v4-section">
+            <h2>Culinair genieten... op jouw manier!</h2>
+            <p>Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest.</p>
+            <a href="#" class="btn-p">Vraag een offerte!</a>
+        </div>
+        <div class="v4-section v4-section--alt">
+            <h2>Ons aanbod</h2>
+            <p>Van kleine hapjes tot buffetten: maak hier je keuze!</p>
+        </div>
+        <div class="v4-section">
+            <h2>Wat onze klanten zeggen</h2>
+            <p>"Superlekker, meer dan genoeg en een vriendelijke bediening!"</p>
+        </div>
+        <div class="v4-section v4-section--alt">
+            <h2>Hoe bestel ik?</h2>
+            <p>Vlot je bestelling plaatsen in 3 stappen.</p>
+            <a href="#" class="btn-p">Neem contact op</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ====== V5: LAYERED COLLAGE ====== -->
+<section class="cb" id="v5">
+    <div class="cb__l">
+        <h2>Voorstel 5: Layered Collage</h2>
+        <p>Meerdere SVG-vormen op volle kleur overlappen elkaar als een collage. De vormen lopen over en door de content heen. Maximaal visueel, herkenbaar merk.</p>
+    </div>
+
+    <div class="v5-hero">
+        <div class="v5-hero-bg">
+            <svg viewBox="0 0 458.61 765.64" aria-hidden="true"><path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/></svg>
+            <svg viewBox="0 0 458.61 765.64" aria-hidden="true"><path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/></svg>
+            <svg viewBox="0 0 458.61 765.64" aria-hidden="true"><path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/></svg>
+        </div>
+        <div class="v5-hero-content">
+            <div class="text">
+                <h1>Culinair genieten...<br>op jouw manier!</h1>
+                <p>Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest. Altijd vers, altijd met smaak.</p>
+                <p class="loc">Catering en traiteur in en rond Puurs-Sint-Amands!</p>
+                <a href="#" class="btn-p">Vraag een offerte!</a>
+            </div>
+            <img src="images/foto-hero2.jpg" alt="Leni">
+        </div>
+    </div>
+
+    <div class="v5-aanbod">
+        <svg class="v5-aanbod-bg" viewBox="0 0 458.61 765.64" aria-hidden="true"><path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/></svg>
+        <svg class="v5-aanbod-bg" viewBox="0 0 458.61 765.64" aria-hidden="true"><path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/></svg>
+        <h2>Ons aanbod</h2>
+        <p>Van kleine hapjes tot buffetten: maak hier je keuze!</p>
+        <a href="#" class="btn-p">Bekijk het aanbod</a>
+    </div>
+
+    <div class="v5-reviews">
+        <svg class="v5-reviews-bg" viewBox="0 0 458.61 765.64" aria-hidden="true">
+            <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/>
+            <path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/>
+        </svg>
+        <h2>Wat onze klanten zeggen</h2>
+        <p>"Leni en Wout hebben ons feest een extra dimensie gegeven. Lekker eten, alles op tijd klaar, topbediening en discreet maar vriendelijk aanwezig."</p>
+        <a href="#" class="btn-p" style="margin-top:16px;">Lees alle reviews</a>
+    </div>
+</section>
+
+</body>
+</html>

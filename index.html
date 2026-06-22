@@ -906,4 +906,27 @@
         var tekst = 'Onze agenda voor ' + m1 + ' en ' + m2 + ' raakt stilaan vol. Heb je een feestje, barbecue of etentje gepland? Laat het ons snel weten, dan houden we jouw datum vrij.';
         document.getElementById('urgentiePopupTekst').textContent = tekst;
 
-        var popup = document.getElementById('u
+        var popup = document.getElementById('urgentiePopup');
+        var closeBtn = document.getElementById('urgentiePopupClose');
+        var offerteBtn = document.getElementById('urgentieOfferteBtn');
+
+        if (sessionStorage.getItem('urgentieGesloten')) return;
+
+        setTimeout(function(){
+            popup.classList.add('urgentie-popup--visible');
+        }, 15000);
+
+        closeBtn.addEventListener('click', function(){
+            popup.classList.remove('urgentie-popup--visible');
+            sessionStorage.setItem('urgentieGesloten', 'true');
+        });
+        offerteBtn.addEventListener('click', function(){
+            popup.classList.remove('urgentie-popup--visible');
+            sessionStorage.setItem('urgentieGesloten', 'true');
+        });
+    })();
+    </script>
+
+    <script src="script.js?v=20"></script>
+</body>
+</html>

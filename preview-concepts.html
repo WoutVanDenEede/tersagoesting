@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Concepten - Tersagoesting</title>
+<style>
+@font-face {
+    font-family: 'Cheboyga';
+    src: url('fonts/Cheboyga.ttf') format('truetype');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('fonts/SourceSans3-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('fonts/SourceSans3-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-display: swap;
+}
+
+:root {
+    --color-primary: #c85a28;
+    --color-orange: #e0a24a;
+    --color-cream: #e8ded2;
+    --color-olive: #b3b062;
+    --color-pink: #e2aec3;
+    --color-bg: #faf6f0;
+    --color-text: #3a3a3a;
+    --font-heading: 'Cheboyga', Georgia, serif;
+    --font-body: 'Source Sans 3', Arial, sans-serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--color-text); background: #1a1a1a; }
+
+/* ===== NAV ===== */
+.concept-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(26,26,26,0.95); backdrop-filter: blur(10px);
+    padding: 16px 32px;
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+    border-bottom: 2px solid var(--color-primary);
+}
+.concept-nav a {
+    color: #fff; text-decoration: none; padding: 8px 20px;
+    border-radius: 24px; font-weight: 600; font-size: 0.9rem;
+    transition: all 0.3s; border: 1px solid rgba(255,255,255,0.2);
+}
+.concept-nav a:hover, .concept-nav a.active {
+    background: var(--color-primary); border-color: var(--color-primary);
+}
+.concept-nav span {
+    color: var(--color-orange); font-family: var(--font-heading);
+    font-size: 1.1rem; display: flex; align-items: center; margin-right: 12px;
+}
+
+/* ===== CONCEPT WRAPPER ===== */
+.concept {
+    min-height: 100vh; padding: 100px 0 60px; position: relative;
+    border-bottom: 4px solid var(--color-primary);
+}
+.concept-label {
+    text-align: center; margin-bottom: 40px;
+}
+.concept-label h2 {
+    font-family: var(--font-heading); color: var(--color-primary);
+    font-size: 2.2rem; margin-bottom: 8px;
+}
+.concept-label p {
+    color: #888; font-size: 1rem; max-width: 600px; margin: 0 auto;
+}
+
+/* ===== SVG PATHS (extracted individually) ===== */
+.svg-pink { fill: #e2aec3; }
+.svg-orange { fill: #e0a24a; }
+.svg-ecru { fill: #e8ded2; }
+.svg-olive { fill: #b3b062; }
+
+
+/* ============================================
+   CONCEPT 1: ORGANIC FLOW - Section Dividers
+   ============================================ */
+#concept1 { background: var(--color-bg); }
+#concept1 .c1-hero {
+    position: relative; overflow: hidden;
+    padding: 80px 40px 120px; text-align: center;
+}
+#concept1 .c1-hero h1 {
+    font-family: var(--font-heading); color: var(--color-primary);
+    font-size: 3.5rem; margin-bottom: 16px; position: relative; z-index: 2;
+}
+#concept1 .c1-hero p {
+    font-size: 1.2rem; max-width: 600px; margin: 0 auto;
+    position: relative; z-index: 2;
+}
+#concept1 .c1-hero-img {
+    width: 320px; height: 320px; border-radius: 50%; object-fit: cover;
+    margin: 30px auto 0; display: block; position: relative; z-index: 2;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+.c1-divider {
+    position: relative; width: 100%; height: 180px; overflow: hidden;
+}
+.c1-divider svg {
+    position: absolute; width: 120%; left: -10%;
+}
+.c1-divider--pink { background: var(--color-bg); }
+.c1-divider--pink svg { bottom: -2px; }
+.c1-section-alt {
+    background: #fff; padding: 60px 40px; text-align: center;
+}
+.c1-section-alt h2 {
+    font-family: var(--font-heading); color: var(--color-primary);
+    font-size: 2.4rem; margin-bottom: 12px;
+}
+.c1-section-alt p { max-width: 500px; margin: 0 auto; }
+.c1-divider--orange { background: #fff; }
+.c1-divider--orange svg { bottom: -2px; }
+.c1-section-olive {
+    background: var(--color-olive); padding: 60px 40px; text-align: center; color: #fff;
+}
+.c1-section-olive h2 {
+    font-family: var(--font-heading); font-size: 2.4rem; margin-bottom: 12px;
+}
+
+
+/* ============================================
+   CONCEPT 2: FLOATING BLOBS - Background Art
+   ============================================ */
+#concept2 { background: var(--color-bg); }
+#concept2 .c2-hero {
+    position: relative; overflow: hidden;
+    padding: 80px 40px 80px; min-height: 500px;
+}
+.c2-blob {
+    position: absolute; opacity: 0.15; pointer-events: none;
+    transition: transform 0.5s ease;
+}
+.c2-blob--1 { top: -80px; right: -100px; width: 500px; transform: rotate(15deg); }
+.c2-blob--2 { bottom: -120px; left: -80px; width: 450px; transform: rotate(-25deg); }
+.c2-blob--3 { top: 50%; right: 10%; width: 300px; transform: rotate(45deg); }
+#concept2 .c2-hero-content {
+    position: relative; z-index: 2; max-width: 600px;
+}
+#concept2 .c2-hero h1 {
+    font-family: var(--font-heading); color: var(--color-primary);
+    font-size: 3.5rem; margin-bottom: 16px;
+}
+#concept2 .c2-hero p { font-size: 1.15rem; line-height: 1.7; }
+#concept2 .c2-hero-photo {
+    position: absolute; right: 60px; top: 50%; transform: translateY(-50%);
+    z-index: 2; width: 380px; height: 450px; object-fit: cover;
+    border-radius: 200px 200px 24px 24px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+}
+.c2-aanbod {
+    position: relative; overflow: hidden;
+    padding: 80px 40px; text-align: center;
+}
+.c2-aanbod h2 {
+    font-family: var(--font-heading); color: var(--color-primary);
+    font-size: 2.4rem; margin-bottom: 40px; position: relative; z-index: 2;
+}
+.c2-cards {
+    display: flex; gap: 24px; justify-content: center;
+    flex-wrap: wrap; position: relative; z-index: 2;
+}
+.c2-card {
+    background: #fff; border-radius: 16px; padding: 40px 28px;
+    width: 220px; box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.c2-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+.c2-card h3 { font-family: var(--font-heading); color: var(--color-primary); margin-bottom: 8px; }
+.c2-card p { font-size: 0.9rem; color: #666; }
+
+
+/* ============================================
+   CONCEPT 3: BOLD STRIPES - Color Bands
+   ============================================ */
+#concept3 { background: #fff; }
+#concept3 .c3-hero {
+    position: relative; overflow: hidden;
+    padding: 60px 40px 80px; display: flex; align-items: center;
+    gap: 60px; max-width: 1100px; margin: 0 auto;
+}
+.c3-color-strip {
+    position: absolute; height: 100%; width: 45%; top: 0; right: 0;
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+    overflow: hidden;
+}
+.c3-color-strip svg {
+    position: absolute; width: 200%; height: 200%;
+    top: -50%; left: -30%; opacity: 0.5;
+}
+#concept3 .c3-hero-text { position: relative; z-index: 2; flex: 1; }
+#concept3 .c3-hero-text h1 {
+    font-family: var(--font-heading); color: var(--color-primary);
+    font-size: 3.2rem; margin-bottom: 16px;
+}
+#concept3 .c3-hero-text p { font-size: 1.1rem; line-height: 1.7; max-width: 450px; }
+.c3-photo-stack {
+    position: relative; z-index: 2; flex-shrink: 0;
+}
+.c3-photo-stack img {
+    width: 300px; height: 380px; object-fit: cover; border-radius: 16px;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.15);
+}
+.c3-photo-stack::before {
+    content: ''; position: absolute;
+    width: 300px; height: 380px; border-radius: 16px;
+    background: var(--color-pink); top: 16px; left: 16px; z-index: -1;
+}
+.c3-photo-stack::after {
+    content: ''; position: absolute;
+    width: 300px; height: 380px; border-radius: 16px;
+    background: var(--color-orange); top: 32px; left: 32px; z-index: -2;
+    opacity: 0.6;
+}
+.c3-band {
+    padding: 50px 40px; position: relative; overflow: hidden;
+}
+.c3-band--pink { background: var(--color-pink); }
+.c3-band--olive { background: var(--color-olive); color: #fff; }
+.c3-band--orange { background: var(--color-orange); }
+.c3-band svg {
+    position: absolute; width: 300px; opacity: 0.2;
+    right: -40px; top: 50%; transform: translateY(-50%);
+}
+.c3-band-inner {
+    max-width: 700px; margin: 0 auto; text-align: center;
+    position: relative; z-index: 2;
+}
+.c3-band h2 {
+    font-family: var(--font-heading); font-size: 2rem; margin-bottom: 10px;
+}
+.c3-band p { font-size: 1.05rem; }
+
+
+/* ============================================
+   CONCEPT 4: SCATTERED PETALS - Parallax
+   ============================================ */
+#concept4 { background: var(--color-bg); }
+#concept4 .c4-hero {
+    position: relative; overflow: hidden;
+    padding: 80px 40px; min-height: 550px; text-align: center;
+}
+.c4-petal {
+    position: absolute; pointer-events: none;
+    animation: c4float 8s ease-in-out infinite;
+}
+.c4-petal--1 { top: 5%; left: 5%; width: 180px; opacity: 0.12; animation-delay: 0s; }
+.c4-petal--2 { top: 60%; right: 3%; width: 220px; opacity: 0.10; animation-delay: -2s; transform: rotate(30deg); }
+.c4-petal--3 { bottom: 10%; left: 15%; width: 160px; opacity: 0.08; animation-delay: -4s; transform: rotate(-20deg); }
+.c4-petal--4 { top: 20%; right: 20%; width: 140px; opacity: 0.15; animation-delay: -6s; }
+.c4-petal--5 { top: 40%; left: 40%; width: 200px; opacity: 0.06; animation-delay: -1s; transform: rotate(60deg); }
+.c4-petal--6 { bottom: 25%; right: 25%; width: 170px; opacity: 0.10; animation-delay: -3s; transform: rotate(-45deg); }
+@keyframes c4float {
+    0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+    50% { transform: translateY(-20px) rotate(calc(var(--r, 0deg) + 5deg)); }
+}
+#concept4 .c4-hero h1 {
+    font-family: var(--font-heading); color: var(--color-primary);
+    font-size: 3.8rem; margin-bottom: 16px; position: relative; z-index: 2;
+}
+#concept4 .c4-hero p {
+    font-size: 1.2rem; max-width: 550px; margin: 0 auto 30px;
+    position: relative; z-index: 2;
+}
+#concept4 .c4-hero-photos {
+    display: flex; gap: 16px; justify-content: center;
+    position: relative; z-index: 2;
+}
+#concept4 .c4-hero-photos img {
+    width: 200px; height: 260px; object-fit: cover; border-radius: 120px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+#concept4 .c4-hero-photos img:nth-child(2) { margin-top: 40px; }
+.c4-reviews {
+    padding: 60px 40px; position: relative; overflow: hidden;
+    text-align: center; background: #fff;
+}
+.c4-reviews h2 {
+    font-family: var(--font-heading); color: var(--color-primary);
+    font-size: 2.4rem; margin-bottom: 12px;
+}
+
+
+/* ============================================
+   CONCEPT 5: MOSAIC FRAMES - SVG Borders
+   ============================================ */
+#concept5 { background: #fff; }
+#concept5 .c5-hero {
+    position: relative; overflow: hidden;
+    padding: 60px 40px 80px;
+    background: linear-gradient(135deg, var(--color-bg) 0%, #fff 50%, rgba(226,174,195,0.1) 100%);
+}
+.c5-frame-wrap {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+}
+.c5-frame-text h1 {
+    font-family: var(--font-heading); color: var(--color-primary);
+    font-size: 3.2rem; margin-bottom: 16px;
+}
+.c5-frame-text p { font-size: 1.1rem; line-height: 1.7; }
+.c5-frame-photo {
+    position: relative; padding: 20px;
+}
+.c5-frame-photo img {
+    width: 100%; border-radius: 16px; position: relative; z-index: 2;
+    box-shadow: 0 16px 50px rgba(0,0,0,0.1);
+}
+.c5-frame-border {
+    position: absolute; inset: 0; border-radius: 24px; overflow: hidden;
+    z-index: 1;
+}
+.c5-frame-border svg {
+    position: absolute; width: 100%; height: 100%;
+    opacity: 0.4;
+}
+.c5-mosaic {
+    padding: 60px 40px; text-align: center; position: relative;
+    overflow: hidden;
+}
+.c5-mosaic h2 {
+    font-family: var(--font-heading); color: var(--color-primary);
+    font-size: 2.4rem; margin-bottom: 40px; position: relative; z-index: 2;
+}
+.c5-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 200px 200px;
+    gap: 16px; max-width: 900px; margin: 0 auto;
+    position: relative; z-index: 2;
+}
+.c5-grid-item {
+    border-radius: 12px; overflow: hidden; position: relative;
+}
+.c5-grid-item img { width: 100%; height: 100%; object-fit: cover; }
+.c5-grid-item:nth-child(1) { grid-column: span 2; }
+.c5-grid-item:nth-child(4) { grid-column: span 2; }
+.c5-grid-item::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(200,90,40,0.6) 0%, transparent 60%);
+}
+.c5-grid-item span {
+    position: absolute; bottom: 12px; left: 16px;
+    color: #fff; font-family: var(--font-heading); font-size: 1.3rem;
+    z-index: 2;
+}
+.c5-mosaic-blob {
+    position: absolute; width: 500px; opacity: 0.07;
+    right: -100px; bottom: -100px; transform: rotate(20deg);
+}
+
+
+/* ===== SHARED ===== */
+.btn-preview {
+    display: inline-block; padding: 14px 32px;
+    background: var(--color-primary); color: #fff;
+    border-radius: 28px; text-decoration: none;
+    font-weight: 600; font-size: 1rem;
+    transition: all 0.3s; margin-top: 20px;
+}
+.btn-preview:hover { background: #a84820; transform: translateY(-2px); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    #concept2 .c2-hero-photo { display: none; }
+    #concept3 .c3-hero { flex-direction: column; }
+    .c5-frame-wrap { grid-template-columns: 1fr; }
+    .c5-grid { grid-template-columns: 1fr 1fr; }
+    .concept-nav { padding: 10px 16px; }
+    .concept-nav a { padding: 6px 14px; font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="concept-nav">
+    <span>Tersagoesting</span>
+    <a href="#concept1">1. Organic Flow</a>
+    <a href="#concept2">2. Floating Blobs</a>
+    <a href="#concept3">3. Bold Stripes</a>
+    <a href="#concept4">4. Scattered Petals</a>
+    <a href="#concept5">5. Mosaic Frames</a>
+</nav>
+
+<!-- ============ CONCEPT 1: ORGANIC FLOW ============ -->
+<section class="concept" id="concept1">
+    <div class="concept-label">
+        <h2>Concept 1: Organic Flow</h2>
+        <p>SVG-vormen als golvende section-dividers. Elke overgang tussen secties vloeit organisch in elkaar over met de kleuren uit je palet.</p>
+    </div>
+
+    <div class="c1-hero">
+        <h1>Culinair genieten...</h1>
+        <p>Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest. Altijd vers, altijd met smaak.</p>
+        <img src="images/foto-hero2.jpg" alt="Leni" class="c1-hero-img">
+    </div>
+
+    <!-- Pink wave divider -->
+    <div class="c1-divider c1-divider--pink">
+        <svg viewBox="0 0 458.61 200" preserveAspectRatio="none">
+            <path d="M0,132.69c136.04-46.16,272.07-62.32,408.11-28.47,3.77,1.45,7.9,2.81,11.04,5.31,4.49,3.04,14.72,9.46,14.4,14.87-4.37,22.22-6.42,35.79-5.47,58.98v16.96H0Z" fill="#e2aec3"/>
+        </svg>
+    </div>
+
+    <div class="c1-section-alt">
+        <h2>Ons aanbod</h2>
+        <p>Van kleine hapjes tot buffetten: maak hier je keuze!</p>
+        <a href="#" class="btn-preview">Bekijk het aanbod</a>
+    </div>
+
+    <!-- Orange wave divider -->
+    <div class="c1-divider c1-divider--orange">
+        <svg viewBox="0 0 458.61 200" preserveAspectRatio="none">
+            <path d="M0,80c80,60,160,20,240,50s160,10,220,40v30H0Z" fill="#e0a24a"/>
+            <path d="M0,120c60,30,180,-20,280,20s120,20,180,10v50H0Z" fill="#b3b062" opacity="0.6"/>
+        </svg>
+    </div>
+
+    <div class="c1-section-olive">
+        <h2>Wat klanten zeggen</h2>
+        <p>Reviews en testimonials van tevreden klanten.</p>
+        <a href="#" class="btn-preview" style="background:#fff;color:var(--color-olive);">Lees meer</a>
+    </div>
+</section>
+
+
+<!-- ============ CONCEPT 2: FLOATING BLOBS ============ -->
+<section class="concept" id="concept2">
+    <div class="concept-label">
+        <h2>Concept 2: Floating Blobs</h2>
+        <p>Grote, halftransparante SVG-vormen zweven op de achtergrond achter de content. Geeft diepte en een organisch, warm gevoel.</p>
+    </div>
+
+    <div class="c2-hero">
+        <!-- Floating blobs -->
+        <svg class="c2-blob c2-blob--1" viewBox="0 0 458.61 765.64">
+            <path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/>
+        </svg>
+        <svg class="c2-blob c2-blob--2" viewBox="0 0 458.61 765.64">
+            <path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/>
+        </svg>
+        <svg class="c2-blob c2-blob--3" viewBox="0 0 458.61 765.64">
+            <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/>
+        </svg>
+
+        <div class="c2-hero-content">
+            <h1>Culinair genieten...<br>op jouw manier!</h1>
+            <p>Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest. Altijd vers, altijd met smaak.</p>
+            <p style="color:var(--color-primary);font-family:var(--font-heading);margin-top:12px;font-size:1.2rem;">Catering en traiteur in en rond Puurs-Sint-Amands!</p>
+            <a href="#" class="btn-preview">Vraag een offerte!</a>
+        </div>
+        <img src="images/foto-hero2.jpg" alt="Leni" class="c2-hero-photo">
+    </div>
+
+    <div class="c2-aanbod">
+        <!-- Background blob -->
+        <svg class="c2-blob" style="top:-100px;left:-150px;width:600px;opacity:0.06;transform:rotate(-15deg);" viewBox="0 0 458.61 765.64">
+            <path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/>
+        </svg>
+        <svg class="c2-blob" style="bottom:-80px;right:-120px;width:500px;opacity:0.08;transform:rotate(30deg);" viewBox="0 0 458.61 765.64">
+            <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/>
+        </svg>
+
+        <h2>Ons aanbod</h2>
+        <div class="c2-cards">
+            <div class="c2-card">
+                <h3>Hapjes</h3>
+                <p>Verfijnde hapjes voor recepties en feesten.</p>
+            </div>
+            <div class="c2-card">
+                <h3>Buffetten</h3>
+                <p>Uitgebreide warme en koude buffetten.</p>
+            </div>
+            <div class="c2-card">
+                <h3>Cook@Home</h3>
+                <p>Een privechef bij jou thuis.</p>
+            </div>
+            <div class="c2-card">
+                <h3>BBQ</h3>
+                <p>Alles voor een geslaagde barbecue.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============ CONCEPT 3: BOLD STRIPES ============ -->
+<section class="concept" id="concept3">
+    <div class="concept-label">
+        <h2>Concept 3: Bold Stripes</h2>
+        <p>Kleurrijke banden in je palet-kleuren als section-achtergronden, met SVG-vormen als subtiele textuur erin. Geeft ritme en energie.</p>
+    </div>
+
+    <div class="c3-hero" style="background: var(--color-bg);">
+        <div class="c3-color-strip" style="background: var(--color-pink);">
+            <svg viewBox="0 0 458.61 765.64">
+                <path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#fff" opacity="0.2"/>
+                <path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#fff" opacity="0.15"/>
+            </svg>
+        </div>
+        <div class="c3-hero-text">
+            <h1>Culinair genieten...<br>op jouw manier!</h1>
+            <p>Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest.</p>
+            <a href="#" class="btn-preview">Vraag een offerte!</a>
+        </div>
+        <div class="c3-photo-stack">
+            <img src="images/foto-hero2.jpg" alt="Leni">
+        </div>
+    </div>
+
+    <div class="c3-band c3-band--pink">
+        <svg viewBox="0 0 458.61 765.64">
+            <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#fff" opacity="0.3"/>
+        </svg>
+        <div class="c3-band-inner">
+            <h2>Hapjes & Dessertjes</h2>
+            <p>Verfijnde hapjes voor recepties, feesten, babyborrels en zakelijke events.</p>
+        </div>
+    </div>
+    <div class="c3-band c3-band--olive">
+        <svg viewBox="0 0 458.61 765.64">
+            <path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#fff" opacity="0.2"/>
+        </svg>
+        <div class="c3-band-inner">
+            <h2>Cook@Home</h2>
+            <p>Een compleet driegangenmenu met hapjes, bij jou thuis klaargemaakt.</p>
+        </div>
+    </div>
+    <div class="c3-band c3-band--orange">
+        <svg viewBox="0 0 458.61 765.64">
+            <path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#fff" opacity="0.25"/>
+        </svg>
+        <div class="c3-band-inner">
+            <h2>BBQ Catering</h2>
+            <p>Alles voor een geslaagde barbecue op jouw feest.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============ CONCEPT 4: SCATTERED PETALS ============ -->
+<section class="concept" id="concept4">
+    <div class="concept-label">
+        <h2>Concept 4: Scattered Petals</h2>
+        <p>Individuele SVG-vormen verspreid over de pagina met zwevende animaties. Subtiel, organisch en levendig.</p>
+    </div>
+
+    <div class="c4-hero">
+        <!-- Scattered animated petals using individual SVG paths -->
+        <svg class="c4-petal c4-petal--1" viewBox="0 0 458.61 300" style="--r:0deg;">
+            <path d="M0,132.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,224.55,10.98,178.6.2,132.72" fill="#e2aec3"/>
+        </svg>
+        <svg class="c4-petal c4-petal--2" viewBox="0 0 460 340" style="--r:30deg;">
+            <path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/>
+        </svg>
+        <svg class="c4-petal c4-petal--3" viewBox="0 0 460 520" style="--r:-20deg;">
+            <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/>
+        </svg>
+        <svg class="c4-petal c4-petal--4" viewBox="0 0 460 300" style="--r:45deg;">
+            <path d="M0,132.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,224.55,10.98,178.6.2,132.72" fill="#e0a24a"/>
+        </svg>
+        <svg class="c4-petal c4-petal--5" viewBox="0 0 460 340" style="--r:60deg;">
+            <path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#e2aec3"/>
+        </svg>
+        <svg class="c4-petal c4-petal--6" viewBox="0 0 460 520" style="--r:-45deg;">
+            <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#b3b062"/>
+        </svg>
+
+        <h1>Culinair genieten...<br>op jouw manier!</h1>
+        <p>Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest.</p>
+
+        <div class="c4-hero-photos">
+            <img src="images/foto-hero2.jpg" alt="Leni">
+            <img src="images/foto-hero3.jpg" alt="Food">
+            <img src="images/foto-hero4.jpg" alt="Catering">
+        </div>
+    </div>
+
+    <div class="c4-reviews" style="position:relative;overflow:hidden;">
+        <svg class="c4-petal" style="position:absolute;top:-40px;right:-60px;width:300px;opacity:0.06;transform:rotate(15deg);" viewBox="0 0 460 300">
+            <path d="M0,132.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,224.55,10.98,178.6.2,132.72" fill="#e2aec3"/>
+        </svg>
+        <h2>Wat klanten zeggen</h2>
+        <p style="max-width:500px;margin:12px auto;">Tevreden klanten zijn onze beste reclame.</p>
+        <a href="#" class="btn-preview">Lees reviews</a>
+    </div>
+</section>
+
+
+<!-- ============ CONCEPT 5: MOSAIC FRAMES ============ -->
+<section class="concept" id="concept5">
+    <div class="concept-label">
+        <h2>Concept 5: Mosaic Frames</h2>
+        <p>SVG-vormen als decoratieve kaders en achtergrondtextuur achter foto-grids en content. Subtiel maar impactvol.</p>
+    </div>
+
+    <div class="c5-hero">
+        <div class="c5-frame-wrap">
+            <div class="c5-frame-text">
+                <h1>Culinair genieten...<br>op jouw manier!</h1>
+                <p>Geen goesting om zelf in de keuken te staan? Wij maken lekker eten voor jouw feest. Altijd vers, altijd met smaak.</p>
+                <a href="#" class="btn-preview">Vraag een offerte!</a>
+            </div>
+            <div class="c5-frame-photo">
+                <img src="images/foto-hero2.jpg" alt="Leni">
+                <div class="c5-frame-border">
+                    <svg viewBox="0 0 458.61 765.64" preserveAspectRatio="xMidYMid slice">
+                        <path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/>
+                        <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/>
+                        <path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="c5-mosaic">
+        <svg class="c5-mosaic-blob" viewBox="0 0 458.61 765.64">
+            <path d="M0,532.69c136.04-16.16,272.07-32.32,408.11-48.47,3.77-.45,7.9-.81,11.04,1.31,4.49,3.04,4.72,9.46,4.4,14.87-4.37,72.22-26.42,145.79-75.47,198.98-49.05,53.19-128.44,81.61-196.72,57.69-44.47-15.57-79.92-51.06-103.61-91.79C24.06,624.55,10.98,578.6.2,532.72" fill="#e2aec3"/>
+            <path d="M51.63,254.13c115.6,61.34,246.09,76.57,364.42,132.1,2.39,1.12,3.59,4.06,2.51,6.47-5.22,11.6-13.29,21.8-21.29,31.76-31.77,39.54-68.25,80.92-117.98,90.88-30.45,6.1-62.01-.64-91.61-10.03-36-11.42-71.26-27.14-100.02-51.63-28.76-24.48-50.63-58.56-54.82-96.1-3.93-35.13,7.51-69.95,18.8-103.45" fill="#e0a24a"/>
+        </svg>
+
+        <h2>Ons aanbod</h2>
+        <div class="c5-grid">
+            <div class="c5-grid-item">
+                <img src="images/foto-hapjes.jpg" alt="Hapjes">
+                <span>Hapjes & Dessertjes</span>
+            </div>
+            <div class="c5-grid-item">
+                <img src="images/foto-buffet.jpg" alt="Buffet">
+                <span>Buffetten</span>
+            </div>
+            <div class="c5-grid-item">
+                <img src="images/foto-cookhome.jpg" alt="Cook@Home">
+                <span>Cook@Home</span>
+            </div>
+            <div class="c5-grid-item">
+                <img src="images/bbq/bbq-1.jpg" alt="BBQ">
+                <span>BBQ Catering</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

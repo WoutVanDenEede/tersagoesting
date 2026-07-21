@@ -219,6 +219,43 @@
 
     </main>
 
+    <!-- Instagram Feed (pagina-breed) -->
+    <section class="section social-section" id="social" style="position:relative;overflow:hidden;">
+        <svg class="svg-deco svg-deco--social-left" viewBox="0 0 458.61 765.64" aria-hidden="true"><path d="M442.35,93.83c4.53-.82,9.9-1.38,13.05,1.97,2.1,2.24,2.48,5.55,2.7,8.61,6.53,93.41-50.32,188.49-136.46,225.2-29.22,12.45-61.7,18.55-93.06,13.51-39.87-6.41-75.65-30.7-100.34-62.66-24.69-31.96-38.92-68.41-45.6-108.24l359.71-78.4Z" fill="#b3b062"/></svg>
+        <div class="container">
+            <h2 class="section-title">Volg ons voor meer foto's en filmpjes</h2>
+            <p class="section-subtitle">Zo blijf je op de hoogte van onze acties en krijg je een blik achter de schermen</p>
+            <div class="social-instagram social-instagram--full">
+                <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+                <iframe src="//lightwidget.com/widgets/cc6d5dd5a7335462a5d6e05d1cafe888.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+                <p class="insta-handle">@tersagoesting</p>
+                <a href="https://www.instagram.com/tersagoesting/" target="_blank" rel="noopener" class="btn btn-primary">
+                    Volg ons op Instagram &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Reels -->
+    <section class="section social-section" id="reels">
+        <div class="container" style="text-align:center;">
+            <div class="social-video">
+                <div class="reels-player">
+                    <video id="reelsVideo" muted playsinline preload="metadata">
+                        <source src="../images/reels/reel-1.mp4" type="video/mp4">
+                        <track kind="captions" src="" label="Nederlands" srclang="nl" default>
+                    </video>
+                    <button class="reels-nav-btn reels-prev" id="reelsPrev" aria-label="Vorige video">&#10094;</button>
+                    <button class="reels-nav-btn reels-next" id="reelsNext" aria-label="Volgende video">&#10095;</button>
+                    <div class="reels-bottom-bar">
+                        <span class="reels-counter" id="reelsCounter">1 / 6</span>
+                        <button class="reels-mute-btn" id="reelsMuteBtn" aria-label="Geluid aan/uit">&#128263;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-inner">

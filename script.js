@@ -432,12 +432,23 @@ document.addEventListener('DOMContentLoaded', function () {
     var reelsPrev = document.getElementById('reelsPrev');
     var reelsNext = document.getElementById('reelsNext');
     var reelsCounter = document.getElementById('reelsCounter');
+    // Basispad afleiden uit de eerste <source> zodat reels ook werken vanuit /blog/
+    var reelsBase = 'images/reels/';
+    if (reelsVideo) {
+        var reelsSource = reelsVideo.querySelector('source');
+        if (reelsSource) {
+            var reelsInit = reelsSource.getAttribute('src') || '';
+            var reelsIdx = reelsInit.indexOf('images/reels/');
+            if (reelsIdx > 0) reelsBase = reelsInit.slice(0, reelsIdx) + 'images/reels/';
+        }
+    }
     var reelsList = [
-        'images/reels/reel-1.mp4',
-        'images/reels/reel-2.mp4',
-        'images/reels/reel-3.mp4',
-        'images/reels/reel-4.mp4',
-        'images/reels/reel-5.mp4'
+        reelsBase + 'reel-1.mp4',
+        reelsBase + 'reel-2.mp4',
+        reelsBase + 'reel-3.mp4',
+        reelsBase + 'reel-4.mp4',
+        reelsBase + 'reel-5.mp4',
+        reelsBase + 'reel-6.mp4'
     ];
     var currentReel = 0;
 

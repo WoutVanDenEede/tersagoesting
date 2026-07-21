@@ -3623,3 +3623,50 @@ a.card {
         grid-template-columns: 1fr;
     }
 }
+
+/* === Sterrenbeoordeling (reviewformulier) === */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 6px;
+    font-size: 2.2rem;
+    line-height: 1;
+    margin-top: 6px;
+}
+
+.star-rating input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.star-rating label {
+    color: #d9cfc2;
+    cursor: pointer;
+    transition: color 0.15s ease, transform 0.1s ease;
+    margin: 0;
+}
+
+.star-rating label::before {
+    content: "\2605"; /* ster */
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: var(--color-orange);
+}
+
+.star-rating label:hover {
+    transform: scale(1.1);
+}
+
+/* Toetsenbordfocus zichtbaar maken */
+.star-rating input:focus-visible + label {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google Analytics (loaded after cookie consent) -->
+    <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    if(localStorage.getItem('cookieConsent')==='accepted'){
+        var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-B359G3PM00';document.head.appendChild(s);
+        gtag('js',new Date());gtag('config','G-B359G3PM00');
+    }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laat een review achter | Tersagoesting</title>
+    <meta name="description" content="Was je tevreden over de catering van Tersagoesting? Laat hier een review achter en help anderen kiezen voor lekker eten op hun feest.">
+    <link rel="canonical" href="https://tersagoesting.be/review.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="images/favicon-512.png" type="image/png" sizes="512x512">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Preconnect third-party origins -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+
+    <!-- Font preload -->
+    <link rel="preload" href="fonts/Cheboyga.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="style.css?v=24">
+</head>
+<body>
+    <!-- Skip to content -->
+    <a href="#main-content" class="skip-link">Ga naar inhoud</a>
+
+    <!-- Top banner -->
+    <div class="top-bar">
+        <p>Catering en traiteur in en rond Puurs-Sint-Amands <a href="index.html#contact">Vraag een offerte!</a></p>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <picture><source srcset="images/logo-tersagoesting.webp" type="image/webp"><img src="images/logo-tersagoesting.png" alt="Tersagoesting - Catering en traiteur in Puurs" class="logo-img" width="1088" height="710"></picture>
+            </a>
+            <nav class="nav" id="nav">
+                <div class="nav-dropdown">
+                    <a href="aanbod.html" class="nav-link">Ons aanbod &#9662;</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="hapjes-bestellen.html">Hapjes &amp; Dessertjes</a>
+                        <a href="aanbod.html#formules">Buffetten</a>
+                        <a href="cook-at-home.html">Cook@Home</a>
+                        <a href="aanbod.html#bbq-aanbod">BBQ</a>
+                        <a href="aanbod.html#formules">Pasta &amp; Burger</a>
+                    </div>
+                </div>
+                <a href="index.html#hoe-bestellen" class="nav-link">Hoe bestel ik?</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="index.html#contact" class="nav-link nav-cta">Vraag een offerte</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu openen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="section contact" id="review">
+            <div class="container">
+                <h1 class="section-title">Laat een review achter</h1>
+                <p class="section-subtitle" style="max-width: 640px; margin: 0 auto 40px;">Was je tevreden over onze catering? Vertel het ons! Je review helpt andere feestvierders kiezen, en wij plaatsen de mooiste graag op onze website. Bedankt om even de tijd te nemen.</p>
+
+                <form class="contact-form" id="reviewForm" action="https://formsubmit.co/tersagoesting@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Nieuwe review via tersagoesting.be">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://tersagoesting.be/bedankt-review.html">
+                    <label for="_honey" class="sr-only">Laat dit veld leeg</label>
+                    <input type="text" id="_honey" name="_honey" style="display:none" autocomplete="off" tabindex="-1">
+                    <input type="hidden" name="_template" value="table">
+
+                    <div class="form-group">
+                        <label for="naam">Je naam *</label>
+                        <input type="text" id="naam" name="Naam" required placeholder="Bv. Ine of familie Peeters">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gelegenheid">Voor welke gelegenheid?</label>
+                        <input type="text" id="gelegenheid" name="Gelegenheid" placeholder="Bv. communiefeest, BBQ, huwelijk (optioneel)">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Je beoordeling</label>
+                        <div class="star-rating" role="radiogroup" aria-label="Aantal sterren">
+                            <input type="radio" id="ster5" name="Beoordeling" value="5 sterren"><label for="ster5" title="5 sterren" aria-label="5 sterren"></label>
+                            <input type="radio" id="ster4" name="Beoordeling" value="4 sterren"><label for="ster4" title="4 sterren" aria-label="4 sterren"></label>
+                            <input type="radio" id="ster3" name="Beoordeling" value="3 sterren"><label for="ster3" title="3 sterren" aria-label="3 sterren"></label>
+                            <input type="radio" id="ster2" name="Beoordeling" value="2 sterren"><label for="ster2" title="2 sterren" aria-label="2 sterren"></label>
+                            <input type="radio" id="ster1" name="Beoordeling" value="1 ster"><label for="ster1" title="1 ster" aria-label="1 ster"></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="review">Je review *</label>
+                        <textarea id="review" name="Review" rows="6" required placeholder="Vertel gerust wat je van het eten en de bediening vond..."></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="radio-label" style="align-items:flex-start;">
+                            <input type="checkbox" name="Toestemming tonen" value="Ja, mag getoond worden op website en sociale media" checked>
+                            <span>Tersagoesting mag deze review (met mijn voornaam) tonen op de website en sociale media.</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn btn-primary btn-large">Verstuur mijn review</button>
+                    </div>
+                </form>
+
+                <p style="text-align:center; margin-top: 32px; color: var(--color-text);">Liever via een ander kanaal? Je kan ons ook een aanbeveling geven op
+                    <a href="https://www.facebook.com/profile.php?id=61558171506722" target="_blank" rel="noopener">Facebook</a>.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <p>Goesting gekregen?</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigatie</h4>
+                <a href="aanbod.html">Ons aanbod</a>
+                <a href="hapjes-bestellen.html">Hapjes &amp; Dessertjes</a>
+                <a href="cook-at-home.html">Cook@Home</a>
+                <a href="blog.html">Blog</a>
+                <a href="index.html#hoe-bestellen">Hoe bestel ik?</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="footer-links">
+                <h4>Catering in de regio</h4>
+                <a href="catering-temse.html">Catering Temse</a>
+                <a href="catering-bornem.html">Catering Bornem</a>
+                <a href="catering-mechelen.html">Catering Mechelen</a>
+                <a href="catering-sint-niklaas.html">Catering Sint-Niklaas</a>
+                <a href="catering-willebroek.html">Catering Willebroek</a>
+                <a href="catering-duffel.html">Catering Duffel</a>
+                <a href="catering-londerzeel.html">Catering Londerzeel</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>tersagoesting@gmail.com</p>
+                <p>0476 62 40 11</p>
+                <p>Vijverstraat 67, 2870 Puurs-Sint-Amands</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/tersagoesting/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61558171506722" target="_blank" rel="noopener">Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Tersagoesting. Alle rechten voorbehouden. | <a href="privacybeleid.html">Privacybeleid</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie consent banner -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie-instellingen">
+        <p>Deze website gebruikt cookies voor analyse (Google Analytics). Door verder te surfen ga je akkoord met ons <a href="privacybeleid.html">privacybeleid</a>.</p>
+        <div class="cookie-buttons">
+            <button class="btn btn-primary cookie-accept" id="cookieAccept">Akkoord</button>
+            <button class="btn btn-outline cookie-decline" id="cookieDecline">Weigeren</button>
+        </div>
+    </div>
+
+    <script src="script.js?v=22"></script>
+</body>
+</html>

@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /blog/_template.html
+Disallow: /blog/drafts/
 
 Sitemap: https://tersagoesting.be/sitemap.xml

@@ -66,4 +66,28 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://tersagoesting.be/blog.html</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://tersagoesting.be/blog/alles-warm-op-tafel.html</loc>
+        <lastmod>2026-07-21</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://tersagoesting.be/blog/bbq-zelf-of-cateraar.html</loc>
+        <lastmod>2026-06-22</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://tersagoesting.be/blog/gasten-minder-honger.html</loc>
+        <lastmod>2026-05-14</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
 </urlset>

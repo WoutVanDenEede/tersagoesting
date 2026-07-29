@@ -2409,6 +2409,7 @@ a.card {
     }
 
     .nav-link {
+        color: var(--color-text);
         padding: 12px 8px;
         min-height: 44px;
         display: flex;

@@ -107,7 +107,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var formuleSelect = document.getElementById('formule');
     var berichtField = document.getElementById('bericht');
     var hapjesKeuze = document.getElementById('hapjes-keuze');
-    var bbqKeuze = document.getElementById('bbq-keuze');
     var buffetKeuze = document.getElementById('buffet-keuze');
     var pastaKeuze = document.getElementById('pasta-keuze');
     var burgerKeuze = document.getElementById('burger-keuze');
@@ -138,12 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 parts.push(formuleTeksten[formule]);
             }
         } else if (formule === 'BBQ') {
-            var bbqRadio = document.querySelector('input[name="bbq_keuze"]:checked');
-            if (bbqRadio && bbqRadio.value === 'groentjes') {
-                parts.push('Ik wil graag barbecuegroentjes bestellen (12 bijgerechten uit het aanbod).');
-            } else if (bbqRadio) {
-                parts.push('Ik wil graag een volledige barbecue ter plaatse.');
-            }
+            parts.push('Ik wil graag een barbecue ter plaatse (vanaf 20 personen).');
         } else if (formule === 'Buffet (warm of koud)') {
             var buffetRadio = document.querySelector('input[name="buffet_voorkeur"]:checked');
             if (buffetRadio && buffetRadio.value !== 'geen') {
@@ -186,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Toon/verberg secties + checkboxes resetten bij formule-wissel
     function resetFormuleOpties() {
         // Verberg alle keuze-secties
-        var sections = [hapjesKeuze, bbqKeuze, buffetKeuze, pastaKeuze, burgerKeuze];
+        var sections = [hapjesKeuze, buffetKeuze, pastaKeuze, burgerKeuze];
         sections.forEach(function (s) { if (s) s.style.display = 'none'; });
 
         // Reset checkboxes
@@ -215,7 +209,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Toon relevante keuze-sectie
             if (val === 'Hapjes & Dessertjes' && hapjesKeuze) hapjesKeuze.style.display = 'block';
-            if (val === 'BBQ' && bbqKeuze) bbqKeuze.style.display = 'block';
             if (val === 'Buffet (warm of koud)' && buffetKeuze) buffetKeuze.style.display = 'block';
             if (val === 'Pasta-formule' && pastaKeuze) pastaKeuze.style.display = 'block';
             if (val === 'Burger-formule' && burgerKeuze) burgerKeuze.style.display = 'block';
@@ -226,13 +219,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Hapjes radiobuttons
         if (hapjesKeuze) {
             hapjesKeuze.querySelectorAll('input[name="hapjes_keuze"]').forEach(function (radio) {
-                radio.addEventListener('change', buildBericht);
-            });
-        }
-
-        // BBQ radiobuttons
-        if (bbqKeuze) {
-            bbqKeuze.querySelectorAll('input[name="bbq_keuze"]').forEach(function (radio) {
                 radio.addEventListener('change', buildBericht);
             });
         }
@@ -523,18 +509,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // === URL parameter pre-fill (vanuit aanbod.html) ===
     var params = new URLSearchParams(window.location.search);
     var paramFormule = params.get('formule');
-    var paramBbq = params.get('bbq');
     if (paramFormule && formuleSelect) {
         formuleSelect.value = paramFormule;
         formuleSelect.dispatchEvent(new Event('change'));
-        // Pre-select BBQ keuze en tekst invullen
-        if (paramBbq && bbqKeuze) {
-            var bbqRadio = bbqKeuze.querySelector('input[value="' + paramBbq + '"]');
-            if (bbqRadio) {
-                bbqRadio.checked = true;
-                buildBericht();
-            }
-        }
     }
 
 });

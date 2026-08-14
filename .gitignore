@@ -15,3 +15,11 @@ package-lock.json
 convert-webp.js
 update-html-images.js
 image-dimensions.json
+
+# Transcriptie-bewaker (lokaal, niet in git)
+tools/transcriptie/config.ini
+tools/transcriptie/.venv/
+tools/transcriptie/*.log
+tools/transcriptie/*.log.*
+tools/transcriptie/.verwerkt.json
+tools/transcriptie/__pycache__/

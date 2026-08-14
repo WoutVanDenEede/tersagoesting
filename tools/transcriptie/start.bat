@@ -1,5 +1,16 @@
 @echo off
-REM Start de transcriptie-bewaker. Pas het pad hieronder aan indien nodig.
 cd /d "%~dp0"
-call ".venv\Scripts\activate.bat"
-python transcribeer.py
+
+if not exist ".venv\Scripts\python.exe" (
+  echo De installatie is nog niet gebeurd.
+  echo Dubbelklik eerst  setup.bat.
+  echo.
+  pause
+  exit /b 1
+)
+
+echo Transcriptie-bewaker gestart. Laat dit venster open staan.
+echo Stoppen kan met  Ctrl+C  of door dit venster te sluiten.
+echo.
+".venv\Scripts\python.exe" transcribeer.py
+pause

@@ -28,7 +28,10 @@ C:\Users\woutv\transcriptie
 
 ## Stap 3 — Python-pakketten installeren
 
-Open **PowerShell**, ga naar die map en maak een aparte omgeving:
+**Makkelijkst:** dubbelklik in de map op **`setup.bat`**. Dat maakt de omgeving
+aan, installeert alles en zet `config.ini` klaar. Klaar? Ga naar stap 4.
+
+Liever handmatig? Open **PowerShell**, ga naar die map en maak een aparte omgeving:
 
 ```powershell
 cd C:\Users\woutv\transcriptie

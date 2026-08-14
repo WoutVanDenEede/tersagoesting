@@ -169,21 +169,29 @@ _whisper_model = None
 
 def _voeg_cuda_dll_paden_toe() -> None:
     """Op Windows: laat CTranslate2 de cuBLAS/cuDNN-DLL's van de
-    nvidia-*-pip-pakketten vinden. Zonder dit valt de GPU-versie stil terug
-    op de processor."""
+    nvidia-*-pip-pakketten vinden. Zonder dit meldt CTranslate2
+    'cublas64_12.dll is not found' en werkt de GPU niet.
+
+    We voegen elke map met een .dll toe aan zowel de DLL-zoekmap als PATH,
+    want een gewone LoadLibrary-aanroep zoekt enkel via PATH."""
     if os.name != "nt":
         return
+    dll_mappen = set()
     for base in list(sys.path):
         nvidia_dir = os.path.join(base, "nvidia")
         if not os.path.isdir(nvidia_dir):
             continue
-        for naam in os.listdir(nvidia_dir):
-            bin_dir = os.path.join(nvidia_dir, naam, "bin")
-            if os.path.isdir(bin_dir):
-                try:
-                    os.add_dll_directory(bin_dir)
-                except OSError:
-                    pass
+        for root, _dirs, files in os.walk(nvidia_dir):
+            if any(f.lower().endswith(".dll") for f in files):
+                dll_mappen.add(root)
+    for map_ in dll_mappen:
+        try:
+            os.add_dll_directory(map_)
+        except OSError:
+            pass
+        os.environ["PATH"] = map_ + os.pathsep + os.environ.get("PATH", "")
+    if dll_mappen:
+        logger.info("CUDA-bibliotheken gevonden (%d map(pen)).", len(dll_mappen))
 
 
 def _detecteer_device(voorkeur: str, compute: str):

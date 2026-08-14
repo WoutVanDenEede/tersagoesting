@@ -167,22 +167,48 @@ def is_stabiel(pad: Path, snapshots: dict) -> bool:
 _whisper_model = None
 
 
+def _voeg_cuda_dll_paden_toe() -> None:
+    """Op Windows: laat CTranslate2 de cuBLAS/cuDNN-DLL's van de
+    nvidia-*-pip-pakketten vinden. Zonder dit valt de GPU-versie stil terug
+    op de processor."""
+    if os.name != "nt":
+        return
+    for base in list(sys.path):
+        nvidia_dir = os.path.join(base, "nvidia")
+        if not os.path.isdir(nvidia_dir):
+            continue
+        for naam in os.listdir(nvidia_dir):
+            bin_dir = os.path.join(nvidia_dir, naam, "bin")
+            if os.path.isdir(bin_dir):
+                try:
+                    os.add_dll_directory(bin_dir)
+                except OSError:
+                    pass
+
+
+def _detecteer_device(voorkeur: str, compute: str):
+    """Bepaal device + compute_type. 'auto' kiest de GPU als CTranslate2 er een
+    kan gebruiken, anders de processor."""
+    if voorkeur != "auto":
+        return voorkeur, compute
+    try:
+        import ctranslate2
+
+        heeft_gpu = ctranslate2.get_cuda_device_count() > 0
+    except Exception:
+        heeft_gpu = False
+    if heeft_gpu:
+        return "cuda", ("float16" if compute == "int8" else compute)
+    return "cpu", compute
+
+
 def get_whisper():
     global _whisper_model
     if _whisper_model is None:
+        _voeg_cuda_dll_paden_toe()
         from faster_whisper import WhisperModel
 
-        device = WHISPER_DEVICE
-        compute = WHISPER_COMPUTE
-        if device == "auto":
-            try:
-                import torch
-
-                device = "cuda" if torch.cuda.is_available() else "cpu"
-            except ImportError:
-                device = "cpu"
-            if device == "cuda" and compute == "int8":
-                compute = "float16"
+        device, compute = _detecteer_device(WHISPER_DEVICE, WHISPER_COMPUTE)
         logger.info(
             "Whisper-model laden: %s (device=%s, compute=%s) ...",
             WHISPER_MODEL, device, compute,

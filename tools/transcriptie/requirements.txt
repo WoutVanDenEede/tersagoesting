@@ -5,6 +5,8 @@ faster-whisper>=1.0.0
 # Enkel nodig als [opkuis] mode = claude
 anthropic>=0.40.0
 
-# Optioneel: laat 'device = auto' een NVIDIA-GPU detecteren.
-# Installeer torch enkel als je een GPU hebt (zie INSTALLATIE.md).
-# torch
+# Optioneel: NVIDIA-GPU inschakelen (veel sneller).
+# Dubbelklik daarvoor op  gpu-setup.bat  (installeert de regels hieronder).
+# device = auto detecteert de GPU dan automatisch.
+# nvidia-cublas-cu12
+# nvidia-cudnn-cu12

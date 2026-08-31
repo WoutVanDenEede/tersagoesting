@@ -376,12 +376,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // === Recensie carrousel (10 seconden) ===
-    const recensieSlides = document.querySelectorAll('.recensie-slide');
-    const dotsContainer = document.querySelector('.recensie-dots');
-    if (recensieSlides.length > 0 && dotsContainer) {
-        let currentRecensie = 0;
+    // Bouwt de dots en de auto-rotatie op basis van de aanwezige slides.
+    // Wordt aangeroepen NA het (optioneel) injecteren van Google-reviews.
+    function initRecensieCarousel() {
+        const recensieSlides = document.querySelectorAll('.recensie-slide');
+        const dotsContainer = document.querySelector('.recensie-dots');
+        if (!(recensieSlides.length > 0 && dotsContainer)) return;
 
-        // Dots aanmaken
+        let currentRecensie = 0;
+        dotsContainer.innerHTML = '';
+        recensieSlides.forEach(function(s, i) { s.classList.toggle('active', i === 0); });
+
         recensieSlides.forEach(function(_, i) {
             const dot = document.createElement('button');
             dot.classList.add('recensie-dot');
@@ -411,6 +416,101 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var recensieInterval = setInterval(nextRecensie, 10000);
     }
+
+    // Google-reviews (uit data/google-reviews.json, bijgewerkt door een GitHub Action)
+    // worden vooraan in de carrousel gezet, mét Google-branding. De ingezonden
+    // reviews blijven neutraal staan. Reviewtekst wordt via textContent gezet
+    // (nooit innerHTML) zodat externe data geen HTML kan injecteren.
+    function buildStars(rating, extraClass) {
+        const wrap = document.createElement('span');
+        wrap.className = 'recensie-stars' + (extraClass ? ' ' + extraClass : '');
+        const n = Math.max(0, Math.min(5, Math.round(rating || 0)));
+        wrap.setAttribute('aria-label', n + ' op 5 sterren');
+        const full = document.createElement('span');
+        full.className = 'star-full';
+        full.textContent = '★'.repeat(n);
+        const empty = document.createElement('span');
+        empty.className = 'star-empty';
+        empty.textContent = '★'.repeat(5 - n);
+        wrap.append(full, empty);
+        return wrap;
+    }
+
+    async function loadGoogleReviews() {
+        const track = document.querySelector('.recensie-carousel-track');
+        if (!track) return;
+
+        let data;
+        try {
+            const res = await fetch('data/google-reviews.json', { cache: 'no-cache' });
+            if (!res.ok) return;
+            data = await res.json();
+        } catch (e) {
+            return;
+        }
+        if (!data || !Array.isArray(data.reviews) || data.reviews.length === 0) return;
+
+        // Totaalscore-badge onder de titel
+        const title = document.querySelector('#recensies .section-title');
+        if (title && typeof data.rating === 'number' && !document.querySelector('.recensie-google-badge')) {
+            const badge = document.createElement('a');
+            badge.className = 'recensie-google-badge';
+            badge.href = 'https://g.page/r/CX6z-HXMihMHEAE';
+            badge.target = '_blank';
+            badge.rel = 'noopener';
+
+            const logo = document.createElement('img');
+            logo.src = 'images/google-g.svg';
+            logo.alt = 'Google';
+            logo.width = 22;
+            logo.height = 22;
+
+            const score = document.createElement('span');
+            score.className = 'recensie-google-score';
+            score.textContent = data.rating.toFixed(1).replace('.', ',');
+
+            const label = document.createElement('span');
+            label.className = 'recensie-google-label';
+            label.textContent = data.total ? ('op Google · ' + data.total + ' beoordelingen') : 'op Google';
+
+            badge.append(logo, score, buildStars(data.rating), label);
+            title.insertAdjacentElement('afterend', badge);
+        }
+
+        // Google-review slides vooraan invoegen
+        const frag = document.createDocumentFragment();
+        data.reviews.forEach(function(r) {
+            const slide = document.createElement('div');
+            slide.className = 'recensie-slide recensie-slide--google';
+
+            const tekst = document.createElement('p');
+            tekst.className = 'recensie-home-tekst';
+            tekst.textContent = '"' + String(r.text || '').trim() + '"';
+
+            const footer = document.createElement('div');
+            footer.className = 'recensie-home-footer';
+
+            const naam = document.createElement('p');
+            naam.className = 'recensie-home-naam';
+            naam.textContent = r.author || 'Google-gebruiker';
+
+            const bron = document.createElement('span');
+            bron.className = 'recensie-home-bron';
+            const g = document.createElement('img');
+            g.src = 'images/google-g.svg';
+            g.alt = '';
+            g.width = 14;
+            g.height = 14;
+            bron.append(g, document.createTextNode(' Google-review'));
+
+            footer.append(naam, bron);
+            slide.append(buildStars(r.rating, 'recensie-slide-stars'), tekst, footer);
+            frag.appendChild(slide);
+        });
+        track.insertBefore(frag, track.firstChild);
+    }
+
+    loadGoogleReviews().finally(initRecensieCarousel);
 
     // === Video Reels: autoplay bij scroll, chaining, navigatie, mute ===
     var reelsVideo = document.getElementById('reelsVideo');

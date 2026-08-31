@@ -3848,6 +3848,24 @@ a.card {
     margin: 24px 0;
 }
 
+.blog-figure {
+    margin: 32px 0;
+}
+
+.blog-figure img {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+.blog-figure figcaption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--color-text-light, #777);
+    text-align: center;
+}
+
 .blog-tip-box {
     background: var(--color-cream-light);
     border-left: 5px solid var(--color-orange);

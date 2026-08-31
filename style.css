@@ -892,6 +892,65 @@ a.card {
     font-size: 1.2rem;
     color: var(--terracotta);
     text-align: right;
+    margin: 0;
+}
+
+/* Google-reviews branding */
+.recensie-google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 auto 34px;
+    padding: 9px 18px;
+    background: #fff;
+    border-radius: 999px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+    text-decoration: none;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: var(--transition);
+}
+.recensie-google-badge:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    transform: translateY(-1px);
+}
+.recensie-google-score {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--text);
+}
+.recensie-google-label {
+    font-size: 0.95rem;
+    color: var(--text);
+    opacity: 0.75;
+}
+.recensie-stars {
+    color: #fbbc04;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+.recensie-slide-stars {
+    display: block;
+    text-align: left;
+    font-size: 1.15rem;
+    margin-bottom: 14px;
+}
+.recensie-home-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.recensie-home-bron {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    color: #7a7a7a;
+}
+.recensie-home-bron img {
+    display: block;
 }
 
 .recensie-google-btn {
@@ -1331,6 +1390,33 @@ a.card {
 /* ===== CONTACT ===== */
 .contact {
     background-color: var(--color-bg-light);
+}
+
+.contact-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    max-width: 760px;
+    margin: 0 auto 40px;
+    padding: 18px 24px;
+    background: var(--color-cream-light);
+    border-left: 5px solid var(--color-orange);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    text-align: left;
+}
+.contact-notice-icon {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+.contact-notice p {
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+.contact-notice strong {
+    color: var(--color-primary);
 }
 
 .contact-grid {

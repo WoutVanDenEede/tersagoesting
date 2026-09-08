@@ -79,6 +79,48 @@
         }
     }
     </script>
+
+    <!-- SEO/GEO: Structured Data - FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is zelf barbecueën echt zo moeilijk?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Goed barbecueën vergt vaardigheid: met houtskool werk je met de natuur, en zonder oplettendheid krijg je een verbrande buitenkant met een rauwe binnenkant. Een mooie korst én perfecte gaarheid halen, en alles tegelijk warm serveren, is niet vanzelfsprekend."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Wat kost het om zelf een barbecue te organiseren?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Meer dan alleen je boodschappen. Tel er de uren keukenwerk bij, de stress aan de grill terwijl je gasten al zitten, de afwas achteraf en het risico dat het eten tegenvalt. Zelf doen kost vooral tijd, rust en zekerheid."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Wat doet een barbecuecateraar precies?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Wij komen ter plaatse barbecueën vanaf 20 personen, met twaalf afgekruide bijgerechten uit onze eigen moestuin inbegrepen. Wij bakken het vlees, de scampi's of een papillot, terwijl jij enkel je bord hoeft te vullen. Al vanaf 25 euro per persoon."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "En de opruim na de barbecue?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Die is er voor jou niet. Wij stellen op, serveren en achteraf blijft er geen spoor achter, op misschien een cirkel in het gras na. Geen berg afwas, geen vette grill, gewoon nagenieten met je voeten onder tafel."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
 
@@ -163,7 +205,7 @@
 
         <p>Want ja, het moet gezegd: goed barbecueën is een kunst op zich. Zeker als je wat meer wil doen dan een worstje of een sateetje grillen. Wie al eens kippenbouten, een tomahawk of gemarineerde ribbetjes heeft klaargemaakt, weet dat mooi gaar bakken met een mooie korst niet altijd simpel is. Zelfs als je daarin slaagt, moet je alles tegelijk warm kunnen serveren. Nogmaals: niet simpel!</p>
 
-        <h2>Goed barbecueën is een kunst (en dat onderschatten we)</h2>
+        <h2 id="vraag-kunst">Goed barbecueën is een kunst (en dat onderschatten we)</h2>
 
         <p>Verbrande buitenkant, rauwe binnenkant: een stuk vlees of vis verpesten boven de kolen is snel gebeurd. Als je met houtskool werkt, werk je met de natuur. Let je niet op, dan dooft je vuur uit. Of erger: dan zijn de worstjes links zwartgeblakerd en rechts nog helemaal roze.</p>
 
@@ -185,13 +227,13 @@
 
         <p>Klinkt allemaal wat dramatisch, dat snap ik. Maar ik ben er zeker van dat we hier een snaar raken.</p>
 
-        <h2>De eerlijke rekening: wat kost zelf doen écht?</h2>
+        <h2 id="vraag-kostprijs">De eerlijke rekening: wat kost zelf doen écht?</h2>
 
         <p>Zelf je barbecue organiseren lijkt goedkoop. Je koopt wat vlees, wat groenten, en klaar. Maar de echte kost zit niet alleen in je winkelkarretje.</p>
 
         <p>Tel er de uren bij die je in de keuken staat. De stress aan de grill terwijl je gasten al aan tafel zitten. De afwas achteraf. En het risico dat het eten tegenvalt, net op de dag dat je vrienden en familie wil verwennen. Dat noemen we eerlijk de rekening maken: zelf doen kost je niet zozeer geld, maar vooral tijd, rust en een stuk zekerheid.</p>
 
-        <h2>Wat wij doen: van bijgerechten tot je vlees op de grill</h2>
+        <h2 id="vraag-watwijdoen">Wat wij doen: van bijgerechten tot je vlees op de grill</h2>
 
         <p>We weten waarover we praten. Sinds twee jaar is onze zomerse barbecue-formule populairder dan ooit. Wij komen ter plaatse barbecue&euml;n, met onze twaalf bijgerechten inbegrepen: stuk voor stuk afgekruide groentjes die je barbecue plots een pak gastronomischer maken. En de groentjes komen vers uit onze eigen moestuin. Het volledige aanbod vind je <a href="../aanbod.html#bbq-aanbod">op onze website</a>.</p>
 
@@ -203,13 +245,24 @@
 
         <p>Sommige klanten combineren de barbecue-formule met wat hapjes van de grill, zoals buikspek, mosseltjes of inktvis. Anderen houden het simpel, maar sluiten af met enkele grote rib-eyes, die we garen tot de gewenste gaarheid.</p>
 
-        <h2>Het beste van al: de opruim (of het gebrek eraan)</h2>
+        <h2 id="vraag-opruim">Het beste van al: de opruim (of het gebrek eraan)</h2>
 
         <p>Het beste van al? De opruim. Of beter: het gebrek eraan. Wij stellen op, serveren lekker eten en nadien is er, buiten misschien een cirkel in het gras, geen spoor meer van ons terug te vinden.</p>
 
         <p>Geen berg afwas, geen vette grill die nog moet uitgekuist worden, geen kommetjes die je de dag nadien nog terugvindt. Gewoon nagenieten met je voetjes onder tafel.</p>
 
         <p>Laat het gezwoeg deze zomer dus aan ons over en verras je gasten met een gastronomisch verwenmomentje. Vraag gerust via <a href="../index.html#contact">het contactformulier</a> naar de mogelijkheden.</p>
+
+        <div class="blog-vragen">
+            <h2>Snel antwoord op je vraag</h2>
+            <p class="blog-vragen-intro">Klik een vraag aan en we lichten het antwoord op in het artikel.</p>
+            <ul class="blog-vragen-list">
+                <li><a class="blog-vraag-link" href="#vraag-kunst" data-target="vraag-kunst">Is zelf barbecueën echt zo moeilijk?</a></li>
+                <li><a class="blog-vraag-link" href="#vraag-kostprijs" data-target="vraag-kostprijs">Wat kost het om zelf een barbecue te organiseren?</a></li>
+                <li><a class="blog-vraag-link" href="#vraag-watwijdoen" data-target="vraag-watwijdoen">Wat doet een barbecuecateraar precies?</a></li>
+                <li><a class="blog-vraag-link" href="#vraag-opruim" data-target="vraag-opruim">En de opruim na de barbecue?</a></li>
+            </ul>
+        </div>
 
         <p class="blog-closing-line">Bye bye geraspte wortel, hello gegrilde courgette.</p>
 

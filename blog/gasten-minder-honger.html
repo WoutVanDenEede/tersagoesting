@@ -79,6 +79,48 @@
         }
     }
     </script>
+
+    <!-- SEO/GEO: Structured Data - FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Hoeveel eten moet ik voorzien voor mijn feest?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Meestal minder dan je denkt: je zit bijna nooit met te weinig. Baseer je op drie parameters: wie er aan tafel zit, hoe laat je feest begint en wat er op het menu staat. Te veel op tafel maakt gasten net overdonderd en te vol om te genieten."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Speelt het een rol wie er aan tafel zit?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ja. Mannen eten gemiddeld meer dan vrouwen, kinderen tot 6 jaar hebben verwaarloosbare porties, kinderen van 6 tot 12 halve porties, en vanaf 12 jaar reken je met volwassen porties."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Maakt het beginuur van het feest iets uit?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Zeker. Bij een uitnodiging om 11 uur verwachten gasten een lunch, ook al noem je het een receptie. Om 14 uur hebben ze waarschijnlijk al gegeten. Denk dus na over wat je gasten al gegeten hebben wanneer ze aankomen."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Hoeveel hapjes serveer je bij het aperitief?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Drie hapjes bij het aperitief betekent dat gasten met meer honger aan tafel schuiven dan bij vijf. Serveer je veel hapjes, dan mag je hoofdgerecht simpeler zijn. En bij een dessert hou je best een klein gaatje over na het hoofdgerecht."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
 
@@ -176,11 +218,11 @@
 
         <p>Niet leuk. Onze gasten hebben niet de kans gehad om te proeven van het eten omdat ze simpelweg te vol zaten. En wij moesten de tupperware-potjes bovenhalen om al dat overgebleven eten te bewaren. Want weggooien is ook maar zonde.</p>
 
-        <h2>De maaginhoud van je gasten (ja, daar denk je best over na)</h2>
+        <h2 id="vraag-hoeveel">De maaginhoud van je gasten (ja, daar denk je best over na)</h2>
 
         <p>Bij Tersagoesting stellen we drie vragen vóór we ook maar één hapje bereiden. Drie simpele parameters die het verschil maken tussen een feest waar alles klopt en eentje met bakken overschot.</p>
 
-        <h3>1. Wie zit er aan tafel?</h3>
+        <h3 id="vraag-wie">1. Wie zit er aan tafel?</h3>
 
         <ul>
             <li><strong>Mannen</strong> eten gemiddeld meer dan <strong>vrouwen</strong>. Als een man twee burgers eet, zal een vrouw er vaker anderhalf of één eten</li>
@@ -189,7 +231,7 @@
             <li><strong>Vanaf 12 jaar:</strong> reken met volwassen porties</li>
         </ul>
 
-        <h3>2. Hoe laat begint je feest?</h3>
+        <h3 id="vraag-uur">2. Hoe laat begint je feest?</h3>
 
         <p>Vlamingen hebben vaste eetgewoontes. Jij hebt die zelf waarschijnlijk ook.</p>
 
@@ -202,7 +244,7 @@
             <strong>Vuistregel:</strong> denk na over wat je gasten <em>al gegeten hebben</em> wanneer ze aankomen. Op basis daarvan schat je de porties in.
         </div>
 
-        <h3>3. Wat staat er op het menu?</h3>
+        <h3 id="vraag-menu">3. Wat staat er op het menu?</h3>
 
         <p>Heel simpel: drie hapjes bij het aperitief betekent dat je gasten met meer honger aan tafel schuiven dan wanneer je er vijf serveert. Dat klinkt logisch, maar veel mensen vergeten het bij het samenstellen van hun menu.</p>
 
@@ -215,6 +257,17 @@
         <p>Ziezo, een paar simpele tips die de organisatie van je feestje een tikkeltje stresslozer maken.</p>
 
         <p>Heb je liever helemaal géén stress? Dan laat je het koken (en opdienen) gewoon aan ons over. Een <a href="../index.html#contact">vrijblijvende offerte aanvragen</a> doe je hier. Of check eerst <a href="../aanbod.html">ons aanbod</a> hier.</p>
+
+        <div class="blog-vragen">
+            <h2>Snel antwoord op je vraag</h2>
+            <p class="blog-vragen-intro">Klik een vraag aan en we lichten het antwoord op in het artikel.</p>
+            <ul class="blog-vragen-list">
+                <li><a class="blog-vraag-link" href="#vraag-hoeveel" data-target="vraag-hoeveel">Hoeveel eten moet ik voorzien voor mijn feest?</a></li>
+                <li><a class="blog-vraag-link" href="#vraag-wie" data-target="vraag-wie">Speelt het een rol wie er aan tafel zit?</a></li>
+                <li><a class="blog-vraag-link" href="#vraag-uur" data-target="vraag-uur">Maakt het beginuur van het feest iets uit?</a></li>
+                <li><a class="blog-vraag-link" href="#vraag-menu" data-target="vraag-menu">Hoeveel hapjes serveer je bij het aperitief?</a></li>
+            </ul>
+        </div>
 
         <a href="../blog.html" class="blog-back-link">&larr; Terug naar alle artikels</a>
 

@@ -512,6 +512,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     loadGoogleReviews().finally(initRecensieCarousel);
 
+    // === Blog: klikbare vragen highlighten het antwoord in het artikel ===
+    var vraagLinks = document.querySelectorAll('.blog-vraag-link');
+    if (vraagLinks.length) {
+        vraagLinks.forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                var id = link.getAttribute('data-target') || (link.getAttribute('href') || '').replace('#', '');
+                var target = document.getElementById(id);
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Highlight opnieuw kunnen afspelen bij herhaalde klik
+                target.classList.remove('blog-highlight');
+                void target.offsetWidth;
+                target.classList.add('blog-highlight');
+                if (history.replaceState) history.replaceState(null, '', '#' + id);
+            });
+        });
+    }
+
     // === Video Reels: autoplay bij scroll, chaining, navigatie, mute ===
     var reelsVideo = document.getElementById('reelsVideo');
     var reelsMuteBtn = document.getElementById('reelsMuteBtn');

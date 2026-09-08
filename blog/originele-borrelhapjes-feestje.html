@@ -48,7 +48,7 @@
     <link rel="preload" href="../fonts/Cheboyga.ttf" as="font" type="font/ttf" crossorigin>
 
     <!-- Fonts worden lokaal geladen via CSS @font-face -->
-    <link rel="stylesheet" href="../style.css?v=25">
+    <link rel="stylesheet" href="../style.css?v=26">
 
     <!-- SEO: Structured Data - BlogPosting -->
     <script type="application/ld+json">
@@ -77,6 +77,48 @@
             "@type": "WebPage",
             "@id": "https://tersagoesting.be/blog/originele-borrelhapjes-feestje.html"
         }
+    }
+    </script>
+
+    <!-- SEO/GEO: Structured Data - FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Wat serveer je het best op een feestje?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Vertrek uit ingrediënten die in het seizoen zitten, werk met smaken die je zelf kent en denk vooral aan de presentatie. Zo kom je origineel uit de hoek zonder moeilijke ingrediënten."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Wat zijn de makkelijkste hapjes om te maken?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Zeevruchten zoals oesters of mosselen. Serveer oesters met ingelegde sjalot, tabasco, peper of citroen, of maak het specialer met een tigre de leche, dille-olie of een gegratineerde mousselinesaus."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Welke vegetarische of seizoensgebonden hapjes kan je serveren?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "In de zomer gegrilde courgettereepjes met ricotta of pincho's met pepertjes, ansjovis en olijf; in de herfst beuling met gekarameliseerde appelcompote; in de winter een bladerdeeghapje."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Hoe zorg je dat een hapje indruk maakt?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Met de presentatie. Een hapje dat er mooi uitziet zet de juiste sfeer, en door met texturen te spelen vinden gasten het lekkerder. Vermijd hapjes die je onhandig met een lepeltje moet eten."
+                }
+            }
+        ]
     }
     </script>
 </head>
@@ -162,7 +204,7 @@
 
         <p>Van wat je online terugvindt, blijf je op je honger zitten. Vaak worden moeilijke ingrediënten gebruikt die je moet terugvinden in de rekken van meer dan één supermarkt. Een tikkeltje ongemakkelijk. Of het omgekeerde kan ook. De muur aan opties die het internet voorschotelt, lijkt soms evengoed op eenheidsworst. Wat nu?</p>
 
-        <h2>Dit is onze filosofie</h2>
+        <h2 id="vraag-filosofie">Dit is onze filosofie</h2>
         <p>Voor je begint te koken, vertrek je best vanuit deze drie principes:</p>
 
         <div class="blog-tip-box">
@@ -173,10 +215,10 @@
             </ul>
         </div>
 
-        <h2>De makkelijkste winnaars: zeevruchten</h2>
+        <h2 id="vraag-zeevruchten">De makkelijkste winnaars: zeevruchten</h2>
         <p>De allermakkelijkste hapjes die aan deze criteria voldoen, zijn zeevruchten zoals oesters of mosselen. Als je publiek een oester lust, maak je ze simpelweg blij met enkele lekkere exemplaren te kopen bij je viswinkel. Serveer er ingelegde sjalot, tabasco, peper of citroen bij. Of maak het wat specialer met een tigre de leche, wat dille-olie, of gratineer ze in de oven overgoten met een mousselinesaus.</p>
 
-        <h2>Geen oesterpubliek? Of vegetarisch?</h2>
+        <h2 id="vraag-vegetarisch">Geen oesterpubliek? Of vegetarisch?</h2>
         <p>Ok, genoteerd. Maar wat met een publiek dat minder happig is op oesters? Of vegetarisch is? Wel, dan laat je je opnieuw leiden door het seizoen:</p>
         <ul>
             <li>In de zomer gril je wat courgettereepjes en vul je ze met een frisse ricottamix.</li>
@@ -194,7 +236,7 @@
             <figcaption>Origineel hoeft niet moeilijk te zijn.</figcaption>
         </figure>
 
-        <h2>Wat je wél mag overdenken: de presentatie</h2>
+        <h2 id="vraag-presentatie">Wat je wél mag overdenken: de presentatie</h2>
         <p>Wat je van ons wél een beetje mag overdenken, is de presentatie. Hoe je iets serveert, is echt van belang. Hoe langer wij als cateraar bezig zijn, hoe meer we tobben over de manier waarop we iets serveren. Waarom? Twee redenen.</p>
         <ol>
             <li><strong>De wow-factor:</strong> het zinnetje 'oh, dat ziet er lekker uit' brengt je gezelschap meteen in de mood om te gaan knabbelen.</li>
@@ -220,6 +262,17 @@
         <p>Een hapje met geitenkaas, walnoot en honing. Winterse smaken, maar hoe breng je ze het best? Toast met geitenkaas, walnoot en honing: het meest voor de hand liggend, opnieuw wat saai. Wij rollen het in wat bladerdeeg tot één warm geheel. Dit prikkelt de nieuwsgierigheid van de gasten en maakt het makkelijk om in enkele happen op te eten.</p>
 
         <p>Zelf liever niet in de keuken staan? Wij verzorgen originele hapjes op je feest, in Puurs-Sint-Amands en omgeving. <a href="../index.html#contact">Vraag vrijblijvend een offerte</a>.</p>
+
+        <div class="blog-vragen">
+            <h2>Snel antwoord op je vraag</h2>
+            <p class="blog-vragen-intro">Klik een vraag aan en we lichten het antwoord op in het artikel.</p>
+            <ul class="blog-vragen-list">
+                <li><a class="blog-vraag-link" href="#vraag-filosofie" data-target="vraag-filosofie">Wat serveer je het best op een feestje?</a></li>
+                <li><a class="blog-vraag-link" href="#vraag-zeevruchten" data-target="vraag-zeevruchten">Wat zijn de makkelijkste hapjes om te maken?</a></li>
+                <li><a class="blog-vraag-link" href="#vraag-vegetarisch" data-target="vraag-vegetarisch">Welke vegetarische of seizoensgebonden hapjes kan je serveren?</a></li>
+                <li><a class="blog-vraag-link" href="#vraag-presentatie" data-target="vraag-presentatie">Hoe zorg je dat een hapje indruk maakt?</a></li>
+            </ul>
+        </div>
 
         <div class="blog-cta">
             <h3>Zin gekregen in originele hapjes?</h3>
@@ -312,7 +365,7 @@
     <!-- Floating CTA button -->
     <a href="../index.html#contact" class="floating-cta bestel-cta" id="floatingCta">Vraag een offerte!</a>
 
-    <script src="../script.js?v=23"></script>
+    <script src="../script.js?v=24"></script>
     <script>
     (function(){
         var url = encodeURIComponent(window.location.href);

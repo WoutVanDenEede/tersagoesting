@@ -48,7 +48,7 @@
     <link rel="preload" href="../fonts/Cheboyga.ttf" as="font" type="font/ttf" crossorigin>
 
     <!-- Fonts worden lokaal geladen via CSS @font-face -->
-    <link rel="stylesheet" href="../style.css?v=25">
+    <link rel="stylesheet" href="../style.css?v=26">
 
     <!-- SEO: Structured Data - BlogPosting -->
     <script type="application/ld+json">
@@ -79,6 +79,20 @@
         }
     }
     </script>
+
+    <!-- SEO/GEO: FAQPage-schema (stub) — vul dezelfde vragen in als in het vragenblok.
+         Zorg dat het antwoord ook echt in het artikel staat (bij de gekoppelde <h2>).
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            { "@type": "Question", "name": "Jouw vraag hier?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Kort, zelfstandig antwoord (staat ook in het artikel)." } }
+        ]
+    }
+    </script>
+    -->
 </head>
 <body>
 
@@ -184,6 +198,21 @@
         </ul>
         -->
 
+        <!-- SNEL-ANTWOORD / VRAGENBLOK (SEO + GEO)
+             Zet 3-5 vragen die het artikel beantwoordt. Geef de bijhorende
+             <h2> in het artikel een id (bv. <h2 id="vraag-xxx">) en verwijs er
+             hier naar met href/data-target. Klikken scrollt + highlight het antwoord.
+             Voeg dezelfde vragen ook toe als FAQPage-schema in de <head> (zie stub daar).
+
+        <div class="blog-vragen">
+            <h2>Snel antwoord op je vraag</h2>
+            <p class="blog-vragen-intro">Klik een vraag aan en we lichten het antwoord op in het artikel.</p>
+            <ul class="blog-vragen-list">
+                <li><a class="blog-vraag-link" href="#vraag-xxx" data-target="vraag-xxx">Jouw vraag hier?</a></li>
+            </ul>
+        </div>
+        -->
+
         <!-- CTA blok -->
         <div class="blog-cta">
             <h3>Heb je een vraag voor volgende maand?</h3>
@@ -269,7 +298,7 @@
     <!-- Floating CTA button -->
     <a href="../index.html#contact" class="floating-cta bestel-cta" id="floatingCta">Vraag een offerte!</a>
 
-    <script src="../script.js?v=23"></script>
+    <script src="../script.js?v=24"></script>
     <script>
     (function(){
         var url = encodeURIComponent(window.location.href);

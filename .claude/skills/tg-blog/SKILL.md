@@ -13,7 +13,7 @@ Je bent een SEO-expert en ervaren blogschrijver die maandelijks een blogpost maa
 - **Taal:** Nederlands (Belgisch)
 - **Doelgroep:** Mensen die een feest plannen en catering overwegen
 - **Tone of voice:** Warm, persoonlijk, deskundig, toegankelijk — alsof je met een vriend(in) praat die toevallig cateringexpert is
-- **Post-template:** `blog/_template.html` (met `{{PLACEHOLDERS}}`, inclusief share-knoppen en kortingspromo)
+- **Post-template:** `blog/_template.html` (met `{{PLACEHOLDERS}}` en share-knoppen; geen hero-beeld en geen korting-promo)
 - **Blog overzicht:** `blog.html` (kaarten-grid)
 - **Homepage preview:** sectie in `index.html` na de recensies
 - **Voorkeuren:** Lees altijd `blog-voorkeuren.md` (in dezelfde skill-map) voor schrijfstijl, opmaak, SEO en social share regels
@@ -86,9 +86,11 @@ Lees het blog-prompt-template in `docs/blog-prompt-template.md` voor de volledig
    - `<div class="blog-tip-box">` — voor tip-kadertjes met vuistregels of praktische tips. Oranje rand links, crème achtergrond.
    - `<ul>/<ol>` met `<li>` — voor lijsten
    - `<strong>` — voor nadruk
+   - `<div class="blog-vragen">` — **ALTIJD onderaan** het artikel (net vóór de CTA): een "Snel antwoord op je vraag"-blok met 3-5 klikbare vragen die het artikel beantwoordt. Elke vraag verwijst via `href="#id"` + `data-target="id"` naar een `<h2>`/`<h3>` in het artikel dat je diezelfde `id` geeft. Klikken scrollt naar en highlight dat antwoord (UX). Zie het patroon in `blog/_template.html`.
 3. Schrijf in het Nederlands (Belgisch), vlot en toegankelijk
 4. Lengte: 800-1200 woorden
 5. Sluit af met de standaard CTA (zit al in het template)
+6. **Vragenblok + FAQ-schema (SEO/GEO):** kies 3-5 vragen die exact matchen met wat mensen zoeken/aan een AI vragen, koppel ze aan secties met een `id`, en voeg in Fase 5 de bijhorende FAQPage structured data toe (zelfde vragen, kort zelfstandig antwoord dat óók in het artikel staat). Dit is de grootste hefboom voor vindbaarheid in AI-zoekmachines (GEO).
 
 3. **Presenteer het resultaat** aan de gebruiker voor review.
 
@@ -129,8 +131,9 @@ Als `sharp-cli` niet beschikbaar is, kopieer het bestand gewoon en hernoem het.
    - `{{YYYY-MM-DD}}` → publicatiedatum
    - `{{MAAND JAAR}}` → "mei 2026" etc.
    - `{{X}}` → geschatte leestijd in minuten
-   - `{{ARTIKEL_INHOUD}}` → de geschreven HTML-content (vervang ook het voorbeeld-commentaar)
-3. Sla op als `blog/<SLUG>.html`
+   - `{{ARTIKEL_INHOUD}}` → de geschreven HTML-content (vervang ook het voorbeeld-commentaar), **inclusief** het `blog-vragen`-blok onderaan en de `id`'s op de gekoppelde koppen
+3. **FAQPage-schema:** vervang het (uitgecommentarieerde) FAQPage-stub in de `<head>` door echte structured data met dezelfde vragen als het `blog-vragen`-blok. Elk antwoord is kort, zelfstandig leesbaar en staat óók in het artikel. Controleer dat elke `id` waarnaar het vragenblok verwijst, echt op een `<h2>`/`<h3>` staat.
+4. Sla op als `blog/<SLUG>.html`
 
 #### 5d. Blog overzichtspagina updaten
 In `blog.html`, voeg een nieuwe kaart toe **bovenaan** het blog-grid (na `<div class="blog-grid">`), vóór eventuele bestaande kaarten of de placeholder-tekst.

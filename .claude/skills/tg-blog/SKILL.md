@@ -40,7 +40,7 @@ Volg deze stappen strikt in volgorde. Ga NOOIT naar de volgende stap zonder expl
 
 Vraag de gebruiker om:
 1. **De ruwe tekst** — Het onderwerp, de vraag, of de ruwe content voor de blogpost
-2. **Een foto** — Pad naar het afbeeldingsbestand (wordt hero-image van de post)
+2. **Een foto** — Pad naar het afbeeldingsbestand (wordt enkel gebruikt voor de social-preview / `og:image`; niet als hero en niet op de blog-kaarten)
 
 Als de gebruiker al tekst heeft geplakt, ga dan direct naar Fase 2.
 
@@ -146,12 +146,6 @@ Verwijder de placeholder-tekst als die er nog staat:
 Voeg toe:
 ```html
 <a href="blog/<SLUG>.html" class="blog-card">
-    <div class="blog-card-image">
-        <picture>
-            <source srcset="images/blog/<SLUG>.webp" type="image/webp">
-            <img src="images/blog/<SLUG>.jpg" alt="<TITEL>" width="600" height="338" loading="lazy">
-        </picture>
-    </div>
     <div class="blog-card-body">
         <h3><TITEL></h3>
         <p class="blog-card-date"><MAAND JAAR></p>
@@ -166,12 +160,6 @@ In `index.html`, update de blog-preview sectie (id="blog"). Verwijder de placeho
 
 ```html
 <a href="blog/<SLUG>.html" class="blog-preview-card">
-    <div class="blog-preview-card-image">
-        <picture>
-            <source srcset="images/blog/<SLUG>.webp" type="image/webp">
-            <img src="images/blog/<SLUG>.jpg" alt="<TITEL>" width="600" height="338" loading="lazy">
-        </picture>
-    </div>
     <div class="blog-preview-card-body">
         <h3><TITEL></h3>
         <p><KORTE_INTRO></p>

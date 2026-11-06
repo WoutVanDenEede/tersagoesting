@@ -146,6 +146,12 @@ Verwijder de placeholder-tekst als die er nog staat:
 Voeg toe:
 ```html
 <a href="blog/<SLUG>.html" class="blog-card">
+    <div class="blog-card-image">
+        <picture>
+            <source srcset="images/blog/<SLUG>.webp" type="image/webp">
+            <img src="images/blog/<SLUG>.jpg" alt="<TITEL>" width="600" height="338" loading="lazy">
+        </picture>
+    </div>
     <div class="blog-card-body">
         <h3><TITEL></h3>
         <p class="blog-card-date"><MAAND JAAR></p>

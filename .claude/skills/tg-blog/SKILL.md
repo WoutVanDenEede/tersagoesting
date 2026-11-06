@@ -166,6 +166,12 @@ In `index.html`, update de blog-preview sectie (id="blog"). Verwijder de placeho
 
 ```html
 <a href="blog/<SLUG>.html" class="blog-preview-card">
+    <div class="blog-preview-card-image">
+        <picture>
+            <source srcset="images/blog/<SLUG>.webp" type="image/webp">
+            <img src="images/blog/<SLUG>.jpg" alt="<TITEL>" width="600" height="338" loading="lazy">
+        </picture>
+    </div>
     <div class="blog-preview-card-body">
         <h3><TITEL></h3>
         <p><KORTE_INTRO></p>

@@ -17,7 +17,7 @@ description: Schrijfstijl, opmaak- en SEO-voorkeuren voor Tersagoesting blogpost
 - Werk met tip-kadertjes (`<div class="blog-tip-box">`), opsommingen en vetgedrukte kernwoorden
 - Gebruik bullet points en genummerde lijsten waar het de leesbaarheid verhoogt
 - Pull quotes gecentreerd, zonder kader/achtergrond, met groot oranje aanhalingsteken erboven (`<blockquote class="blog-pullquote">`)
-- Geen hero-afbeelding bovenaan de blogpost: de witte achtergrond loopt door vanaf de breadcrumb. De blog-kaart op het **overzicht** (`blog.html`) toont wel een thumbnail-afbeelding; de homepage-preview is een tekstkaart zonder afbeelding. De aangeleverde foto wordt gebruikt voor de overzichts-thumbnail en de social-preview (`og:image`), niet als hero in het artikel
+- Geen hero-afbeelding bovenaan de blogpost: de witte achtergrond loopt door vanaf de breadcrumb. De blog-kaarten op het **overzicht** (`blog.html`) én de **homepage-preview** tonen wel een thumbnail-afbeelding. De aangeleverde foto wordt gebruikt voor die thumbnails en de social-preview (`og:image`), niet als hero in het artikel
 - Voldoende witruimte tussen secties, niet te druk
 
 ## Social share
